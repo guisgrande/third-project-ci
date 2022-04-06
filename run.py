@@ -1,3 +1,18 @@
+import random
+
+# Global variables used to generate the game deck
+deck_spades = ["As", "Ks", "Qs", "Js", "Ts", "9s", "8s", "7s", "6s", "5s", "4s", "3s", "2s"]
+deck_hearts = ["As", "Kh", "Qh", "Jh", "Th", "9h", "8h", "7h", "6h", "5h", "4h", "3h", "2h"]
+deck_diamonds = ["Ad", "Kd", "Qd", "Jd", "Td", "9d", "8d", "7d", "6d", "5d", "4d", "3d", "2d"]
+deck_clubs = ["Ac", "Kc", "Qc", "Jc", "Tc", "9c", "8c", "7c", "6c", "5c", "4c", "3c", "2c"]
+full_deck = deck_spades + deck_hearts + deck_diamonds + deck_clubs
+
+deck_game = full_deck.copy()
+random.shuffle(deck_game)
+
+print("Full deck " + str(full_deck))
+print("Game deck " + str(deck_game))
+
 # Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
     while True:
