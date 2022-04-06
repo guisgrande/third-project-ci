@@ -144,8 +144,27 @@ def player_discard_action(reveal_deck_game, player_hand):
             continue
 
 # Receives the player's decision of which card to take, and moves the card to players hand.
-def player_take_action():
-    pass
+def player_take_action(deck_game, reveal_deck_game, player_hand):
+    while True:
+        print("Which deck do you want to take another card from?")
+        print("- - - - - - - [H]idden - [R]eveled - - - - - - -")
+        print("- - - - - - [B] - Back to main menu! - - - - - -")
+        selection = input("> ")
+        
+        if selection in ["H", "h"]:
+            player_hand.append(deck_game[-1])
+            take_card(used_deck)
+            break
+        if selection in ["R", "r"]:
+            player_hand.append(reveal_deck_game[-1])
+            break
+        if selection == ["B", "b"]:
+            menu()
+            break
+        if selection not in ["H", "h", "R", "r", "B", "b"]:
+            print("Ops! Its not a valid selection.")
+            continue
+
 
 # Check the cards in hand and purchase options and make a decision.
 def computer_action():
