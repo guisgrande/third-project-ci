@@ -1,4 +1,5 @@
 import random
+import display
 
 # Global variables used to generate the game deck
 deck_spades = ["As", "Ks", "Qs", "Js", "Ts", "9s", "8s", "7s", "6s", "5s", "4s", "3s", "2s"]
@@ -13,6 +14,10 @@ random.shuffle(deck_game)
 print("Full deck " + str(full_deck))
 print("Game deck " + str(deck_game))
 
+# Global lists, one to all cards out of deck_game and another list for the discarted cards that will be revealed.
+used_deck = []
+reveal_deck_game = []
+
 # Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
     while True:
@@ -23,7 +28,7 @@ def main_menu():
             break
         if selection in ["P", 'p']:
             print("Starting the game! Take your seat.")
-            start_game()
+            start_game(used_deck, reveal_deck_game, player_hand, computer_hand)
             break
         if selection in ["R", "r"]:
             print('''
@@ -49,10 +54,59 @@ def quit_program():
 def coin_toss():
     pass
 
+def take_card(used_deck):
+    remove = deck_game.pop()
+    used_deck.append(remove)
+
+player_hand = []
+computer_hand = []
+
 # Shuffle the cards, deal 4 cards to each player, and turn over the first card. 
-def start_game():
+def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     print("GAME")
+
+    player_card_one = deck_game[-1]
+    take_card(used_deck)
+
+    computer_card_one = deck_game[-1]
+    take_card(used_deck)
+
+    player_card_two = deck_game[-1]
+    take_card(used_deck)
+
+    computer_card_two = deck_game[-1]
+    take_card(used_deck)
+
+    player_card_three = deck_game[-1]
+    take_card(used_deck)
+
+    computer_card_three = deck_game[-1]
+    take_card(used_deck)
+
+    player_card_four = deck_game[-1]
+    take_card(used_deck)
+
+    computer_card_four = deck_game[-1]
+    take_card(used_deck)
+
+    # First card to start the game at revealed.
+    reveal_deck_game = deck_game[-1]
+    take_card(used_deck)
+
+    player_hand = [player_card_one, player_card_two, player_card_three, player_card_four]
+    computer_hand = [computer_card_one, computer_card_two, computer_card_three, computer_card_four]
+    print(player_hand)
+    print(computer_hand)
+    print(reveal_deck_game)
+    print(deck_game)
+    print(used_deck)
+    print(display.display_computer_hand_hiden)
+    print(display.display_table)
+    print(display.display_player_hand)
     selection = input("> ")
+
+# List to hold player and computer current cards
+
 
 # Stops the game and returns to the main menu.
 def stop_game():
