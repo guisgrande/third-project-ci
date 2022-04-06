@@ -18,6 +18,10 @@ print("Game deck " + str(deck_game))
 used_deck = []
 reveal_deck_game = []
 
+# List to hold player and computer current cards
+player_hand = []
+computer_hand = []
+
 # Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
     while True:
@@ -58,9 +62,6 @@ def take_card(used_deck):
     remove = deck_game.pop()
     used_deck.append(remove)
 
-player_hand = []
-computer_hand = []
-
 # Shuffle the cards, deal 4 cards to each player, and turn over the first card. 
 def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     print("GAME")
@@ -100,21 +101,47 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     print(reveal_deck_game)
     print(deck_game)
     print(used_deck)
+
     print(display.display_computer_hand_hiden)
     print(display.display_table)
     print(display.display_player_hand)
     selection = input("> ")
-
-# List to hold player and computer current cards
-
 
 # Stops the game and returns to the main menu.
 def stop_game():
     pass
 
 # Receives the player's decision of which card to discard, and moves it to the discard deck (face revealed).
-def player_discard_action():
-    pass
+def player_discard_action(reveal_deck_game, player_hand):
+    while True:
+        print("Which card you wanna to discard?")
+        print("[1] - [2] - [3] - [4]")
+        print("[B] - Back to main menu!")
+        selection = input("> ")
+
+        if selection == "1":
+            reveal_deck_game.append(player_hand[0])
+            del player_hand[0]
+            break
+        if selection == "2":
+            reveal_deck_game.append(player_hand[1])
+            del player_hand[1]
+            break
+        if selection == "3":
+            reveal_deck_game.append(player_hand[2])
+            del player_hand[2]
+            break
+        if selection == "4":
+            reveal_deck_game.append(player_hand[3])
+            del player_hand[3]
+            break
+        if selection == "B":
+            print("Ending this game! Thanks for playing.")
+            main_menu()
+            break
+        if selection not in ["0", "1", "2", "3", "B"]:
+            print("Ops! It`s not a valid selection.")
+            continue
 
 # Receives the player's decision of which card to take, and moves the card to players hand.
 def player_take_action():
@@ -131,6 +158,7 @@ def win_check():
 # Checks if you have three of a kind in your hand, does not consider suits, only value.
 def extra_round_check():
     pass
+
 print('''
 ======================================================================================================
  =========______=====______====______=====______=====__====___===__====___======_====_____===========
