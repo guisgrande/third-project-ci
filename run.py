@@ -105,11 +105,30 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     print(display.display_computer_hand_hiden)
     print(display.display_table)
     print(display.display_player_hand)
-    selection = input("> ")
+    
+    player_discard_action(reveal_deck_game, player_hand)
 
 # Stops the game and returns to the main menu.
-def stop_game():
-    pass
+def stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand):
+    print(deck_game)
+    print(used_deck)
+    print(reveal_deck_game)
+    print(player_hand)
+    print(computer_hand)
+
+    deck_game = []
+    deck_game = full_deck.copy()
+    used_deck = []
+    reveal_deck_game = []
+    player_hand = []
+    computer_hand = []
+
+    print(deck_game)
+    print(used_deck)
+    print(reveal_deck_game)
+    print(player_hand)
+    print(computer_hand)
+    main_menu()
 
 # Receives the player's decision of which card to discard, and moves it to the discard deck (face revealed).
 def player_discard_action(reveal_deck_game, player_hand):
@@ -122,6 +141,7 @@ def player_discard_action(reveal_deck_game, player_hand):
         if selection == "1":
             reveal_deck_game.append(player_hand[0])
             del player_hand[0]
+            player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection == "2":
             reveal_deck_game.append(player_hand[1])
@@ -135,11 +155,11 @@ def player_discard_action(reveal_deck_game, player_hand):
             reveal_deck_game.append(player_hand[3])
             del player_hand[3]
             break
-        if selection == "B":
+        if selection in ["B", "b"]:
             print("Ending this game! Thanks for playing.")
-            main_menu()
+            stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand)()
             break
-        if selection not in ["0", "1", "2", "3", "B"]:
+        if selection not in ["0", "1", "2", "3", "B", "b"]:
             print("Ops! It`s not a valid selection.")
             continue
 
@@ -159,7 +179,7 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
             player_hand.append(reveal_deck_game[-1])
             break
         if selection == ["B", "b"]:
-            menu()
+            stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand)
             break
         if selection not in ["H", "h", "R", "r", "B", "b"]:
             print("Ops! Its not a valid selection.")
