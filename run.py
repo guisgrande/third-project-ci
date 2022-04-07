@@ -106,6 +106,8 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     print(display.display_computer_hand_hiden)
     display.display_table()
     display.display_player_hand()
+
+    win_check(player_hand, computer_hand)
     
     player_discard_action(reveal_deck_game, player_hand)
 
@@ -192,8 +194,44 @@ def computer_action():
     pass
 
 # Check the cards in the hand
-def win_check():
-    pass
+def win_check(player_hand, computer_hand):
+    print("WIN TEST CHECK START")
+    # player cards
+    c1 = player_hand[0][0]
+    c2 = player_hand[1][0]
+    c3 = player_hand[2][0]
+    c4 = player_hand[3][0]
+    # player hand list and check list
+    ph_list = [c1, c2, c3, c4]
+    ph_check = []
+    for card in ph_list:
+        if card not in ph_check:
+            ph_check.append(card)
+            
+    if len(ph_check) == 2:
+        print("You win! Congratulations.")
+
+    # computer cards
+    cc1 = computer_hand[0][0]
+    cc2 = computer_hand[1][0]
+    cc3 = computer_hand[2][0]
+    cc4 = computer_hand[3][0]
+    # computer hand list and check list
+    ch_list = [cc1, cc2, cc3, cc4]
+    ch_check = []
+    for card in ch_list:
+        if card not in ch_check:
+            ch_check.append(card)
+            
+    if len(ch_check) == 2:
+        print("You lose! Don't be sad, try again.")
+
+    print(ph_list)
+    print(ph_check)
+    print(ch_list)
+    print(ch_check)
+
+    print("WIN TEST CHECK END")
 
 # Checks if you have three of a kind in your hand, does not consider suits, only value.
 def extra_round_check():
