@@ -24,6 +24,7 @@ computer_hand = []
 
 # Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
+    print(display.intro_display)
     while True:
         print("Select your action: ")
         selection = input("> ")
@@ -103,8 +104,8 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     print(used_deck)
 
     print(display.display_computer_hand_hiden)
-    print(display.display_table)
-    print(display.display_player_hand)
+    display.display_table()
+    display.display_player_hand()
     
     player_discard_action(reveal_deck_game, player_hand)
 
@@ -198,16 +199,4 @@ def win_check():
 def extra_round_check():
     pass
 
-print('''
-======================================================================================================
- =========______=====______====______=====______=====__====___===__====___======_====_____===========
- ========|___   |===|  __  |==|   ___|===|  __  |===|  |==/  /==|  |==|  _ \===| |==|  _  \==========
- =========___|  |===| |==| |==|  |__=====| |__| |===|  |=/  /===|  |==| |=\ \==| |==| | \  \ ========
- ========|___   |===| |==| |==|   __|====|  __  |===|      <====|  |==| |==\ \=| |==| |  |  |========
- =========___|  |===| |__| |==|  |=======| |==| |===|  |=\  \===|  |==| |===\ \| |==| |_/  /=========
- ========|______|===|______|==|__|=======|_|==|_|===|__|==\__\==|__|==|_|====\___|==|_____/==========
-======================================================================================================
-----------------------== CHOOSE: [P] for PLAY | [R] for RULES | [Q] for QUIT ==----------------------
-======================================================================================================
-''')
 main_menu()
