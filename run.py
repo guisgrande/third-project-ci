@@ -1,3 +1,4 @@
+from collections import Counter
 import random
 import display
 
@@ -190,8 +191,31 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
 
 
 # Check the cards in hand and purchase options and make a decision.
-def computer_action():
-    pass
+def computer_action(computer_hand, reveal_deck_game, deck_game):
+    # computer cards
+    cc1 = computer_hand[0][0]
+    cc2 = computer_hand[1][0]
+    cc3 = computer_hand[2][0]
+    cc4 = computer_hand[3][0]
+    ch_list = [cc1, cc2, cc3, cc4]
+
+    # Counter used to generate a dictionary from computer cards.
+    counter_list = Counter(ch_list)
+
+    # One list to hold discard options and other to potential win, used to decide if take a card from revealed deck.
+    discard_option = []
+    potential_win = []
+    
+    # For loop and if/else used to add single cards to discard option and pairs to potential win lists.
+    for card, number in counter_list.items():
+        if number == 1:
+            if card not in discard_option:
+                discard_option.append(card)
+        elif number == 2:
+            if card not in potential_win:
+                potential_win.append(card)
+        else:
+            print("ERROR VERIFY COMPUTER ACTION")
 
 # Check the cards in the hand
 def win_check(player_hand, computer_hand):
