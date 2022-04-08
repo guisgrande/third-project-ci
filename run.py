@@ -235,6 +235,10 @@ def win_check(player_hand, computer_hand):
 
 # Checks if you have three of a kind in your hand, does not consider suits, only value.
 def extra_round_check():
-    pass
+    last_card = reveal_deck_game[-2][0]
+    discarded_card = reveal_deck_game[-1][0]
+
+    if last_card == discarded_card:
+        print("Extra round")
 
 main_menu()
