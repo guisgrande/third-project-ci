@@ -9,10 +9,19 @@ deck_diamonds = ["Ad", "Kd", "Qd", "Jd", "Td", "9d", "8d", "7d", "6d", "5d", "4d
 deck_clubs = ["Ac", "Kc", "Qc", "Jc", "Tc", "9c", "8c", "7c", "6c", "5c", "4c", "3c", "2c"]
 full_deck = deck_spades + deck_hearts + deck_diamonds + deck_clubs
 
-# Global lists, one to all cards out of deck_game and another list for the discarted cards that will be revealed.
+# Global lists, one to all cards out of deck_game and another list for the discarded cards that will be revealed.
 deck_game = full_deck.copy()
 reveal_deck_game = []
 used_deck = []
+
+# Hand class, used to define player and computer cards
+
+class HandCards:
+    def __init__(self, card_one, card_two, card_three, card_four):
+        self.card_one = [card_one[0], card_one[1]]
+        self.card_two = [card_two[0], card_two[1]]
+        self.card_three = [card_three[0], card_three[1]]
+        self.card_four = [card_four[0], card_four[1]]
 
 # List to hold player and computer current cards
 player_hand = []
