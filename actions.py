@@ -1,6 +1,7 @@
 from collections import Counter
 import random
 import display
+import run
 
 # Global variables used to generate the game deck
 deck_spades = ["As", "Ks", "Qs", "Js", "Ts", "9s", "8s", "7s", "6s", "5s", "4s", "3s", "2s"]
@@ -27,35 +28,6 @@ class HandCards:
 player_hand = []
 computer_hand = []
 
-# Displays the name of the game, description and rules, and the option to play or close the program.
-def main_menu():
-    print(display.intro_display)
-    while True:
-        print("Select your action: ")
-        selection = input("> ")
-        if selection in ["Q", 'q']:
-            print("Closing the program!")
-            break
-        if selection in ["P", 'p']:
-            print("Starting the game! Take your seat.")
-            start_game(used_deck, reveal_deck_game, player_hand, computer_hand)
-            break
-        if selection in ["R", "r"]:
-            print('''
------------------------------================== RULES ==================-----------------------------
-    ° Each player receives 4 cards.
-    ° Each turn, the player must discard a card and take another.
-    ° The discarded card goes into the revealed deck.
-    ° The player can buy a card from the revealed deck or the hidden deck.
-    ° The object of the game is to get 3 of the same cards.
-    ° If you discard the same card as the last card in the revealed deck, you win an extra round.
------------------------------------------------------------------------------------------------------
-             ''')
-            continue
-        if selection not in ["Q", "q", "P", "p", "R", "r"]:
-            print("Wrong selection! Should be [P], [R] or [Q].")
-            continue
-
 # Close the program
 def quit_program():
     pass
@@ -70,7 +42,7 @@ def take_card(used_deck):
 
 # Shuffle the cards, deal 4 cards to each player, and turn over the first card. 
 def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
-    print("GAME")
+    print("########### BEGIN OF START FUNCTION #########")
 
     # Random used to shuffle the deck_game before start the cards distribuiton.
     random.shuffle(deck_game)
@@ -99,17 +71,17 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     print(deck_game)
     print("USED DECK")
     print(used_deck)
-
+    print("######### END OF START FUNCTION ##########")
     # print(display.display_computer_hand_hiden)
     # display.display_table()
     # display.display_player_hand()
 
-    win_check(player_hand, computer_hand)
-    
-    player_discard_action(reveal_deck_game, player_hand)
+    # win_check(player_hand, computer_hand)  
+    # player_discard_action(reveal_deck_game, player_hand)
 
 # Stops the game and returns to the main menu.
 def stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand):
+    print("######## START OF STOP ACTION #########")
     print(deck_game)
     print(used_deck)
     print(reveal_deck_game)
@@ -128,16 +100,19 @@ def stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand
     print(reveal_deck_game)
     print(player_hand)
     print(computer_hand)
-    main_menu()
+
+    print("############### END OF STOP ACTION ###########")
+    run.game_running = False
+    run.main_menu()
 
 # Receives the player's decision of which card to discard, and moves it to the discard deck (face revealed).
 def player_discard_action(reveal_deck_game, player_hand):
+    print("####### START PLAYER DISCARD ACTION ##########")
     print("PLAYER HAND")
     print(player_hand)
     print("REVEAL DECK")
     print(reveal_deck_game)
-    print("COMPUTER HAND")
-    print(computer_hand)
+
     while True:
         print("Which card you wanna to discard?")
         print("[1] - [2] - [3] - [4]")
@@ -147,22 +122,22 @@ def player_discard_action(reveal_deck_game, player_hand):
         if selection == "1":
             reveal_deck_game.append(player_hand[0])
             del player_hand[0]
-            player_take_action(deck_game, reveal_deck_game, player_hand)
+            # player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection == "2":
             reveal_deck_game.append(player_hand[1])
             del player_hand[1]
-            player_take_action(deck_game, reveal_deck_game, player_hand)
+            # player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection == "3":
             reveal_deck_game.append(player_hand[2])
             del player_hand[2]
-            player_take_action(deck_game, reveal_deck_game, player_hand)
+            # player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection == "4":
             reveal_deck_game.append(player_hand[3])
             del player_hand[3]
-            player_take_action(deck_game, reveal_deck_game, player_hand)
+            # player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection in ["B", "b"]:
             print("Ending this game! Thanks for playing.")
@@ -172,8 +147,15 @@ def player_discard_action(reveal_deck_game, player_hand):
             print("Ops! It`s not a valid selection.")
             continue
 
+    print("PLAYER HAND AFTER DISCARD")
+    print(player_hand)
+    print("REVEAL DECK")
+    print(reveal_deck_game)
+    print("########### END OF DISCARD ACTION ##############")
+
 # Receives the player's decision of which card to take, and moves the card to players hand.
 def player_take_action(deck_game, reveal_deck_game, player_hand):
+    print("############# BEGIN OF A TAKE ACTION #############")
     while True:
         print("Which deck do you want to take another card from?")
         print("- - - - - - - [H]idden - [R]eveled - - - - - - -")
@@ -183,11 +165,11 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
         if selection in ["H", "h"]:
             player_hand.append(deck_game[-1])
             take_card(used_deck)
-            computer_action(computer_hand, reveal_deck_game, deck_game)
+            # computer_action(computer_hand, reveal_deck_game, deck_game)
             break
         if selection in ["R", "r"]:
             player_hand.append(reveal_deck_game[-1])
-            computer_action(computer_hand, reveal_deck_game, deck_game)
+            # computer_action(computer_hand, reveal_deck_game, deck_game)
             break
         if selection == ["B", "b"]:
             stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand)
@@ -196,9 +178,13 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
             print("Ops! Its not a valid selection.")
             continue
 
+    print("PLAYER HAND AFTER TAKE ACTION")
+    print(player_hand)
+    print("############## END OF PLAYER TAKE ACTION ##########")
 
 # Check the cards in hand and purchase options and make a decision.
 def computer_action(computer_hand, reveal_deck_game, deck_game):
+    print("########### BEGIN OF COMPUTER ACTION #############")
     # computer cards
     cc1 = computer_hand[0][0]
     cc2 = computer_hand[1][0]
@@ -265,7 +251,8 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     print(potential_win)
     print("COMPUTER HAND AFTER ACTION")
     print(computer_hand)
-    
+    print("################# END OF COMPUTER ACTION #############")
+
 # Check the cards in the hand
 def win_check(player_hand, computer_hand):
     print("WIN TEST CHECK START")
@@ -313,5 +300,3 @@ def extra_round_check():
 
     if last_card == discarded_card:
         print("Extra round")
-
-main_menu()
