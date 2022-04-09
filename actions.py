@@ -231,31 +231,39 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     for card in discard_option:
         if card in ch_list:
             if card == cc1: 
-                reveal_deck.append(computer_hand[0])
+                reveal_deck_game.append(computer_hand[0])
                 del computer_hand[0]
                 break
             elif card == cc2:
-                reveal_deck.append(computer_hand[1])
+                reveal_deck_game.append(computer_hand[1])
                 del computer_hand[1]
                 break
             elif card == cc3:
-                reveal_deck.append(computer_hand[2])
+                reveal_deck_game.append(computer_hand[2])
                 del computer_hand[2]
                 break
             else:
-                reveal_deck.append(computer_hand[3])
+                reveal_deck_game.append(computer_hand[3])
                 del computer_hand[3]
                 break
-
-    for card in potential_win:
-        if card == reveal_deck[-2][0]:
-            computer_hand.append(reveal_deck[-2])
-            del reveal_deck[-2]
-        else:
+    
+    if len(potential_win) == 0:
             computer_hand.append(deck_game[-1])
             del deck_game[-1]
+    else:
+        for card in potential_win:
+            if card == reveal_deck_game[-2][0]:
+                computer_hand.append(reveal_deck_game[-2])
+                del reveal_deck_game[-2]
+            else:
+                computer_hand.append(deck_game[-1])
+                del deck_game[-1]
     
-    print("COMPUTER HAND BEFORE ACTION")
+    print("COMP DISCARD OPTIONS")
+    print(discard_option)
+    print("COMP POTENTIAL WIN")
+    print(potential_win)
+    print("COMPUTER HAND AFTER ACTION")
     print(computer_hand)
     
 # Check the cards in the hand
