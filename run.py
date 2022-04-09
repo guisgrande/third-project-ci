@@ -93,11 +93,13 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     take_card(used_deck)
 
     # First card to start the game at revealed.
-    reveal_deck_game = deck_game[-1]
+    table_card = deck_game[-1]
     take_card(used_deck)
 
     player_hand = [player_card_one, player_card_two, player_card_three, player_card_four]
     computer_hand = [computer_card_one, computer_card_two, computer_card_three, computer_card_four]
+    reveal_deck_game = [table_card]
+
     print(player_hand)
     print(computer_hand)
     print(reveal_deck_game)
