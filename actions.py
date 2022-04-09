@@ -4,7 +4,7 @@ import display
 
 # Global variables used to generate the game deck
 deck_spades = ["As", "Ks", "Qs", "Js", "Ts", "9s", "8s", "7s", "6s", "5s", "4s", "3s", "2s"]
-deck_hearts = ["As", "Kh", "Qh", "Jh", "Th", "9h", "8h", "7h", "6h", "5h", "4h", "3h", "2h"]
+deck_hearts = ["Ah", "Kh", "Qh", "Jh", "Th", "9h", "8h", "7h", "6h", "5h", "4h", "3h", "2h"]
 deck_diamonds = ["Ad", "Kd", "Qd", "Jd", "Td", "9d", "8d", "7d", "6d", "5d", "4d", "3d", "2d"]
 deck_clubs = ["Ac", "Kc", "Qc", "Jc", "Tc", "9c", "8c", "7c", "6c", "5c", "4c", "3c", "2c"]
 full_deck = deck_spades + deck_hearts + deck_diamonds + deck_clubs
@@ -72,39 +72,22 @@ def take_card(used_deck):
 def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     print("GAME")
 
+    # Random used to shuffle the deck_game before start the cards distribuiton.
     random.shuffle(deck_game)
 
-    player_card_one = deck_game[-1]
-    take_card(used_deck)
+    # For loop give one card to player and one card to computer 4 times. Use take_card to remove from game deck.
+    for card in range(4):
+        player_card = deck_game[-1]
+        player_hand.append(player_card)
+        take_card(used_deck)
+        computer_card = deck_game[-1]
+        computer_hand.append(computer_card)
+        take_card(used_deck)
 
-    computer_card_one = deck_game[-1]
-    take_card(used_deck)
-
-    player_card_two = deck_game[-1]
-    take_card(used_deck)
-
-    computer_card_two = deck_game[-1]
-    take_card(used_deck)
-
-    player_card_three = deck_game[-1]
-    take_card(used_deck)
-
-    computer_card_three = deck_game[-1]
-    take_card(used_deck)
-
-    player_card_four = deck_game[-1]
-    take_card(used_deck)
-
-    computer_card_four = deck_game[-1]
-    take_card(used_deck)
-
-    # First card to start the game at revealed.
+    # First card to start the game at revealed deck.
     table_card = deck_game[-1]
     take_card(used_deck)
-
-    player_hand = [player_card_one, player_card_two, player_card_three, player_card_four]
-    computer_hand = [computer_card_one, computer_card_two, computer_card_three, computer_card_four]
-    reveal_deck_game = [table_card]
+    reveal_deck_game.append(table_card)
 
     print("PLAYER HAND")
     print(player_hand)
