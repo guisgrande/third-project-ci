@@ -100,15 +100,20 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     computer_hand = [computer_card_one, computer_card_two, computer_card_three, computer_card_four]
     reveal_deck_game = [table_card]
 
+    print("PLAYER HAND")
     print(player_hand)
+    print("COMPUTER HAND")
     print(computer_hand)
+    print("REVEALED DECK")
     print(reveal_deck_game)
+    print("GAME DECK")
     print(deck_game)
+    print("USED DECK")
     print(used_deck)
 
-    print(display.display_computer_hand_hiden)
-    display.display_table()
-    display.display_player_hand()
+    # print(display.display_computer_hand_hiden)
+    # display.display_table()
+    # display.display_player_hand()
 
     win_check(player_hand, computer_hand)
     
@@ -138,6 +143,12 @@ def stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand
 
 # Receives the player's decision of which card to discard, and moves it to the discard deck (face revealed).
 def player_discard_action(reveal_deck_game, player_hand):
+    print("PLAYER HAND")
+    print(player_hand)
+    print("REVEAL DECK")
+    print(reveal_deck_game)
+    print("COMPUTER HAND")
+    print(computer_hand)
     while True:
         print("Which card you wanna to discard?")
         print("[1] - [2] - [3] - [4]")
@@ -152,14 +163,17 @@ def player_discard_action(reveal_deck_game, player_hand):
         if selection == "2":
             reveal_deck_game.append(player_hand[1])
             del player_hand[1]
+            player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection == "3":
             reveal_deck_game.append(player_hand[2])
             del player_hand[2]
+            player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection == "4":
             reveal_deck_game.append(player_hand[3])
             del player_hand[3]
+            player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection in ["B", "b"]:
             print("Ending this game! Thanks for playing.")
@@ -180,9 +194,11 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
         if selection in ["H", "h"]:
             player_hand.append(deck_game[-1])
             take_card(used_deck)
+            computer_action(computer_hand, reveal_deck_game, deck_game)
             break
         if selection in ["R", "r"]:
             player_hand.append(reveal_deck_game[-1])
+            computer_action(computer_hand, reveal_deck_game, deck_game)
             break
         if selection == ["B", "b"]:
             stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand)
@@ -207,7 +223,11 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     # One list to hold discard options and other to potential win, used to decide if take a card from revealed deck.
     discard_option = []
     potential_win = []
-    
+
+    print("COMPUTER HAND BEFORE ACTION")
+    print(computer_hand)
+    print(ch_list) 
+
     # For loop and if/else used to add single cards to discard option and pairs to potential win lists.
     for card, number in counter_list.items():
         if number == 1:
@@ -219,6 +239,36 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
         else:
             print("ERROR VERIFY COMPUTER ACTION")
 
+    for card in discard_option:
+        if card in ch_list:
+            if card == cc1: 
+                reveal_deck.append(computer_hand[0])
+                del computer_hand[0]
+                break
+            elif card == cc2:
+                reveal_deck.append(computer_hand[1])
+                del computer_hand[1]
+                break
+            elif card == cc3:
+                reveal_deck.append(computer_hand[2])
+                del computer_hand[2]
+                break
+            else:
+                reveal_deck.append(computer_hand[3])
+                del computer_hand[3]
+                break
+
+    for card in potential_win:
+        if card == reveal_deck[-2][0]:
+            computer_hand.append(reveal_deck[-2])
+            del reveal_deck[-2]
+        else:
+            computer_hand.append(deck_game[-1])
+            del deck_game[-1]
+    
+    print("COMPUTER HAND BEFORE ACTION")
+    print(computer_hand)
+    
 # Check the cards in the hand
 def win_check(player_hand, computer_hand):
     print("WIN TEST CHECK START")
