@@ -9,15 +9,10 @@ deck_diamonds = ["Ad", "Kd", "Qd", "Jd", "Td", "9d", "8d", "7d", "6d", "5d", "4d
 deck_clubs = ["Ac", "Kc", "Qc", "Jc", "Tc", "9c", "8c", "7c", "6c", "5c", "4c", "3c", "2c"]
 full_deck = deck_spades + deck_hearts + deck_diamonds + deck_clubs
 
-deck_game = full_deck.copy()
-random.shuffle(deck_game)
-
-print("Full deck " + str(full_deck))
-print("Game deck " + str(deck_game))
-
 # Global lists, one to all cards out of deck_game and another list for the discarted cards that will be revealed.
-used_deck = []
+deck_game = full_deck.copy()
 reveal_deck_game = []
+used_deck = []
 
 # List to hold player and computer current cards
 player_hand = []
@@ -67,6 +62,8 @@ def take_card(used_deck):
 # Shuffle the cards, deal 4 cards to each player, and turn over the first card. 
 def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     print("GAME")
+
+    random.shuffle(deck_game)
 
     player_card_one = deck_game[-1]
     take_card(used_deck)
