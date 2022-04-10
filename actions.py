@@ -27,6 +27,11 @@ class HandCards:
 player_hand = []
 computer_hand = []
 
+def display_game():
+    display.display_computer_hand_hiden
+    display.display_table()
+    display.display_player_hand()
+
 # Close the program
 def quit_program():
     pass
