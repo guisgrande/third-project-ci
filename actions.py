@@ -1,7 +1,6 @@
 from collections import Counter
 import random
 import display
-import run
 
 # Global variables used to generate the game deck
 deck_spades = ["As", "Ks", "Qs", "Js", "Ts", "9s", "8s", "7s", "6s", "5s", "4s", "3s", "2s"]
@@ -102,8 +101,6 @@ def stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand
     print(computer_hand)
 
     print("############### END OF STOP ACTION ###########")
-    run.game_running = False
-    run.main_menu()
 
 # Receives the player's decision of which card to discard, and moves it to the discard deck (face revealed).
 def player_discard_action(reveal_deck_game, player_hand):
@@ -286,8 +283,10 @@ def win_check(player_hand, computer_hand):
     if len(ch_check) == 2:
         print("You lose! Don't be sad, try again.")
 
+    print("PLAYER CHECK")
     print(ph_list)
     print(ph_check)
+    print("COMPUTER CHECK")
     print(ch_list)
     print(ch_check)
 
