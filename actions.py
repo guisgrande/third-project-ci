@@ -241,10 +241,14 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
             del deck_game[-1]
     else:
         for card in potential_win:
-            if card == reveal_deck_game[-2][0]:
-                computer_hand.append(reveal_deck_game[-2])
-                del reveal_deck_game[-2]
-            else:
+            try:
+                if card == reveal_deck_game[-2][0]:
+                    computer_hand.append(reveal_deck_game[-2])
+                    del reveal_deck_game[-2]
+                else:
+                    computer_hand.append(deck_game[-1])
+                    del deck_game[-1]
+            except:
                 computer_hand.append(deck_game[-1])
                 del deck_game[-1]
     
