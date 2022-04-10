@@ -22,7 +22,7 @@ def game_loop(game_running):
 
 # Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
-    print(display.intro_display)
+    print(display.intro_display())
     while True:
         print("Select your action: ")
         selection = input("> ")
