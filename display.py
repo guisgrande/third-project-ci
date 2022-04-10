@@ -57,10 +57,21 @@ display_computer_hand_hiden = '''
         |________| |________| |________| |________|
 '''
 
-clubs = "♣"
-hearts = "♡"
-spades = "♠"
-diamonds = "♢"
+def suits_display(suits):
+    clubs = "♣"
+    hearts = "♥"
+    spades = "♠"
+    diamonds = "♦"
+    if suits == "c":
+        return clubs
+    elif suits == "h":
+        return hearts
+    elif suits == "s":
+        return spades
+    elif suits == "d":
+        return diamonds
+    else:
+        print("X")
 
 def display_computer_hand_reveal():
 
@@ -69,10 +80,10 @@ def display_computer_hand_reveal():
         cc3 = act.computer_hand[2][0]
         cc4 = act.computer_hand[3][0]
         
-        cs1 = act.computer_hand[0][1]
-        cs2 = act.computer_hand[1][1]
-        cs3 = act.computer_hand[2][1]
-        cs4 = act.computer_hand[3][1]
+        cs1 = suits_display(act.computer_hand[0][1])
+        cs2 = suits_display(act.computer_hand[1][1])
+        cs3 = suits_display(act.computer_hand[2][1])
+        cs4 = suits_display(act.computer_hand[3][1])
 
         print(f'''
 ===========================================================
@@ -92,10 +103,10 @@ def display_player_hand():
         c3 = act.player_hand[2][0]
         c4 = act.player_hand[3][0]
 
-        s1 = act.player_hand[0][1]
-        s2 = act.player_hand[1][1]
-        s3 = act.player_hand[2][1]
-        s4 = act.player_hand[3][1]
+        s1 = suits_display(act.player_hand[0][1])
+        s2 = suits_display(act.player_hand[1][1])
+        s3 = suits_display(act.player_hand[2][1])
+        s4 = suits_display(act.player_hand[3][1])
                 
         print(f'''
          ________   ________   ________   ________
@@ -112,7 +123,7 @@ def display_player_hand():
 def display_table():
 
         rc = act.reveal_deck_game[-1][0]
-        rs = act.reveal_deck_game[-1][1]
+        rs = suits_display(act.reveal_deck_game[-1][1])
 
         print(f'''
 __________________________________________________________
