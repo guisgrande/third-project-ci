@@ -170,7 +170,8 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
             # computer_action(computer_hand, reveal_deck_game, deck_game)
             break
         if selection in ["R", "r"]:
-            player_hand.append(reveal_deck_game[-1])
+            player_hand.append(reveal_deck_game[-2])
+            del reveal_deck_game[-2]
             # computer_action(computer_hand, reveal_deck_game, deck_game)
             break
         if selection == ["B", "b"]:
