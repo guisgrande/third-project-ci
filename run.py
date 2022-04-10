@@ -8,14 +8,14 @@ game_running = True
 def game_loop(game_running):
     act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand)
     while game_running:
+        act.display_game()
         act.player_discard_action(act.reveal_deck_game, act.player_hand)
         act.player_take_action(act.deck_game, act.reveal_deck_game, act.player_hand)
         act.win_check(act.player_hand, act.computer_hand)
-        # display table and hands
+        act.display_game()
         # computer action delay 3 seconds
         act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
         act.win_check(act.player_hand, act.computer_hand)
-        # display table and hands
 
     # reset cards
     # act.main_menu()
