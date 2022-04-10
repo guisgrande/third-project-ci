@@ -1,9 +1,24 @@
-import actions
+import actions as act
 import display
 
 # Main python file.
 
 game_running = True
+
+def game_loop(game_running):
+    act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand)
+    while game_running:
+        act.player_discard_action(act.reveal_deck_game, act.player_hand)
+        act.player_take_action(act.deck_game, act.reveal_deck_game, act.player_hand)
+        act.win_check(act.player_hand, act.computer_hand)
+        # display table and hands
+        # computer action delay 3 seconds
+        act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
+        act.win_check(act.player_hand, act.computer_hand)
+        # display table and hands
+
+    # reset cards
+    # act.main_menu()
 
 # Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
@@ -34,20 +49,5 @@ def main_menu():
         if selection not in ["Q", "q", "P", "p", "R", "r"]:
             print("Wrong selection! Should be [P], [R] or [Q].")
             continue
-
-def game_loop(game_running):
-    actions.start_game(actions.used_deck, actions.reveal_deck_game, actions.player_hand, actions.computer_hand)
-    while game_running:
-        actions.player_discard_action(actions.reveal_deck_game, actions.player_hand)
-        actions.player_take_action(actions.deck_game, actions.reveal_deck_game, actions.player_hand)
-        actions.win_check(actions.player_hand, actions.computer_hand)
-        # display table and hands
-        # computer action delay 3 seconds
-        actions.computer_action(actions.computer_hand, actions.reveal_deck_game, actions.deck_game)
-        actions.win_check(actions.player_hand, actions.computer_hand)
-        # display table and hands
-
-    # reset cards
-    # actions.main_menu()
 
 main_menu()
