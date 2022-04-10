@@ -1,3 +1,4 @@
+import actions as act
 
 intro_display = '''
 ======================================================================================================
@@ -62,14 +63,17 @@ spades = "♠"
 diamonds = "♢"
 
 def display_computer_hand_reveal():
-        cc1 = "T"
-        cs1 = clubs
-        cc2 = "7"
-        cs2 = diamonds
-        cc3 = "9"
-        cs3 = hearts
-        cc4 = "7"
-        cs4 = spades
+
+        cc1 = act.computer_hand[0][0]
+        cc2 = act.computer_hand[1][0]
+        cc3 = act.computer_hand[2][0]
+        cc4 = act.computer_hand[3][0]
+        
+        cs1 = act.computer_hand[0][1]
+        cs2 = act.computer_hand[1][1]
+        cs3 = act.computer_hand[2][1]
+        cs4 = act.computer_hand[3][1]
+
         print(f'''
 ===========================================================
          ________   ________   ________   ________
@@ -82,14 +86,17 @@ def display_computer_hand_reveal():
 ''')
 
 def display_player_hand():
-        c1 = "A"
-        c2 = "A"
-        c3 = "A"
-        c4 = "A"
-        s1 = "♣"
-        s2 = "♣"
-        s3 = "♣"
-        s4 = "♣"
+        
+        c1 = act.player_hand[0][0]
+        c2 = act.player_hand[1][0]
+        c3 = act.player_hand[2][0]
+        c4 = act.player_hand[3][0]
+
+        s1 = act.player_hand[0][1]
+        s2 = act.player_hand[1][1]
+        s3 = act.player_hand[2][1]
+        s4 = act.player_hand[3][1]
+                
         print(f'''
          ________   ________   ________   ________
         | {c1}      | | {c2}      | | {c3}      | | {c4}      |
@@ -103,8 +110,10 @@ def display_player_hand():
 ''')
 
 def display_table():
-        rc = "J"
-        rs = hearts
+
+        rc = act.reveal_deck_game[-1][0]
+        rs = act.reveal_deck_game[-1][1]
+
         print(f'''
 __________________________________________________________
             ________               ________
