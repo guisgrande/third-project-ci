@@ -26,6 +26,7 @@ class HandCards:
 # List to hold player and computer current cards
 player_hand = []
 computer_hand = []
+winner_hand = []
 
 def display_game():
     display.display_computer_hand_hiden()
@@ -261,7 +262,7 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     print("################# END OF COMPUTER ACTION #############")
 
 # Check the cards in the hand
-def win_check(player_hand, computer_hand):
+def win_check(player_hand, computer_hand, winner_hand):
     print("WIN TEST CHECK START")
     # player cards
     c1 = player_hand[0][0]
@@ -277,6 +278,7 @@ def win_check(player_hand, computer_hand):
             
     if len(ph_check) == 2:
         print("You win! Congratulations.")
+        winner_hand.append("WIN")
 
     # computer cards
     cc1 = computer_hand[0][0]
@@ -292,7 +294,8 @@ def win_check(player_hand, computer_hand):
             
     if len(ch_check) == 2:
         print("You lose! Don't be sad, try again.")
-
+        winner_hand.append("WIN")
+    
     print("PLAYER CHECK")
     print(ph_list)
     print(ph_check)
