@@ -2,21 +2,26 @@ import actions as act
 import display
 
 # Main python file.
-
-game_running = True
+game_running = ''
 
 def game_loop(game_running):
+    game_running = True
+    win = "WIN"
     act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand)
     while game_running:
+        act.win_check(act.player_hand, act.computer_hand, act.winner_hand)
         act.display_game()
+        if win in act.winner_hand:
+            break
         act.player_discard_action(act.reveal_deck_game, act.player_hand)
         act.player_take_action(act.deck_game, act.reveal_deck_game, act.player_hand)
-        act.win_check(act.player_hand, act.computer_hand)
+        act.win_check(act.player_hand, act.computer_hand, act.winner_hand)
         act.display_game()
-        # computer action delay 3 seconds
+        if win in act.winner_hand:
+            break
         act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
-        act.win_check(act.player_hand, act.computer_hand)
 
+    print("OUT OF LOOP")
     # reset cards
     # act.main_menu()
 
