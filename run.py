@@ -2,22 +2,22 @@ import actions as act
 import display
 
 # Main python file.
-game_running = ''
+game_running = True
 
 def game_loop(game_running):
-    game_running = True
-    win = "WIN"
     act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand)
     while game_running:
-        act.win_check(act.player_hand, act.computer_hand, act.winner_hand)
         act.display_game()
-        if win in act.winner_hand:
+        act.win_check(act.player_hand, act.computer_hand, act.winner_hand)
+        game_running = act.end_loop(act.winner_hand)
+        if not game_running:
             break
         act.player_discard_action(act.reveal_deck_game, act.player_hand)
         act.player_take_action(act.deck_game, act.reveal_deck_game, act.player_hand)
-        act.win_check(act.player_hand, act.computer_hand, act.winner_hand)
         act.display_game()
-        if win in act.winner_hand:
+        act.win_check(act.player_hand, act.computer_hand, act.winner_hand)
+        game_running = act.end_loop(act.winner_hand)
+        if not game_running:
             break
         act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
 
@@ -27,16 +27,18 @@ def game_loop(game_running):
 
 # Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
-    print(display.intro_display())
+    display.intro_display()
     while True:
         print("Select your action: ")
         selection = input("> ")
         if selection in ["Q", 'q']:
             print("Closing the program!")
+            game_running = False
             break
         if selection in ["P", 'p']:
             print("Starting the game! Take your seat.")
             # start_game(used_deck, reveal_deck_game, player_hand, computer_hand)
+            game_running = True
             game_loop(game_running)
             break
         if selection in ["R", "r"]:
@@ -55,4 +57,5 @@ def main_menu():
             print("Wrong selection! Should be [P], [R] or [Q].")
             continue
 
+# if __name__() == '__main__': 
 main_menu()
