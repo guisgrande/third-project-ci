@@ -226,28 +226,63 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
         else:
             print("ERROR VERIFY COMPUTER ACTION")
 
+    # Discard action start.
     for card in discard_option:
         if card in ch_list:
-            if card == cc1: 
-                reveal_deck_game.append(computer_hand[0])
-                del computer_hand[0]
-                break
+            if card == cc1:
+                if card != reveal_deck_game[-1][0]:
+                    reveal_deck_game.append(computer_hand[0])
+                    del computer_hand[0]
+                    break
             elif card == cc2:
-                reveal_deck_game.append(computer_hand[1])
-                del computer_hand[1]
-                break
+                if card != reveal_deck_game[-1][0]:
+                    reveal_deck_game.append(computer_hand[1])
+                    del computer_hand[1]
+                    break
             elif card == cc3:
-                reveal_deck_game.append(computer_hand[2])
-                del computer_hand[2]
-                break
+                if card != reveal_deck_game[-1][0]:
+                    reveal_deck_game.append(computer_hand[2])
+                    del computer_hand[2]
+                    break
             else:
-                reveal_deck_game.append(computer_hand[3])
-                del computer_hand[3]
-                break
-    
+                if card != reveal_deck_game[-1][0]:
+                    reveal_deck_game.append(computer_hand[3])
+                    del computer_hand[3]
+                    break
+        else:
+            for cards in potential_win:
+                if cards not in reveal_deck_game[:][0]:
+                    if cards == cc1: 
+                        reveal_deck_game.append(computer_hand[0])
+                        del computer_hand[0]
+                        break
+                    elif cards == cc2:
+                        reveal_deck_game.append(computer_hand[1])
+                        del computer_hand[1]
+                        break
+                    elif cards == cc3:
+                        reveal_deck_game.append(computer_hand[2])
+                        del computer_hand[2]
+                        break
+                    elif cards == cc4:
+                        reveal_deck_game.append(computer_hand[3])
+                        del computer_hand[3]
+                        break
+                    else:
+                        reveal_deck_game.append(computer_hand[0])
+                        del computer_hand[0]
+                        break
+
+    # Take a new card action
+    # First check if have any potencial win, then check if the card at reveal deck match with any card at hand.
     if len(potential_win) == 0:
-            computer_hand.append(deck_game[-1])
-            del deck_game[-1]
+            if reveal_deck_game[-2][0] in ch_list:
+                computer_hand.append(reveal_deck_game[-2])
+                del reveal_deck_game[-2]
+            else:    
+                computer_hand.append(deck_game[-1])
+                del deck_game[-1]
+    # If have any potencial win, check if the same card was at reveal deck, if yes take it, if not take from hidden deck.
     else:
         for card in potential_win:
             try:
@@ -260,6 +295,7 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
             except:
                 computer_hand.append(deck_game[-1])
                 del deck_game[-1]
+
     print("COUNTER LIST")
     print(counter_list)
     print("COMP DISCARD OPTIONS")
