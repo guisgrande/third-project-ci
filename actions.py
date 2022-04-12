@@ -15,7 +15,6 @@ reveal_deck_game = []
 used_deck = []
 
 # Hand class, used to define player and computer cards
-
 class HandCards:
     def __init__(self, card_one, card_two, card_three, card_four):
         self.card_one = [card_one[0], card_one[1]]
@@ -23,11 +22,12 @@ class HandCards:
         self.card_three = [card_three[0], card_three[1]]
         self.card_four = [card_four[0], card_four[1]]
 
-# List to hold player and computer current cards
+# List to hold player and computer current cards, winner hand to recive if had a winner.
 player_hand = []
 computer_hand = []
 winner_hand = []
 
+# Method used to display cards and table game at terminal.
 def display_game():
     display.display_computer_hand_hiden()
     display.display_table()
@@ -41,12 +41,14 @@ def quit_program():
 def coin_toss():
     pass
 
+# Method used to end the loop at run.py, check if some one won.
 def end_loop(winner_hand):
     if "WIN" in winner_hand:
         return False
     else:
         return True
 
+# Method to remove one card at time from deck_game and move to used_deck.
 def take_card(used_deck):
     remove = deck_game.pop()
     used_deck.append(remove)
@@ -268,7 +270,7 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     print(computer_hand)
     print("################# END OF COMPUTER ACTION #############")
 
-# Check the cards in the hand
+# Check if the cards in the hand (does not consider suits) are 3 of a kind, and return if had a winner.
 def win_check(player_hand, computer_hand, winner_hand):
     print("WIN TEST CHECK START")
     # player cards
@@ -276,45 +278,44 @@ def win_check(player_hand, computer_hand, winner_hand):
     c2 = player_hand[1][0]
     c3 = player_hand[2][0]
     c4 = player_hand[3][0]
-    # player hand list and check list
+
+    # player hand list (all cards numbers/letters) and counter list (dictionary to group the cards).
     ph_list = [c1, c2, c3, c4]
-    ph_check = []
-    for card in ph_list:
-        if card not in ph_check:
-            ph_check.append(card)
-            
-    if len(ph_check) == 2:
-        print("You win! Congratulations.")
-        winner_hand.append("WIN")
-        end_loop(winner_hand)
+    player_counter_list = Counter(ph_list)
+
+    # use a for loop at counter list to check if any card had 3 of the same value.
+    for card, number in player_counter_list.items():
+        if number == 3:
+            print("You win! Congratulations.")
+            winner_hand.append("WIN")
+            end_loop(winner_hand)
 
     # computer cards
     cc1 = computer_hand[0][0]
     cc2 = computer_hand[1][0]
     cc3 = computer_hand[2][0]
     cc4 = computer_hand[3][0]
-    # computer hand list and check list
+
+    # computer hand list (all cards numbers/letters) and counter list (dictionary to group the cards).
     ch_list = [cc1, cc2, cc3, cc4]
-    ch_check = []
-    for card in ch_list:
-        if card not in ch_check:
-            ch_check.append(card)
-            
-    if len(ch_check) == 2:
-        print("You lose! Don't be sad, try again.")
-        winner_hand.append("WIN")
-        end_loop(winner_hand)
+    computer_counter_list = Counter(ch_list)
+
+    # use a for loop at counter list to check if any card had 3 of the same value.
+    for card, number in computer_counter_list.items():
+        if number == 3:
+            print("You lose! Don't be sad, try again.")
+            winner_hand.append("WIN")
+            end_loop(winner_hand)
 
     print("PLAYER CHECK")
     print(ph_list)
-    print(ph_check)
+    print(player_counter_list)
     print("COMPUTER CHECK")
     print(ch_list)
-    print(ch_check)
-
+    print(computer_counter_list)
     print("WIN TEST CHECK END")
 
-# Checks if you have three of a kind in your hand, does not consider suits, only value.
+# Checks if the last discard of player/computer match with the last reveal card, if yes, win a extra round.
 def extra_round_check():
     last_card = reveal_deck_game[-2][0]
     discarded_card = reveal_deck_game[-1][0]
