@@ -26,6 +26,8 @@ class HandCards:
 player_hand = []
 computer_hand = []
 winner_hand = []
+player_score = 0
+computer_score = 0
 
 # Method used to display cards and table game at terminal.
 def display_game():
@@ -307,7 +309,7 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     print("################# END OF COMPUTER ACTION #############")
 
 # Check if the cards in the hand (does not consider suits) are 3 of a kind, and return if had a winner.
-def win_check(player_hand, computer_hand, winner_hand):
+def win_check(player_hand, computer_hand, winner_hand, player_score, computer_score):
     print("WIN TEST CHECK START")
     # player cards
     c1 = player_hand[0][0]
@@ -324,6 +326,7 @@ def win_check(player_hand, computer_hand, winner_hand):
         if number == 3:
             print("You win! Congratulations.")
             winner_hand.append("WIN")
+            player_score = player_score + 1
             end_loop(winner_hand)
 
     # computer cards
@@ -341,6 +344,7 @@ def win_check(player_hand, computer_hand, winner_hand):
         if number == 3:
             print("You lose! Don't be sad, try again.")
             winner_hand.append("WIN")
+            computer_score = computer_score + 1
             end_loop(winner_hand)
 
     print("PLAYER CHECK")
