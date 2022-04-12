@@ -41,6 +41,12 @@ def quit_program():
 def coin_toss():
     pass
 
+def end_loop(winner_hand):
+    if "WIN" in winner_hand:
+        return False
+    else:
+        return True
+
 def take_card(used_deck):
     remove = deck_game.pop()
     used_deck.append(remove)
@@ -198,7 +204,7 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
 
     # Counter used to generate a dictionary from computer cards.
     counter_list = Counter(ch_list)
-
+    
     # One list to hold discard options and other to potential win, used to decide if take a card from revealed deck.
     discard_option = []
     potential_win = []
@@ -252,7 +258,8 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
             except:
                 computer_hand.append(deck_game[-1])
                 del deck_game[-1]
-    
+    print("COUNTER LIST")
+    print(counter_list)
     print("COMP DISCARD OPTIONS")
     print(discard_option)
     print("COMP POTENTIAL WIN")
@@ -279,6 +286,7 @@ def win_check(player_hand, computer_hand, winner_hand):
     if len(ph_check) == 2:
         print("You win! Congratulations.")
         winner_hand.append("WIN")
+        end_loop(winner_hand)
 
     # computer cards
     cc1 = computer_hand[0][0]
@@ -295,7 +303,8 @@ def win_check(player_hand, computer_hand, winner_hand):
     if len(ch_check) == 2:
         print("You lose! Don't be sad, try again.")
         winner_hand.append("WIN")
-    
+        end_loop(winner_hand)
+
     print("PLAYER CHECK")
     print(ph_list)
     print(ph_check)
