@@ -8,14 +8,14 @@ def game_loop(game_running):
     act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand)
     while game_running:
         act.display_game()
-        act.win_check(act.player_hand, act.computer_hand, act.winner_hand)
+        act.win_check(act.player_hand, act.computer_hand, act.winner_hand, act.player_score, act.computer_score)
         game_running = act.end_loop(act.winner_hand)
         if not game_running:
             break
         act.player_discard_action(act.reveal_deck_game, act.player_hand)
         act.player_take_action(act.deck_game, act.reveal_deck_game, act.player_hand)
         act.display_game()
-        act.win_check(act.player_hand, act.computer_hand, act.winner_hand)
+        act.win_check(act.player_hand, act.computer_hand, act.winner_hand, act.player_score, act.computer_score)
         game_running = act.end_loop(act.winner_hand)
         if not game_running:
             break
