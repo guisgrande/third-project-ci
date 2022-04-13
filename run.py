@@ -22,8 +22,8 @@ def change_true():
     return player_start
 
 def game_loop(game_running):
-    print(f"START LOOP HERE")
-    print(f"PLAYER START 01: {player_start}")
+    # print(f"START LOOP HERE")
+    # print(f"PLAYER START 01: {player_start}")
     act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand, act.winner_hand)
     while game_running:
         act.display_game()
@@ -60,7 +60,7 @@ def game_loop(game_running):
         clear()
         act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
 
-    print("OUT OF LOOP")
+    # print("OUT OF LOOP")
     play_again()
 
 def coin_flip():
@@ -68,7 +68,7 @@ def coin_flip():
     option = None
     while True:
         print("Select [H] for Heads or [T] for Tails. The winner start the game!")
-        selection = input("> ")
+        selection = input("> \n")
         if selection in ["H", "h"]:
             option = 0
             break
@@ -104,7 +104,7 @@ def main_menu():
     display.intro_display()
     while True:
         print("Select your action: ")
-        selection = input("> ")
+        selection = input("> \n")
         if selection in ["Q", 'q']:
             print("Closing the program!")
             exit()
@@ -134,7 +134,7 @@ def play_again():
     while True:
         print("--------- Want to play again? ---------")
         print("[Y] - Play again! | [N] - Back to menu!")
-        selection = input("> ")
+        selection = input("> \n")
 
         if selection in ["Y", "y"]:
             print("Dealing the cards again. Good luck!")
