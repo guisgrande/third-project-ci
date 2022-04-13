@@ -55,12 +55,21 @@ def take_card(used_deck):
     remove = deck_game.pop()
     used_deck.append(remove)
 
-# Shuffle the cards, deal 4 cards to each player, and turn over the first card. 
-def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
-    print("########### BEGIN OF START FUNCTION #########")
+def new_deck():
+    global deck_game
+    deck_game = full_deck.copy()
+    return deck_game
 
+# Shuffle the cards, deal 4 cards to each player, and turn over the first card. 
+def start_game(used_deck, reveal_deck_game, player_hand, computer_hand, winner_hand):
+    print("########### BEGIN OF START FUNCTION #########")
+    print("DECK GAME")
+    print(len(deck_game))
+    print(deck_game)
     # Random used to shuffle the deck_game before start the cards distribuiton.
     random.shuffle(deck_game)
+
+    winner_hand.clear()
 
     # For loop give one card to player and one card to computer 4 times. Use take_card to remove from game deck.
     for card in range(4):
@@ -83,40 +92,36 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand):
     print("REVEALED DECK")
     print(reveal_deck_game)
     print("GAME DECK")
+    print(len(deck_game))
     print(deck_game)
     print("USED DECK")
     print(used_deck)
     print("######### END OF START FUNCTION ##########")
-    # print(display.display_computer_hand_hiden)
-    # display.display_table()
-    # display.display_player_hand()
-
-    # win_check(player_hand, computer_hand)  
-    # player_discard_action(reveal_deck_game, player_hand)
 
 # Stops the game and returns to the main menu.
-def stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand):
-    print("######## START OF STOP ACTION #########")
+def reset_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand):
+    print("######## START OF RESET ACTION #########")
     print(deck_game)
     print(used_deck)
     print(reveal_deck_game)
     print(player_hand)
     print(computer_hand)
 
-    deck_game = []
-    deck_game = full_deck.copy()
-    used_deck = []
-    reveal_deck_game = []
-    player_hand = []
-    computer_hand = []
+    deck_game.clear()
+    used_deck.clear()
+    reveal_deck_game.clear()
+    player_hand.clear()
+    computer_hand.clear()
 
-    print(deck_game)
-    print(used_deck)
-    print(reveal_deck_game)
-    print(player_hand)
-    print(computer_hand)
+    new_deck()
 
-    print("############### END OF STOP ACTION ###########")
+    print(f"DECK : {deck_game}")
+    print(f"USED : {used_deck}")
+    print(f"REVEAL : {reveal_deck_game}")
+    print(f"PLAYER H : {player_hand}")
+    print(f"COMPUTER H : {computer_hand}")
+    print(f"WINNER H: {winner_hand}")
+    print("############### END OF RESET ACTION ###########")
 
 # Receives the player's decision of which card to discard, and moves it to the discard deck (face revealed).
 def player_discard_action(reveal_deck_game, player_hand):
@@ -128,33 +133,30 @@ def player_discard_action(reveal_deck_game, player_hand):
 
     while True:
         print("Which card you wanna to discard?")
-        print("[1] - [2] - [3] - [4]")
+        print("---- [1] - [2] - [3] - [4] ----")
         print("[B] - Back to main menu!")
         selection = input("> ")
 
         if selection == "1":
             reveal_deck_game.append(player_hand[0])
             del player_hand[0]
-            # player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection == "2":
             reveal_deck_game.append(player_hand[1])
             del player_hand[1]
-            # player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection == "3":
             reveal_deck_game.append(player_hand[2])
             del player_hand[2]
-            # player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection == "4":
             reveal_deck_game.append(player_hand[3])
             del player_hand[3]
-            # player_take_action(deck_game, reveal_deck_game, player_hand)
             break
         if selection in ["B", "b"]:
             print("Ending this game! Thanks for playing.")
-            stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand)()
+            reset_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand)
+            winner_hand.append("WIN")
             break
         if selection not in ["0", "1", "2", "3", "B", "b"]:
             print("Ops! It`s not a valid selection.")
@@ -178,16 +180,19 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
         if selection in ["H", "h"]:
             player_hand.append(deck_game[-1])
             take_card(used_deck)
-            # computer_action(computer_hand, reveal_deck_game, deck_game)
             break
+
         if selection in ["R", "r"]:
             player_hand.append(reveal_deck_game[-2])
             del reveal_deck_game[-2]
-            # computer_action(computer_hand, reveal_deck_game, deck_game)
             break
-        if selection == ["B", "b"]:
-            stop_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand)
+
+        if selection in ["B", "b"]:
+            print("Confirm your decision first.")
+            reset_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand)
+            winner_hand.append("WIN")
             break
+
         if selection not in ["H", "h", "R", "r", "B", "b"]:
             print("Ops! Its not a valid selection.")
             continue
