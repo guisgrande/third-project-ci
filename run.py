@@ -2,6 +2,7 @@ import actions as act
 import display
 import random
 import os
+import time
 
 def clear():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -35,6 +36,7 @@ def game_loop(game_running):
         game_running = act.end_loop(act.winner_hand)
         if not game_running:
             break
+        print("- - - - - YOUR TURN - - - - -")
         act.player_discard_action(act.reveal_deck_game, act.player_hand)
         act.player_take_action(act.deck_game, act.reveal_deck_game, act.player_hand)
         clear()
@@ -46,6 +48,16 @@ def game_loop(game_running):
         game_running = act.end_loop(act.winner_hand)
         if not game_running:
             break
+        print("- - - - - COMPUTER TURN - - - - -")
+        print("Computer is deciding the move...")
+        time.sleep(1)
+        print(".")
+        time.sleep(1)
+        print("..")
+        time.sleep(1)
+        print("...")
+        time.sleep(1)
+        clear()
         act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
 
     print("OUT OF LOOP")
