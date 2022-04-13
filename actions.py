@@ -85,6 +85,7 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand, winner_h
     take_card(used_deck)
     reveal_deck_game.append(table_card)
 
+    print(len(computer_hand))
     print("PLAYER HAND")
     print(player_hand)
     print("COMPUTER HAND")
@@ -273,6 +274,10 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
                         reveal_deck_game.append(computer_hand[0])
                         del computer_hand[0]
                         break
+
+    if len(computer_hand) > 4:
+        reveal_deck_game.append(computer_hand[0])
+        del computer_hand[0]
 
     # Take a new card action
     # First check if have any potencial win, then check if the card at reveal deck match with any card at hand.
