@@ -57,5 +57,5 @@ def main_menu():
             print("Wrong selection! Should be [P], [R] or [Q].")
             continue
 
-# if __name__() == '__main__': 
-main_menu()
+if __name__ == '__main__':
+    main_menu()
