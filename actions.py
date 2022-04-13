@@ -134,7 +134,6 @@ def player_discard_action(reveal_deck_game, player_hand):
     while True:
         print("Which card you wanna to discard?")
         print("---- [1] - [2] - [3] - [4] ----")
-        print("[B] - Back to main menu!")
         selection = input("> ")
 
         if selection == "1":
@@ -153,12 +152,7 @@ def player_discard_action(reveal_deck_game, player_hand):
             reveal_deck_game.append(player_hand[3])
             del player_hand[3]
             break
-        if selection in ["B", "b"]:
-            print("Ending this game! Thanks for playing.")
-            reset_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand)
-            winner_hand.append("WIN")
-            break
-        if selection not in ["0", "1", "2", "3", "B", "b"]:
+        if selection not in ["1", "2", "3", "4"]:
             print("Ops! It`s not a valid selection.")
             continue
 
