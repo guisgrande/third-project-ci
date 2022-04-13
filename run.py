@@ -5,7 +5,8 @@ import display
 game_running = True
 
 def game_loop(game_running):
-    act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand)
+
+    act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand, act.winner_hand)
     while game_running:
         act.display_game()
         act.win_check(act.player_hand, act.computer_hand, act.winner_hand, act.player_score, act.computer_score)
@@ -14,6 +15,9 @@ def game_loop(game_running):
             break
         act.player_discard_action(act.reveal_deck_game, act.player_hand)
         act.player_take_action(act.deck_game, act.reveal_deck_game, act.player_hand)
+        game_running = act.end_loop(act.winner_hand)
+        if not game_running:
+            break
         act.display_game()
         act.win_check(act.player_hand, act.computer_hand, act.winner_hand, act.player_score, act.computer_score)
         game_running = act.end_loop(act.winner_hand)
@@ -22,8 +26,7 @@ def game_loop(game_running):
         act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
 
     print("OUT OF LOOP")
-    # reset cards
-    # act.main_menu()
+    play_again(game_running)
 
 # Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
@@ -33,11 +36,10 @@ def main_menu():
         selection = input("> ")
         if selection in ["Q", 'q']:
             print("Closing the program!")
-            game_running = False
+            exit()
             break
         if selection in ["P", 'p']:
             print("Starting the game! Take your seat.")
-            # start_game(used_deck, reveal_deck_game, player_hand, computer_hand)
             game_running = True
             game_loop(game_running)
             break
@@ -56,6 +58,23 @@ def main_menu():
         if selection not in ["Q", "q", "P", "p", "R", "r"]:
             print("Wrong selection! Should be [P], [R] or [Q].")
             continue
+
+def play_again(game_running):
+    while True:
+        print("--------- Want to play again? ---------")
+        print("[Y] - Play again! | [N] - Back to menu!")
+        selection = input("> ")
+
+        if selection in ["Y", "y"]:
+            print("Dealing the cards again. Good luck!")
+            game_running = True
+            act.reset_game(act.deck_game, act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand)
+            game_loop(game_running)
+
+        if selection in ["N", "n"]:
+            print("Thanks for playing, ending this game. Until next time!")
+            game_running = False
+            main_menu()
 
 if __name__ == '__main__':
     main_menu()
