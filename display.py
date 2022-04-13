@@ -139,15 +139,15 @@ def display_table():
         rc = act.reveal_deck_game[-1][0]
         rs = suits_display(act.reveal_deck_game[-1][1])
         # Short variable to player and computer score
-        if act.player_score >= 10:
-            p_sc = GREEN + str(act.player_score) + RESET
+        if len(act.player_score) >= 10:
+            p_sc = GREEN + str(len(act.player_score)) + RESET
         else:
-            p_sc = GREEN + "0" + str(act.player_score) + RESET
+            p_sc = GREEN + "0" + str(len(act.player_score)) + RESET
 
-        if act.computer_score >= 10:
-            c_sc = RED + str(act.computer_score) + RESET
+        if len(act.computer_score) >= 10:
+            c_sc = RED + str(len(act.computer_score)) + RESET
         else:
-            c_sc = RED + "0" + str(act.computer_score) + RESET
+            c_sc = RED + "0" + str(len(act.computer_score)) + RESET
 
         # Short variabel to hidden deck and reveal deck
         if len(act.deck_game) < 10:
