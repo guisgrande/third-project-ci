@@ -168,7 +168,7 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
     while True:
         print("Which deck do you want to take another card from?")
         print("- - - - - - - [H]idden - [R]eveled - - - - - - -")
-        print("- - - - - - [B] - Back to main menu! - - - - - -")
+        print("- - - - - [B] Restart or Back to menu! - - - - -")
         selection = input("> ")
         
         if selection in ["H", "h"]:
