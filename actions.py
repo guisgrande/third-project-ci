@@ -26,8 +26,8 @@ class HandCards:
 player_hand = []
 computer_hand = []
 winner_hand = []
-player_score = 0
-computer_score = 0
+player_score = []
+computer_score = []
 
 # Method used to display cards and table game at terminal.
 def display_game():
@@ -168,7 +168,7 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
     print("############# BEGIN OF A TAKE ACTION #############")
     while True:
         print("Which deck do you want to take another card from?")
-        print("- - - - - - - [H]idden - [R]eveled - - - - - - -")
+        print("- - - - - - - [H]idden - [R]eveal - - - - - - -")
         print("- - - - - [B] Restart or Back to menu! - - - - -")
         selection = input("> ")
         
@@ -330,7 +330,7 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
         if number == 3:
             print("You win! Congratulations.")
             winner_hand.append("WIN")
-            player_score = player_score + 1
+            player_score.append("+")
             end_loop(winner_hand)
 
     # computer cards
@@ -348,7 +348,7 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
         if number == 3:
             print("You lose! Don't be sad, try again.")
             winner_hand.append("WIN")
-            computer_score = computer_score + 1
+            computer_score.append("+")
             end_loop(winner_hand)
 
     print("PLAYER CHECK")
