@@ -8,7 +8,7 @@ YELLOW = "\033[0;33m"
 RESET = "\033[0;0m"
 
 def intro_display():
-        options = YELLOW + "CHOOSE: [P] for PLAY | [R] for RULES | [Q] for QUIT" + RESET
+        options = f"{YELLOW}CHOOSE: [P] for PLAY | [R] for RULES | [Q] for QUIT{RESET}"
         print(f'''
 ======================================================================================================
  ========={CYAN}______{RESET}====={CYAN}______{RESET}===={CYAN}______{RESET}====={CYAN}______{RESET}====={CYAN}__{RESET}===={CYAN}___{RESET}==={CYAN}__{RESET}===={CYAN}___{RESET}======{CYAN}_{RESET}===={CYAN}_____{RESET}===========
@@ -21,7 +21,8 @@ def intro_display():
         print(f'----------------------== {options} ==----------------------')
         print('======================================================================================================')
 
-choose_coin = YELLOW + '''
+def choose_coin():
+    print(f'''{YELLOW}
           __________               __________    
          /          \\\           /  ______  \\\ 
         /  |\_/\_/|  \\\         /  /     \\\  \\\ 
@@ -31,9 +32,10 @@ choose_coin = YELLOW + '''
          \__________//           \__________//
            [T]ails                  [H]eads  
           
-''' + RESET
+{RESET}''')
 
-coin_heads = YELLOW + '''
+def coin_heads():
+    print(f'''{YELLOW}
           __________    
          /  ______  \\\ 
         /  /     \\\  \\\ 
@@ -41,10 +43,12 @@ coin_heads = YELLOW + '''
        \   \     //   //
         \   |___||   //
          \__________//
-           
-''' + RESET
+        The result is
+            HEADS
+{RESET}''')
 
-coin_tails =  YELLOW + '''
+def coin_tails():
+    print(f'''{YELLOW}
           __________             
          /          \\\      
         /  |\_/\_/|  \\\     
@@ -52,8 +56,9 @@ coin_tails =  YELLOW + '''
        \   |______|   //     
         \  --------  //      
          \__________// 
-
-''' + RESET
+        The result is
+            TAILS
+{RESET}''')
 
 def display_computer_hand_hiden():
         print('''
@@ -84,17 +89,17 @@ def suits_display(suits):
 
 def display_computer_hand_reveal():
 
-        cc1 = act.computer_hand[0][0]
-        cc2 = act.computer_hand[1][0]
-        cc3 = act.computer_hand[2][0]
-        cc4 = act.computer_hand[3][0]
-        
-        cs1 = suits_display(act.computer_hand[0][1])
-        cs2 = suits_display(act.computer_hand[1][1])
-        cs3 = suits_display(act.computer_hand[2][1])
-        cs4 = suits_display(act.computer_hand[3][1])
+    cc1 = act.computer_hand[0][0]
+    cc2 = act.computer_hand[1][0]
+    cc3 = act.computer_hand[2][0]
+    cc4 = act.computer_hand[3][0]
+    
+    cs1 = suits_display(act.computer_hand[0][1])
+    cs2 = suits_display(act.computer_hand[1][1])
+    cs3 = suits_display(act.computer_hand[2][1])
+    cs4 = suits_display(act.computer_hand[3][1])
 
-        print(f'''
+    print(f'''
 ======================================================================================================
                          __________   __________   __________   __________
                         |          | |          | |          | |          |
@@ -107,17 +112,17 @@ def display_computer_hand_reveal():
 
 def display_player_hand():
         
-        c1 = act.player_hand[0][0]
-        c2 = act.player_hand[1][0]
-        c3 = act.player_hand[2][0]
-        c4 = act.player_hand[3][0]
+    c1 = act.player_hand[0][0]
+    c2 = act.player_hand[1][0]
+    c3 = act.player_hand[2][0]
+    c4 = act.player_hand[3][0]
 
-        s1 = suits_display(act.player_hand[0][1])
-        s2 = suits_display(act.player_hand[1][1])
-        s3 = suits_display(act.player_hand[2][1])
-        s4 = suits_display(act.player_hand[3][1])
-                
-        print(f'''                         __________   __________   __________   __________
+    s1 = suits_display(act.player_hand[0][1])
+    s2 = suits_display(act.player_hand[1][1])
+    s3 = suits_display(act.player_hand[2][1])
+    s4 = suits_display(act.player_hand[3][1])
+            
+    print(f'''                         __________   __________   __________   __________
                         |          | |          | |          | |          |
                         | {c1}        | | {c2}        | | {c3}        | | {c4}        |
                         | {s1}        | | {s2}        | | {s3}        | | {s4}        |
@@ -144,6 +149,17 @@ def display_table():
         else:
             c_sc = RED + "0" + str(act.computer_score) + RESET
 
+        # Short variabel to hidden deck and reveal deck
+        if len(act.deck_game) < 10:
+            hd = YELLOW + "0" + str(len(act.deck_game)) + RESET
+        else:
+            hd = YELLOW + str(len(act.deck_game)) + RESET
+
+        if len(act.reveal_deck_game) < 10:
+            rd = YELLOW + "0" + str(len(act.reveal_deck_game)) + RESET
+        else:
+            rd = YELLOW + str(len(act.reveal_deck_game)) + RESET
+
         print(f''' __________________________________________________________________________________________________
                                 __________               __________
                                |          |     CPU     |          |
@@ -152,5 +168,5 @@ def display_table():
                                |##########|    SCORE    |        {rs} |
                                |##########|             |        {rc} |
                                |__________|     *{p_sc}     |__________|
-                                 <  > [H]       YOU       <  > [R] 
+                                 <{hd}> [H]       YOU       <{rd}> [R] 
   __________________________________________________________________________________________________''')
