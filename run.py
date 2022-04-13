@@ -1,14 +1,32 @@
 import actions as act
 import display
+import random
 
 # Main python file.
 game_running = True
+player_start = None
+
+def change_false():
+    global player_start
+    player_start = False
+    return player_start
+
+def change_true():
+    global player_start
+    player_start = True
+    return player_start
 
 def game_loop(game_running):
-
+    print(f"START LOOP HERE")
+    print(f"PLAYER START 01: {player_start}")
     act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand, act.winner_hand)
     while game_running:
         act.display_game()
+        if player_start == False:
+            act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
+            act.display_game()
+            
+            pass
         act.win_check(act.player_hand, act.computer_hand, act.winner_hand, act.player_score, act.computer_score)
         game_running = act.end_loop(act.winner_hand)
         if not game_running:
@@ -26,7 +44,43 @@ def game_loop(game_running):
         act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
 
     print("OUT OF LOOP")
-    play_again(game_running)
+    play_again()
+
+def coin_flip():
+    display.choose_coin()
+    option = None
+    while True:
+        print("Select [H] for Heads or [T] for Tails. The winner start the game!")
+        selection = input("> ")
+        if selection in ["H", "h"]:
+            option = 0
+            break
+        if selection in ["T", "t"]:
+            option = 1
+            break
+        if selection not in ["H", "h", "T", "t"]:
+            print("Ops! Wrong selection, chose a valid option.")
+            continue
+    result = random.randint(0, 1)
+
+    if option == 0:
+        if result == 0:
+            display.coin_heads()
+            print("Lucky one. You start.")
+            change_true()
+        else:
+            display.coin_tails()
+            print("No hit, you are the second to play.")
+            change_false()
+    if option == 1:
+        if result == 1:
+            display.coin_tails()
+            print("Lucky one. You start.")
+            change_true()
+        else:
+            display.coin_heads()
+            print("No hit, you are the second to play.")
+            change_false()
 
 # Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
@@ -39,6 +93,7 @@ def main_menu():
             exit()
             break
         if selection in ["P", 'p']:
+            coin_flip()
             print("Starting the game! Take your seat.")
             game_running = True
             game_loop(game_running)
@@ -51,7 +106,6 @@ def main_menu():
     ° The discarded card goes into the revealed deck.
     ° The player can buy a card from the revealed deck or the hidden deck.
     ° The object of the game is to get 3 of the same cards.
-    ° If you discard the same card as the last card in the revealed deck, you win an extra round.
 -----------------------------------------------------------------------------------------------------
              ''')
             continue
@@ -59,7 +113,7 @@ def main_menu():
             print("Wrong selection! Should be [P], [R] or [Q].")
             continue
 
-def play_again(game_running):
+def play_again():
     while True:
         print("--------- Want to play again? ---------")
         print("[Y] - Play again! | [N] - Back to menu!")
