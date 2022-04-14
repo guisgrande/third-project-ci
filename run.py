@@ -44,6 +44,8 @@ def game_loop(game_running):
             break
         print("- - - - - YOUR TURN - - - - -")
         act.player_discard_action(act.reveal_deck_game, act.player_hand)
+        clear()
+        act.display_game()
         act.player_take_action(act.deck_game, act.reveal_deck_game, act.player_hand)
         clear()
         game_running = act.end_loop(act.winner_hand)
