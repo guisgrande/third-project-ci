@@ -29,6 +29,10 @@ def game_loop(game_running):
         if player_start == False:
             print("- - - - - COMPUTER TURN - - - - -")
             print("Computer is deciding the move...")
+            time.sleep(3)
+            print("▭ ⇅ ▭")
+            time.sleep(1)
+            clear()
             act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
             act.display_game()
             change_true()
