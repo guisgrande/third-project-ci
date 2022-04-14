@@ -35,7 +35,13 @@ def display_game():
     display.display_table()
     display.display_player_hand()
 
-# Method used to display cards and table game at terminal.
+# Method used to display cards and table game at terminal, after player discard action.
+def display_game_alternative():
+    display.display_computer_hand_hiden()
+    display.display_table_alternative()
+    display.display_player_hand()
+
+# Method used to display cards and table game at terminal, is some one win.
 def display_end_game():
     display.display_computer_hand_reveal()
     display.display_table()
