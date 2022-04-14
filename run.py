@@ -22,8 +22,7 @@ def change_true():
     return player_start
 
 def game_loop(game_running):
-    # print(f"START LOOP HERE")
-    # print(f"PLAYER START 01: {player_start}")
+
     act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand, act.winner_hand)
     while game_running:
         act.display_game()
@@ -60,10 +59,10 @@ def game_loop(game_running):
         clear()
         act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
 
-    # print("OUT OF LOOP")
     play_again()
 
 def coin_flip():
+    clear()
     display.choose_coin()
     option = None
     while True:
@@ -79,6 +78,21 @@ def coin_flip():
             print("Ops! Wrong selection, chose a valid option.")
             continue
     result = random.randint(0, 1)
+
+    clear()
+    print("Fliping the coin...")
+    time.sleep(0.5)
+    print("_")
+    time.sleep(0.5)
+    print("/")
+    time.sleep(0.5)
+    print("|")
+    time.sleep(0.5)
+    print("\\")
+    time.sleep(0.5)
+    print("_")
+    time.sleep(0.5)
+    clear()
 
     if option == 0:
         if result == 0:
@@ -98,6 +112,9 @@ def coin_flip():
             display.coin_heads()
             print("No hit, you are the second to play.")
             change_false()
+
+    time.sleep(2)
+    clear()
 
 # Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
@@ -138,6 +155,16 @@ def play_again():
 
         if selection in ["Y", "y"]:
             print("Dealing the cards again. Good luck!")
+            time.sleep(0.5)
+            print("▭ ⇅ ▭")
+            time.sleep(0.5)
+            print("▭ ⇅ ▭")
+            time.sleep(0.5)
+            print("▭ ⇅ ▭")
+            time.sleep(0.5)
+            print("▭ ⇅ ▭")
+            time.sleep(1)
+            clear()
             game_running = True
             act.reset_game(act.deck_game, act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand)
             game_loop(game_running)
