@@ -1,31 +1,46 @@
 import actions as act
-import display
+import display as dis
 import random
 import os
 import time
 
-def clear():
-    os.system('cls' if os.name == 'nt' else 'clear')
+# Main python file, have access to actions.py and display.py, used to run the game.
 
-# Main python file.
+# Global variables.
 game_running = True
 player_start = None
 
+def clear():
+    '''
+    Method used to clear the terminal.
+    '''
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 def change_false():
+    '''
+    Method used to change player_start to False.
+    '''
     global player_start
     player_start = False
     return player_start
 
 def change_true():
+    '''
+    Method used to change player_start to True.
+    '''
     global player_start
     player_start = True
     return player_start
 
 def game_loop(game_running):
-
+    '''
+    Run the game in a loop, until either a player wins or the user selects 
+    the option to quit. When exiting the loop, executes the play_again method.
+    '''
     act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand, act.winner_hand)
     while game_running:
         act.display_game()
+        # Computer play first if user lose at coin_flip.
         if player_start == False:
             print("- - - - - COMPUTER TURN - - - - -")
             print("Computer is deciding the move")
@@ -68,8 +83,12 @@ def game_loop(game_running):
     play_again()
 
 def coin_flip():
+    '''
+    Displays the options for the user to choose between the coin 
+    flips and returns the result of who starts the game.
+    '''
     clear()
-    display.choose_coin()
+    dis.choose_coin()
     option = None
     while True:
         print("Select [H] for Heads or [T] for Tails. The winner start the game!")
@@ -103,29 +122,32 @@ def coin_flip():
 
     if option == 0:
         if result == 0:
-            display.coin_heads()
+            dis.coin_heads()
             print("Lucky one. You start.")
             change_true()
         else:
-            display.coin_tails()
+            dis.coin_tails()
             print("No hit, you are the second to play.")
             change_false()
     if option == 1:
         if result == 1:
-            display.coin_tails()
+            dis.coin_tails()
             print("Lucky one. You start.")
             change_true()
         else:
-            display.coin_heads()
+            dis.coin_heads()
             print("No hit, you are the second to play.")
             change_false()
 
     time.sleep(2)
     clear()
 
-# Displays the name of the game, description and rules, and the option to play or close the program.
 def main_menu():
-    display.intro_display()
+    '''
+    Displays the name of the game, description and rules, 
+    and the option to play or close the program.
+    '''
+    dis.intro_display()
     while True:
         print("Select your action: ")
         selection = input("> \n")
@@ -155,6 +177,10 @@ def main_menu():
             continue
 
 def play_again():
+    '''
+    Shows the user the option to play again or to return to the main menu.
+    Get the selection and executes the choice.
+    '''
     while True:
         print("--------- Want to play again? ---------")
         print("[Y] - Play again! | [N] - Back to menu!")
