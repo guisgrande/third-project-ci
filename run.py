@@ -29,9 +29,9 @@ def game_loop(game_running):
         if player_start == False:
             print("- - - - - COMPUTER TURN - - - - -")
             print("Computer is deciding the move...")
-            time.sleep(3)
+            time.sleep(5)
             print("▭ ⇅ ▭")
-            time.sleep(1)
+            time.sleep(2)
             clear()
             act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
             act.display_game()
@@ -55,7 +55,7 @@ def game_loop(game_running):
             break
         print("- - - - - COMPUTER TURN - - - - -")
         print("Computer is deciding the move...")
-        time.sleep(3)
+        time.sleep(4)
         print("▭ ⇅ ▭")
         time.sleep(1)
         clear()
@@ -157,6 +157,7 @@ def play_again():
         selection = input("> \n")
 
         if selection in ["Y", "y"]:
+            clear()
             print("Dealing the cards again. Good luck!")
             time.sleep(0.5)
             print("▭ ⇅ ▭")
@@ -173,7 +174,9 @@ def play_again():
             game_loop(game_running)
 
         if selection in ["N", "n"]:
+            clear()
             print("Thanks for playing, ending this game. Until next time!")
+            time.sleep(2)
             game_running = False
             main_menu()
 
