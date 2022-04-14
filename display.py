@@ -208,3 +208,69 @@ def display_table():
                    |_____|   *{p_sc}   |_____|         |   {YELLOW}4º{RESET} {rc4} {rs4}  {YELLOW}5º{RESET} {rc5} {rs5}
                    <{hd}>[H]   YOU   <{rd}>[R] 
   _________________________________________________________________________''')
+
+def display_table_alternative():
+
+        rc = act.reveal_deck_game[-2][0]
+        rs = suits_display(act.reveal_deck_game[-2][1])
+
+        wc = act.reveal_deck_game[-1][0]
+        ws = suits_display(act.reveal_deck_game[-1][1])
+
+        try:
+            rc2 = act.reveal_deck_game[-3][0]
+            rs2 = suits_display(act.reveal_deck_game[-3][1])
+        except:
+            rc2 = "X"
+            rs2 = "-"
+
+        try:
+            rc3 = act.reveal_deck_game[-4][0]
+            rs3 = suits_display(act.reveal_deck_game[-4][1])
+        except:
+            rc3 = "X"
+            rs3 = "-"
+
+        try:
+            rc4 = act.reveal_deck_game[-5][0]
+            rs4 = suits_display(act.reveal_deck_game[-5][1])
+        except:
+            rc4 = "X"
+            rs4 = "-"
+
+        try:
+            rc5 = act.reveal_deck_game[-6][0]
+            rs5 = suits_display(act.reveal_deck_game[-6][1])
+        except:
+            rc5 = "X"
+            rs5 = "-"
+
+        # Short variable to player and computer score
+        if len(act.player_score) >= 10:
+            p_sc = GREEN + str(len(act.player_score)) + RESET
+        else:
+            p_sc = GREEN + "0" + str(len(act.player_score)) + RESET
+
+        if len(act.computer_score) >= 10:
+            c_sc = RED + str(len(act.computer_score)) + RESET
+        else:
+            c_sc = RED + "0" + str(len(act.computer_score)) + RESET
+
+        # Short variabel to hidden deck and reveal deck
+        if len(act.deck_game) < 10:
+            hd = YELLOW + "0" + str(len(act.deck_game)) + RESET
+        else:
+            hd = YELLOW + str(len(act.deck_game)) + RESET
+
+        if len(act.reveal_deck_game) < 10:
+            rd = YELLOW + "0" + str(len(act.reveal_deck_game)) + RESET
+        else:
+            rd = YELLOW + str(len(act.reveal_deck_game)) + RESET
+
+        print(f'''  _________________________________________________________________________
+                    _____    CPU    _____         
+                   |#####|   *{c_sc}   | {rc}   |         | LAST REVEAL CARDS
+                   |#####|  SCORE  | {rs}   |         |   {YELLOW}2º{RESET} {rc2} {rs2}  {YELLOW}3º{RESET} {rc3} {rs3}  
+                   |_____|   *{p_sc}   |_____|         |   {YELLOW}4º{RESET} {rc4} {rs4}  {YELLOW}5º{RESET} {rc5} {rs5}
+                   <{hd}>[H]   YOU   <{rd}>[R]         # WAITING - {wc} {ws}
+  _________________________________________________________________________''')
