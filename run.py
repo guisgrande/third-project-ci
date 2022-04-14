@@ -28,7 +28,8 @@ def game_loop(game_running):
         act.display_game()
         if player_start == False:
             print("- - - - - COMPUTER TURN - - - - -")
-            print("Computer is deciding the move...")
+            print("Computer is deciding the move")
+            print("...")
             time.sleep(5)
             print("▭ ⇅ ▭")
             time.sleep(2)
@@ -54,7 +55,8 @@ def game_loop(game_running):
         if not game_running:
             break
         print("- - - - - COMPUTER TURN - - - - -")
-        print("Computer is deciding the move...")
+        print("Computer is deciding the move")
+        print("...")
         time.sleep(4)
         print("▭ ⇅ ▭")
         time.sleep(1)

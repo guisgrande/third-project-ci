@@ -334,8 +334,8 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
     # use a for loop at counter list to check if any card had 3 of the same value.
     for card, number in player_counter_list.items():
         if number == 3:
-            print("You win! Congratulations.")
             display_end_game()
+            print("You win! Congratulations.")
             winner_hand.append("WIN")
             player_score.append("+")
             end_loop(winner_hand)
@@ -353,8 +353,8 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
     # use a for loop at counter list to check if any card had 3 of the same value.
     for card, number in computer_counter_list.items():
         if number == 3:
-            print("You lose! Don't be sad, try again.")
             display_end_game()
+            print("You lose! Don't be sad, try again.")
             winner_hand.append("WIN")
             computer_score.append("+")
             end_loop(winner_hand)
