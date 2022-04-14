@@ -121,11 +121,11 @@ def display_player_hand():
     s3 = suits_display(act.player_hand[2][1])
     s4 = suits_display(act.player_hand[3][1])
             
-    print(f'''                 _____   _____   _____   _____
-                | {c1}   | | {c2}   | | {c3}   | | {c4}   |
-                | {s1}   | | {s2}   | | {s3}   | | {s4}   |
-                |_____| |_____| |_____| |_____|
-                 >[1]    >[2]    >[3]    >[4]
+    print(f'''                _____   _____   _____   _____
+               | {c1}   | | {c2}   | | {c3}   | | {c4}   |
+               | {s1}   | | {s2}   | | {s3}   | | {s4}   |
+               |_____| |_____| |_____| |_____|
+                >[1]    >[2]    >[3]    >[4]
 ================ YOUR HAND ==================================================
 ''')
 
@@ -133,6 +133,35 @@ def display_table():
 
         rc = act.reveal_deck_game[-1][0]
         rs = suits_display(act.reveal_deck_game[-1][1])
+
+        try:
+            rc2 = act.reveal_deck_game[-2][0]
+            rs2 = suits_display(act.reveal_deck_game[-2][1])
+        except:
+            rc2 = "X"
+            rs2 = "-"
+
+        try:
+            rc3 = act.reveal_deck_game[-3][0]
+            rs3 = suits_display(act.reveal_deck_game[-3][1])
+        except:
+            rc3 = "X"
+            rs3 = "-"
+
+        try:
+            rc4 = act.reveal_deck_game[-4][0]
+            rs4 = suits_display(act.reveal_deck_game[-4][1])
+        except:
+            rc4 = "X"
+            rs4 = "-"
+
+        try:
+            rc5 = act.reveal_deck_game[-5][0]
+            rs5 = suits_display(act.reveal_deck_game[-5][1])
+        except:
+            rc5 = "X"
+            rs5 = "-"
+
         # Short variable to player and computer score
         if len(act.player_score) >= 10:
             p_sc = GREEN + str(len(act.player_score)) + RESET
@@ -156,9 +185,9 @@ def display_table():
             rd = YELLOW + str(len(act.reveal_deck_game)) + RESET
 
         print(f'''  _________________________________________________________________________
-                    _____    CPU    _____
-                   |#####|   *{c_sc}   | {rc}   |
-                   |#####|  SCORE  | {rs}   |
-                   |_____|   *{p_sc}   |_____|
+                    _____    CPU    _____         
+                   |#####|   *{c_sc}   | {rc}   |         | LAST REVEAL CARDS
+                   |#####|  SCORE  | {rs}   |         |   {YELLOW}2º{RESET} {rc2} {rs2}  {YELLOW}3º{RESET} {rc3} {rs3}  
+                   |_____|   *{p_sc}   |_____|         |   {YELLOW}4º{RESET} {rc4} {rs4}  {YELLOW}5º{RESET} {rc5} {rs5}
                    <{hd}>[H]   YOU   <{rd}>[R] 
   _________________________________________________________________________''')
