@@ -14,73 +14,73 @@ deck_game = full_deck.copy()
 reveal_deck_game = []
 used_deck = []
 
-# Hand class, used to define player and computer cards
-class HandCards:
-    def __init__(self, card_one, card_two, card_three, card_four):
-        self.card_one = [card_one[0], card_one[1]]
-        self.card_two = [card_two[0], card_two[1]]
-        self.card_three = [card_three[0], card_three[1]]
-        self.card_four = [card_four[0], card_four[1]]
-
-# List to hold player and computer current cards, winner hand to recive if had a winner.
+# List to hold player and computer current cards, winner hand to recive if had a winner and the score points.
 player_hand = []
 computer_hand = []
 winner_hand = []
 player_score = []
 computer_score = []
 
-# Method used to display cards and table game at terminal.
 def display_game():
+    '''
+    Method used to display cards and table game at terminal.
+    '''
     display.display_computer_hand_hiden()
     display.display_table()
     display.display_player_hand()
 
-# Method used to display cards and table game at terminal, after player discard action.
 def display_game_alternative():
+    '''
+    Method used to display cards and table game at terminal, after player discard action.
+    '''
     display.display_computer_hand_hiden()
     display.display_table_alternative()
     display.display_player_hand()
 
-# Method used to display cards and table game at terminal, is some one win.
 def display_end_game():
+    '''
+    Method used to display cards and table game at terminal, if some one win.
+    '''
     display.display_computer_hand_reveal()
     display.display_table()
     display.display_player_hand()
 
-# Close the program
-def quit_program():
-    pass
-
-# Defines who will start the game, through the choice of heads or tails.
-def coin_toss():
-    pass
-
-# Method used to end the loop at run.py, check if some one won.
 def end_loop(winner_hand):
+    '''
+    Method used to end the loop at run.py, check if some one won.
+    '''
     if "WIN" in winner_hand:
         return False
     else:
         return True
 
-# Method to remove one card at time from deck_game and move to used_deck.
 def take_card(used_deck):
+    '''
+    Method to remove one card at time from deck_game and move to used_deck.
+    '''
     remove = deck_game.pop()
     used_deck.append(remove)
 
 def new_deck():
+    '''
+    Method used to reset the deck_game.
+    '''
     global deck_game
     deck_game = full_deck.copy()
     return deck_game
-
-# Shuffle the cards, deal 4 cards to each player, and turn over the first card. 
+ 
 def start_game(used_deck, reveal_deck_game, player_hand, computer_hand, winner_hand):
-    # print("########### BEGIN OF START FUNCTION #########")
-    # print("DECK GAME")
-    # print(len(deck_game))
-    # print(deck_game)
+    '''
+    Shuffle the cards, deal 4 cards to each player, and turn over the first card.
+    First get 8 cards from deck_game, append 4 to player_hand and 4 to computer_hand,
+    then get 1 more card to reveal_deck_game. Each time deals a card, remove from
+    deck_game and move to used_cards.
+    '''
+
     # Random used to shuffle the deck_game before start the cards distribuiton.
     random.shuffle(deck_game)
 
+    # Clear the winner_hand, to star a new game.
     winner_hand.clear()
 
     # For loop give one card to player and one card to computer 4 times. Use take_card to remove from game deck.
@@ -97,53 +97,27 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand, winner_h
     take_card(used_deck)
     reveal_deck_game.append(table_card)
 
-    # print(len(computer_hand))
-    # print("PLAYER HAND")
-    # print(player_hand)
-    # print("COMPUTER HAND")
-    # print(computer_hand)
-    # print("REVEALED DECK")
-    # print(reveal_deck_game)
-    # print("GAME DECK")
-    # print(len(deck_game))
-    # print(deck_game)
-    # print("USED DECK")
-    # print(used_deck)
-    # print("######### END OF START FUNCTION ##########")
-
-# Stops the game and returns to the main menu.
 def reset_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand):
-    # print("######## START OF RESET ACTION #########")
-    # print(deck_game)
-    # print(used_deck)
-    # print(reveal_deck_game)
-    # print(player_hand)
-    # print(computer_hand)
+    '''
+    Reset the game variables to start a new game.
+    '''
 
+    # Clear function to set all list empty.
     deck_game.clear()
     used_deck.clear()
     reveal_deck_game.clear()
     player_hand.clear()
     computer_hand.clear()
 
+    # Method to generate a new deck_game.
     new_deck()
 
-    # print(f"DECK : {deck_game}")
-    # print(f"USED : {used_deck}")
-    # print(f"REVEAL : {reveal_deck_game}")
-    # print(f"PLAYER H : {player_hand}")
-    # print(f"COMPUTER H : {computer_hand}")
-    # print(f"WINNER H: {winner_hand}")
-    # print("############### END OF RESET ACTION ###########")
-
-# Receives the player's decision of which card to discard, and moves it to the discard deck (face revealed).
 def player_discard_action(reveal_deck_game, player_hand):
-    # print("####### START PLAYER DISCARD ACTION ##########")
-    # print("PLAYER HAND")
-    # print(player_hand)
-    # print("REVEAL DECK")
-    # print(reveal_deck_game)
+    '''
+    Receives the player's decision of which card to discard, and moves it to the discard deck (face revealed).
+    '''
 
+    # While used to run the options until get one correct selection.
     while True:
         print("Which card you wanna to discard?")
         print("---- [1] - [2] - [3] - [4] ----")
@@ -169,15 +143,12 @@ def player_discard_action(reveal_deck_game, player_hand):
             print("Ops! It`s not a valid selection.")
             continue
 
-    # print("PLAYER HAND AFTER DISCARD")
-    # print(player_hand)
-    # print("REVEAL DECK")
-    # print(reveal_deck_game)
-    # print("########### END OF DISCARD ACTION ##############")
-
-# Receives the player's decision of which card to take, and moves the card to players hand.
 def player_take_action(deck_game, reveal_deck_game, player_hand):
-    # print("############# BEGIN OF A TAKE ACTION #############")
+    '''   
+    Receives the player's decision of which card to take, 
+    moves the card to players hand and removes from the chosen deck
+    '''
+    # While used to run the options until get one correct selection.
     while True:
         print("Which deck do you want to take another card from?")
         print("- - - - - - - [H]idden - [R]eveal - - - - - - -")
@@ -204,13 +175,11 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
             print("Ops! Its not a valid selection.")
             continue
 
-    # print("PLAYER HAND AFTER TAKE ACTION")
-    # print(player_hand)
-    # print("############## END OF PLAYER TAKE ACTION ##########")
-
-# Check the cards in hand and purchase options and make a decision.
 def computer_action(computer_hand, reveal_deck_game, deck_game):
-    # print("########### BEGIN OF COMPUTER ACTION #############")
+    '''
+    Method to computer check the cards in hand and purchase options and make a decision.
+    '''
+
     # computer cards
     cc1 = computer_hand[0][0]
     cc2 = computer_hand[1][0]
@@ -224,10 +193,6 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     # One list to hold discard options and other to potential win, used to decide if take a card from revealed deck.
     discard_option = []
     potential_win = []
-
-    # print("COMPUTER HAND BEFORE ACTION")
-    # print(computer_hand)
-    # print(ch_list) 
 
     # For loop and if/else used to add single cards to discard option and pairs to potential win lists.
     for card, number in counter_list.items():
@@ -287,11 +252,12 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
                         del computer_hand[0]
                         break
 
+    # This if run when dont have any match
     if len(computer_hand) > 4:
         reveal_deck_game.append(computer_hand[0])
         del computer_hand[0]
 
-    # Take a new card action
+    # Take a new card action start.
     # First check if have any potencial win, then check if the card at reveal deck match with any card at hand.
     if len(potential_win) == 0:
             if reveal_deck_game[-2][0] in ch_list:
@@ -314,30 +280,23 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
                 computer_hand.append(deck_game[-1])
                 del deck_game[-1]
 
-    # print("COUNTER LIST")
-    # print(counter_list)
-    # print("COMP DISCARD OPTIONS")
-    # print(discard_option)
-    # print("COMP POTENTIAL WIN")
-    # print(potential_win)
-    # print("COMPUTER HAND AFTER ACTION")
-    # print(computer_hand)
-    # print("################# END OF COMPUTER ACTION #############")
-
-# Check if the cards in the hand (does not consider suits) are 3 of a kind, and return if had a winner.
 def win_check(player_hand, computer_hand, winner_hand, player_score, computer_score):
-    # print("WIN TEST CHECK START")
+    '''
+    Check if the cards in the hand (does not consider suits) are 3 of a kind, 
+    and return if had a winner.
+    '''
+    
     # player cards
     c1 = player_hand[0][0]
     c2 = player_hand[1][0]
     c3 = player_hand[2][0]
     c4 = player_hand[3][0]
 
-    # player hand list (all cards numbers/letters) and counter list (dictionary to group the cards).
+    # player hand list (all cards numbers/letters) and counter list (Dictionary to group the cards).
     ph_list = [c1, c2, c3, c4]
     player_counter_list = Counter(ph_list)
 
-    # use a for loop at counter list to check if any card had 3 of the same value.
+    # Use a for loop at counter list to check if any card had 3 of the same value.
     for card, number in player_counter_list.items():
         if number == 3:
             display_end_game()
@@ -352,11 +311,11 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
     cc3 = computer_hand[2][0]
     cc4 = computer_hand[3][0]
 
-    # computer hand list (all cards numbers/letters) and counter list (dictionary to group the cards).
+    # computer hand list (all cards numbers/letters) and counter list (Dictionary to group the cards).
     ch_list = [cc1, cc2, cc3, cc4]
     computer_counter_list = Counter(ch_list)
 
-    # use a for loop at counter list to check if any card had 3 of the same value.
+    # Use a for loop at counter list to check if any card had 3 of the same value.
     for card, number in computer_counter_list.items():
         if number == 3:
             display_end_game()
@@ -364,19 +323,3 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
             winner_hand.append("WIN")
             computer_score.append("+")
             end_loop(winner_hand)
-
-    # print("PLAYER CHECK")
-    # print(ph_list)
-    # print(player_counter_list)
-    # print("COMPUTER CHECK")
-    # print(ch_list)
-    # print(computer_counter_list)
-    # print("WIN TEST CHECK END")
-
-# Checks if the last discard of player/computer match with the last reveal card, if yes, win a extra round.
-def extra_round_check():
-    last_card = reveal_deck_game[-2][0]
-    discarded_card = reveal_deck_game[-1][0]
-
-    if last_card == discarded_card:
-        print("Extra round")
