@@ -2,7 +2,6 @@ import actions as act
 
 RED   = "\033[1;31m"  
 BLUE  = "\033[1;34m"
-CYAN  = "\033[1;36m"
 GREEN = "\033[0;32m"
 YELLOW = "\033[0;33m"
 RESET = "\033[0;0m"
@@ -11,70 +10,68 @@ def intro_display():
         options = f"{YELLOW}CHOOSE: [P] for PLAY | [R] for RULES | [Q] for QUIT{RESET}"
         print(f'''
 ==========================================================================
-     ============{CYAN}______{RESET}====={CYAN}______{RESET}===={CYAN}______{RESET}====={CYAN}______{RESET}=============
-     ==========={CYAN}|___   |{RESET}==={CYAN}|  __  |{RESET}=={CYAN}|   ___|{RESET}==={CYAN}|  __  |{RESET}============
-     ============{CYAN}___|  |{RESET}==={CYAN}| |{RESET}=={CYAN}| |{RESET}=={CYAN}|  |__{RESET}====={CYAN}| |__| |{RESET}============
-     ==========={CYAN}|___   |{RESET}==={CYAN}| |{RESET}=={CYAN}| |{RESET}=={CYAN}|   __|{RESET}===={CYAN}|  __  |{RESET}============
-     ============{CYAN}___|  |{RESET}==={CYAN}| |__| |{RESET}=={CYAN}|  |{RESET}======={CYAN}| |{RESET}=={CYAN}| |{RESET}============
-     ==========={CYAN}|______|{RESET}==={CYAN}|______|{RESET}=={CYAN}|__|{RESET}======={CYAN}|_|{RESET}=={CYAN}|_|{RESET}============
+     ============{YELLOW}______{RESET}====={YELLOW}______{RESET}===={YELLOW}______{RESET}====={YELLOW}______{RESET}=============
+     ==========={YELLOW}|___   |{RESET}==={YELLOW}|  __  |{RESET}=={YELLOW}|   ___|{RESET}==={YELLOW}|  __  |{RESET}============
+     ============{YELLOW}___|  |{RESET}==={YELLOW}| |{RESET}=={YELLOW}| |{RESET}=={YELLOW}|  |__{RESET}====={YELLOW}| |__| |{RESET}============
+     ==========={YELLOW}|___   |{RESET}==={YELLOW}| |{RESET}=={YELLOW}| |{RESET}=={YELLOW}|   __|{RESET}===={YELLOW}|  __  |{RESET}============
+     ============{YELLOW}___|  |{RESET}==={YELLOW}| |__| |{RESET}=={YELLOW}|  |{RESET}======={YELLOW}| |{RESET}=={YELLOW}| |{RESET}============
+     ==========={YELLOW}|______|{RESET}==={YELLOW}|______|{RESET}=={YELLOW}|__|{RESET}======={YELLOW}|_|{RESET}=={YELLOW}|_|{RESET}============
 ==========================================================================
-     ============{CYAN}__{RESET}===={CYAN}___{RESET}==={CYAN}__{RESET}===={CYAN}___{RESET}======{CYAN}_{RESET}===={CYAN}_____{RESET}===============
-     ==========={CYAN}|  |{RESET}=={CYAN}/  /{RESET}=={CYAN}|  |{RESET}=={CYAN}|  _ \{RESET}==={CYAN}| |{RESET}=={CYAN}|  _  \{RESET}==============
-     ==========={CYAN}|  |{RESET}={CYAN}/  /{RESET}==={CYAN}|  |{RESET}=={CYAN}| |{RESET}={CYAN}\ \{RESET}=={CYAN}| |{RESET}=={CYAN}| | \  \{RESET}=============
-     ==========={CYAN}|      <{RESET}===={CYAN}|  |{RESET}=={CYAN}| |{RESET}=={CYAN}\ \{RESET}={CYAN}| |{RESET}=={CYAN}| |  |  |{RESET}============
-     ==========={CYAN}|  |{RESET}={CYAN}\  \{RESET}==={CYAN}|  |{RESET}=={CYAN}| |{RESET}==={CYAN}\ \| |{RESET}=={CYAN}| |_/  /{RESET}=============
-     ==========={CYAN}|__|{RESET}=={CYAN}\__\{RESET}=={CYAN}|__|{RESET}=={CYAN}|_|{RESET}===={CYAN}\___|{RESET}=={CYAN}|_____/{RESET}==============
+     ============{YELLOW}__{RESET}===={YELLOW}___{RESET}==={YELLOW}__{RESET}===={YELLOW}___{RESET}======{YELLOW}_{RESET}===={YELLOW}_____{RESET}===============
+     ==========={YELLOW}|  |{RESET}=={YELLOW}/  /{RESET}=={YELLOW}|  |{RESET}=={YELLOW}|  _ \{RESET}==={YELLOW}| |{RESET}=={YELLOW}|  _  \{RESET}==============
+     ==========={YELLOW}|  |{RESET}={YELLOW}/  /{RESET}==={YELLOW}|  |{RESET}=={YELLOW}| |{RESET}={YELLOW}\ \{RESET}=={YELLOW}| |{RESET}=={YELLOW}| | \  \{RESET}=============
+     ==========={YELLOW}|      <{RESET}===={YELLOW}|  |{RESET}=={YELLOW}| |{RESET}=={YELLOW}\ \{RESET}={YELLOW}| |{RESET}=={YELLOW}| |  |  |{RESET}============
+     ==========={YELLOW}|  |{RESET}={YELLOW}\  \{RESET}==={YELLOW}|  |{RESET}=={YELLOW}| |{RESET}==={YELLOW}\ \| |{RESET}=={YELLOW}| |_/  /{RESET}=============
+     ==========={YELLOW}|__|{RESET}=={YELLOW}\__\{RESET}=={YELLOW}|__|{RESET}=={YELLOW}|_|{RESET}===={YELLOW}\___|{RESET}=={YELLOW}|_____/{RESET}==============
 ==========================================================================''')
         print(f' -------== {options} ==-------')
         print('==========================================================================')
 
 def choose_coin():
     print(f'''{YELLOW}
-          __________               __________    
-         /          \\\           /  ______  \\\ 
-        /  |\_/\_/|  \\\         /  /     \\\  \\\ 
-       /   |      |   \\\       /  |       ||  \\\ 
-       \   |______|   //       \   \     //   //
-        \  --------  //         \   |___||   //
-         \__________//           \__________//
-           [T]ails                  [H]eads  
-          
+               __________               __________    
+              /          \\\           /  ______  \\\ 
+             /  |\_/\_/|  \\\         /  /     \\\  \\\ 
+            /   |      |   \\\       /  |       ||  \\\ 
+            \   |______|   //       \   \     //   //
+             \  --------  //         \   |___||   //
+              \__________//           \__________//
+                [T]ails                  [H]eads            
 {RESET}''')
 
 def coin_heads():
     print(f'''{YELLOW}
-          __________    
-         /  ______  \\\ 
-        /  /     \\\  \\\ 
-       /  |       ||  \\\ 
-       \   \     //   //
-        \   |___||   //
-         \__________//
-        The result is
-            HEADS
+               __________    
+              /  ______  \\\ 
+             /  /     \\\  \\\ 
+            /  |       ||  \\\ 
+            \   \     //   //
+             \   |___||   //
+              \__________//
+             The result is
+                 HEADS
 {RESET}''')
 
 def coin_tails():
     print(f'''{YELLOW}
-          __________             
-         /          \\\      
-        /  |\_/\_/|  \\\     
-       /   |      |   \\\     
-       \   |______|   //     
-        \  --------  //      
-         \__________// 
-        The result is
-            TAILS
+               __________             
+              /          \\\      
+             /  |\_/\_/|  \\\     
+            /   |      |   \\\     
+            \   |______|   //     
+             \  --------  //      
+              \__________// 
+             The result is
+                 TAILS
 {RESET}''')
 
 def display_computer_hand_hiden():
         print('''
-================================ COMPUTER HAND ==================================
-                     _______   _______   _______   _______
-                    |       | |       | |       | |       |
-                    |#######| |#######| |#######| |#######|
-                    |#######| |#######| |#######| |#######|
-                    |_______| |_______| |_______| |_______|''')
+=============== COMPUTER HAND ===============================================
+                _____   _____   _____   _____         
+               |#####| |#####| |#####| |#####|        
+               |#####| |#####| |#####| |#####|       
+               |_____| |_____| |_____| |_____|              ''')
 
 def suits_display(suits):
     clubs = BLUE + "♣" + RESET
@@ -105,12 +102,11 @@ def display_computer_hand_reveal():
     cs4 = suits_display(act.computer_hand[3][1])
 
     print(f'''
-================================ COMPUTER HAND ==================================
-                     _______   _______   _______   _______
-                    |       | |       | |       | |       |
-                    | {cc1}     | | {cc2}     | | {cc3}     | | {cc4}     |
-                    | {cs1}     | | {cs2}     | | {cs3}     | | {cs4}     |
-                    |_______| |_______| |_______| |_______|
+=============== COMPUTER HAND ===============================================
+                 _____   _____   _____   _____
+                | {cc1}   | | {cc2}   | | {cc3}   | | {cc4}   |
+                | {cs1}   | | {cs2}   | | {cs3}   | | {cs4}   |
+                |_____| |_____| |_____| |_____|
 ''')
 
 def display_player_hand():
@@ -125,13 +121,12 @@ def display_player_hand():
     s3 = suits_display(act.player_hand[2][1])
     s4 = suits_display(act.player_hand[3][1])
             
-    print(f'''                     _______   _______   _______   _______
-                    |       | |       | |       | |       |
-                    | {c1}     | | {c2}     | | {c3}     | | {c4}     |
-                    | {s1}     | | {s2}     | | {s3}     | | {s4}     |
-                    |_______| |_______| |_______| |_______|
-                      >[1]      >[2]      >[3]      >[4]
-================================== YOUR HAND ====================================
+    print(f'''                 _____   _____   _____   _____
+                | {c1}   | | {c2}   | | {c3}   | | {c4}   |
+                | {s1}   | | {s2}   | | {s3}   | | {s4}   |
+                |_____| |_____| |_____| |_____|
+                 >[1]    >[2]    >[3]    >[4]
+================ YOUR HAND ==================================================
 ''')
 
 def display_table():
@@ -160,11 +155,10 @@ def display_table():
         else:
             rd = YELLOW + str(len(act.reveal_deck_game)) + RESET
 
-        print(f''' _____________________________________________________________________________
-                          _______               _______
-                         |       |     CPU     |       |
-                         |#######|     *{c_sc}     | {rc}     |
-                         |#######|    SCORE    | {rs}     |
-                         |_______|     *{p_sc}     |_______|
-                          <{hd}>[H]      YOU      <{rd}>[R] 
-  _____________________________________________________________________________''')
+        print(f''' _________________________________________________________________________
+                    _____    CPU    _____
+                   |#####|   *{c_sc}   | {rc}   |
+                   |#####|  SCORE  | {rs}   |
+                   |_____|   *{p_sc}   |_____|
+                   <{hd}>[H]   YOU   <{rd}>[R] 
+  _________________________________________________________________________''')

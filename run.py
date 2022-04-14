@@ -117,13 +117,13 @@ def main_menu():
             break
         if selection in ["R", "r"]:
             print('''
------------------------------================== RULES ==================-----------------------------
-    ° Each player receives 4 cards.
-    ° Each turn, the player must discard a card and take another.
-    ° The discarded card goes into the revealed deck.
-    ° The player can buy a card from the revealed deck or the hidden deck.
-    ° The object of the game is to get 3 of the same cards.
------------------------------------------------------------------------------------------------------
+---------------================== RULES ==================---------------
+  ° Each player receives 4 cards.
+  ° Each turn, the player must discard a card and take another.
+  ° The discarded card goes into the revealed deck.
+  ° The player can buy a card from the revealed deck or the hidden deck.
+  ° The object of the game is to get 3 of the same cards.
+-------------------------------------------------------------------------
              ''')
             continue
         if selection not in ["Q", "q", "P", "p", "R", "r"]:
