@@ -27,6 +27,8 @@ def game_loop(game_running):
     while game_running:
         act.display_game()
         if player_start == False:
+            print("- - - - - COMPUTER TURN - - - - -")
+            print("Computer is deciding the move...")
             act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
             act.display_game()
             change_true()
@@ -49,12 +51,8 @@ def game_loop(game_running):
             break
         print("- - - - - COMPUTER TURN - - - - -")
         print("Computer is deciding the move...")
-        time.sleep(1)
-        print(".")
-        time.sleep(1)
-        print("..")
-        time.sleep(1)
-        print("...")
+        time.sleep(3)
+        print("▭ ⇅ ▭")
         time.sleep(1)
         clear()
         act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
@@ -91,6 +89,7 @@ def coin_flip():
     print("\\")
     time.sleep(0.5)
     print("_")
+    print(" ")
     time.sleep(0.5)
     clear()
 
