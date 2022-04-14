@@ -10,12 +10,12 @@ def intro_display():
         options = f"{YELLOW}CHOOSE: [P] for PLAY | [R] for RULES | [Q] for QUIT{RESET}"
         print(f'''
 ==========================================================================
-     ============{YELLOW}______{RESET}====={YELLOW}______{RESET}===={YELLOW}______{RESET}====={YELLOW}______{RESET}=============
-     ==========={YELLOW}|___   |{RESET}==={YELLOW}|  __  |{RESET}=={YELLOW}|   ___|{RESET}==={YELLOW}|  __  |{RESET}============
-     ============{YELLOW}___|  |{RESET}==={YELLOW}| |{RESET}=={YELLOW}| |{RESET}=={YELLOW}|  |__{RESET}====={YELLOW}| |__| |{RESET}============
-     ==========={YELLOW}|___   |{RESET}==={YELLOW}| |{RESET}=={YELLOW}| |{RESET}=={YELLOW}|   __|{RESET}===={YELLOW}|  __  |{RESET}============
-     ============{YELLOW}___|  |{RESET}==={YELLOW}| |__| |{RESET}=={YELLOW}|  |{RESET}======={YELLOW}| |{RESET}=={YELLOW}| |{RESET}============
-     ==========={YELLOW}|______|{RESET}==={YELLOW}|______|{RESET}=={YELLOW}|__|{RESET}======={YELLOW}|_|{RESET}=={YELLOW}|_|{RESET}============
+     ============{YELLOW}______{RESET}====={YELLOW}______{RESET}===={YELLOW}______{RESET}====={YELLOW}______{RESET}==============
+     ==========={YELLOW}|___   |{RESET}==={YELLOW}|  __  |{RESET}=={YELLOW}|   ___|{RESET}==={YELLOW}|  __  |{RESET}=============
+     ============{YELLOW}___|  |{RESET}==={YELLOW}| |{RESET}=={YELLOW}| |{RESET}=={YELLOW}|  |__{RESET}====={YELLOW}| |__| |{RESET}=============
+     ==========={YELLOW}|___   |{RESET}==={YELLOW}| |{RESET}=={YELLOW}| |{RESET}=={YELLOW}|   __|{RESET}===={YELLOW}|  __  |{RESET}=============
+     ============{YELLOW}___|  |{RESET}==={YELLOW}| |__| |{RESET}=={YELLOW}|  |{RESET}======={YELLOW}| |{RESET}=={YELLOW}| |{RESET}=============
+     ==========={YELLOW}|______|{RESET}==={YELLOW}|______|{RESET}=={YELLOW}|__|{RESET}======={YELLOW}|_|{RESET}=={YELLOW}|_|{RESET}=============
 ==========================================================================
      ============{YELLOW}__{RESET}===={YELLOW}___{RESET}==={YELLOW}__{RESET}===={YELLOW}___{RESET}======{YELLOW}_{RESET}===={YELLOW}_____{RESET}===============
      ==========={YELLOW}|  |{RESET}=={YELLOW}/  /{RESET}=={YELLOW}|  |{RESET}=={YELLOW}|  _ \{RESET}==={YELLOW}| |{RESET}=={YELLOW}|  _  \{RESET}==============
@@ -110,17 +110,35 @@ def display_computer_hand_reveal():
 ''')
 
 def display_player_hand():
-        
-    c1 = act.player_hand[0][0]
-    c2 = act.player_hand[1][0]
-    c3 = act.player_hand[2][0]
-    c4 = act.player_hand[3][0]
 
-    s1 = suits_display(act.player_hand[0][1])
-    s2 = suits_display(act.player_hand[1][1])
-    s3 = suits_display(act.player_hand[2][1])
-    s4 = suits_display(act.player_hand[3][1])
-            
+    try:  
+        c1 = act.player_hand[0][0]
+        s1 = suits_display(act.player_hand[0][1])
+    except:
+        c1 = "X"
+        s1 = f"{YELLOW}#{RESET}"
+
+    try:
+        c2 = act.player_hand[1][0]
+        s2 = suits_display(act.player_hand[1][1])
+    except:
+        c2 = "X"
+        s2 = f"{YELLOW}#{RESET}"
+
+    try:
+        c3 = act.player_hand[2][0]
+        s3 = suits_display(act.player_hand[2][1])
+    except:
+        c3 = "X"
+        s3 = f"{YELLOW}#{RESET}"
+
+    try:
+        c4 = act.player_hand[3][0]
+        s4 = suits_display(act.player_hand[3][1])
+    except:
+        c4 = "X"
+        s4 = f"{YELLOW}#{RESET}"
+
     print(f'''                _____   _____   _____   _____
                | {c1}   | | {c2}   | | {c3}   | | {c4}   |
                | {s1}   | | {s2}   | | {s3}   | | {s4}   |
