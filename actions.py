@@ -112,6 +112,13 @@ def reset_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_han
     # Method to generate a new deck_game.
     new_deck()
 
+def reset_score(player_score, computer_score):
+    '''
+    Reset player and computer scores.
+    '''
+    player_score.clear()
+    computer_score.clear()
+
 def player_discard_action(reveal_deck_game, player_hand):
     '''
     Receives the player's decision of which card to discard, and moves it to the discard deck (face revealed).
