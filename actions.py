@@ -35,6 +35,12 @@ def display_game():
     display.display_table()
     display.display_player_hand()
 
+# Method used to display cards and table game at terminal.
+def display_end_game():
+    display.display_computer_hand_reveal()
+    display.display_table()
+    display.display_player_hand()
+
 # Close the program
 def quit_program():
     pass
@@ -329,6 +335,7 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
     for card, number in player_counter_list.items():
         if number == 3:
             print("You win! Congratulations.")
+            display_end_game()
             winner_hand.append("WIN")
             player_score.append("+")
             end_loop(winner_hand)
@@ -347,6 +354,7 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
     for card, number in computer_counter_list.items():
         if number == 3:
             print("You lose! Don't be sad, try again.")
+            display_end_game()
             winner_hand.append("WIN")
             computer_score.append("+")
             end_loop(winner_hand)
