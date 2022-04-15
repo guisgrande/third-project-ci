@@ -10,11 +10,13 @@ import time
 game_running = True
 player_start = None
 
+
 def clear():
     '''
     Method used to clear the terminal.
     '''
     os.system('cls' if os.name == 'nt' else 'clear')
+
 
 def change_false():
     '''
@@ -24,6 +26,7 @@ def change_false():
     player_start = False
     return player_start
 
+
 def change_true():
     '''
     Method used to change player_start to True.
@@ -31,6 +34,7 @@ def change_true():
     global player_start
     player_start = True
     return player_start
+
 
 def game_loop(game_running):
     '''
@@ -83,6 +87,7 @@ def game_loop(game_running):
         act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
 
     play_again()
+
 
 def coin_flip():
     '''
@@ -144,6 +149,7 @@ def coin_flip():
     time.sleep(2)
     clear()
 
+
 def main_menu():
     '''
     Displays the name of the game, description and rules, 
@@ -177,6 +183,7 @@ def main_menu():
         if selection not in ["Q", "q", "P", "p", "R", "r"]:
             print("Wrong selection! Should be [P], [R] or [Q].")
             continue
+
 
 def play_again():
     '''
