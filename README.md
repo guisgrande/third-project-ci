@@ -266,6 +266,8 @@ With the project finished, I performed several tests on different browsers and d
 
 ### Inspiration
  
+ - I used the content on this webpage to help implement the colors in the terminal (It is in Portuguese).[Website](https://raccoon.ninja/pt/dev-pt/utilizando-cores-para-escrever-no-terminal-python)
+ - I used the content on this Stack Overflow question, to implement at my project to clear the terminal.[Website](https://stackoverflow.com/questions/2084508/clear-terminal-in-python)
 
 ## Acknowledgements
 
