@@ -45,7 +45,7 @@ def game_loop(game_running):
     while game_running:
         act.display_game()
         # Computer play first if user lose at coin_flip.
-        if player_start == False:
+        if player_start is False:
             print("- - - - - COMPUTER TURN - - - - -")
             print("Computer is deciding the move")
             print("...")
