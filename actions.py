@@ -197,7 +197,6 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     '''
     Method to computer check the cards in hand and purchase options and make a decision.
     '''
-
     # computer cards
     cc1 = computer_hand[0][0]
     cc2 = computer_hand[1][0]
@@ -221,11 +220,11 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
             if card not in potential_win:
                 potential_win.append(card)
         else:
-            print("ERROR VERIFY COMPUTER ACTION")
+            print("WIN")
 
     # Discard action start.
-    for card in discard_option:
-        if card in ch_list:
+    if len(discard_option) > 1:
+        for card in discard_option:
             if card == cc1:
                 if card != reveal_deck_game[-1][0]:
                     reveal_deck_game.append(computer_hand[0])
@@ -241,39 +240,23 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
                     reveal_deck_game.append(computer_hand[2])
                     del computer_hand[2]
                     break
-            else:
+            elif card == cc4:
                 if card != reveal_deck_game[-1][0]:
                     reveal_deck_game.append(computer_hand[3])
                     del computer_hand[3]
                     break
-        else:
-            for cards in potential_win:
-                if cards not in reveal_deck_game[:][0]:
-                    if cards == cc1: 
-                        reveal_deck_game.append(computer_hand[0])
-                        del computer_hand[0]
-                        break
-                    elif cards == cc2:
-                        reveal_deck_game.append(computer_hand[1])
-                        del computer_hand[1]
-                        break
-                    elif cards == cc3:
-                        reveal_deck_game.append(computer_hand[2])
-                        del computer_hand[2]
-                        break
-                    elif cards == cc4:
-                        reveal_deck_game.append(computer_hand[3])
-                        del computer_hand[3]
-                        break
-                    else:
-                        reveal_deck_game.append(computer_hand[0])
-                        del computer_hand[0]
-                        break
-
-    # This if run when dont have any match
-    if len(computer_hand) >= 4:
+            else:
+                reveal_deck_game.append(computer_hand[0])
+                del computer_hand[0]
+                break
+    elif len(potential_win) == 2:
         reveal_deck_game.append(computer_hand[0])
         del computer_hand[0]
+    else:
+        # This if run when dont have any match
+        if len(computer_hand) >= 4:
+            reveal_deck_game.append(computer_hand[0])
+            del computer_hand[0]
 
     # Take a new card action start.
     # First check if have any potencial win, then check if the card at reveal deck match with any card at hand.
@@ -291,13 +274,24 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
                 if card == reveal_deck_game[-2][0]:
                     computer_hand.append(reveal_deck_game[-2])
                     del reveal_deck_game[-2]
+                    break
                 else:
                     computer_hand.append(deck_game[-1])
                     del deck_game[-1]
+                    break
             except:
                 computer_hand.append(deck_game[-1])
                 del deck_game[-1]
+                break
 
+    if len(computer_hand) > 4:
+        reveal_deck_game.append(computer_hand[0])
+        del computer_hand[0]
+
+    if len(computer_hand) < 4:
+        computer_hand.append(deck_game[-1])
+        del deck_game[-1]
+    
 def win_check(player_hand, computer_hand, winner_hand, player_score, computer_score):
     '''
     Check if the cards in the hand (does not consider suits) are 3 of a kind, 
