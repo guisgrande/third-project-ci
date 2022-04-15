@@ -105,16 +105,22 @@ FLOWCHART IMAGE HERE
 
 ## Features
 
+This project consists of a single page with the layout and configuration provided by the Code Institute, this template was dedicated to Heroku deployment. The program will be executed in a terminal.
+
 ### Existing Features
 
 __Main menu__
+
+- When you start the program, the main menu is displayed. In which the name of the game/project appears in yellow followed by the initial options for the player to run. These are: __[P]__ to play, __[R]__ to show the rules, and __[Q]__ to close the program.
 
 <div align="center">
 <img src="assets/images/main-menu.PNG">
 </div>
 
+
 __Rules__
 
+- When selecting the rules, the terminal will show a list containing gameplay instructions and the objective of the game.
 
 <div align="center">
 <img src="assets/images/main-rules.PNG">
@@ -122,19 +128,27 @@ __Rules__
 
 __Quit__
 
+- When you execute the exit option, the program will be closed. It will no longer give the player the option to execute any commands, only after restarting the page or through the run button
+
 <div align="center">
 <img src="assets/images/quit-game.PNG">
 </div>
 
 __Flip Coin__
 
+- Is executed right after the player chooses option __[P]__ to play. Before starting he must choose between heads or tails to decide if he will start or if it will be the machine. It has the options __[H]__ for heads or __[T]__ for tails.
+
 <div align="center">
 <img src="assets/images/coin-selection.PNG">
 </div>
 
+- The program tosses the coin and returns 50/50 odds. If the selected option is the result, it will return a win message to the player. The image of the result will always be shown on the terminal.
+
 <div align="center">
 <img src="assets/images/coin-win-heads.PNG">
 </div>
+
+- If the selected option is not the one chosen by the player, the result of the coin toss will be displayed on the screen. And the message that the choice was not the right one. Then the computer will start the game.
 
 <div align="center">
 <img src="assets/images/coin-lose-tails.PNG">
@@ -148,13 +162,20 @@ __Game__
 <img src="assets/images/player-discard.PNG">
 </div>
 
+- The player has two screens for his moves, the first is the selection for the discard, where the player must choose which of the 4 cards he wishes to discard. The discarded card will be placed in the revealed deck, where the next player can pick it up if it is useful.
+- The options for the selection are given in ordered numbers, being __[1]__, __[2]__, __[3]__ or __[4]__. By selecting the option the card will be removed from the hand and will not appear on the next screen of the terminal.
+
 <div align="center">
 <img src="assets/images/player-take.PNG">
 </div>
 
+-
+
 <div align="center">
 <img src="assets/images/exit-option.PNG">
 </div>
+
+-
 
 - Computer
 
@@ -266,8 +287,8 @@ With the project finished, I performed several tests on different browsers and d
 
 ### Inspiration
  
- - I used the content on this webpage to help implement the colors in the terminal (It is in Portuguese).[Website](https://raccoon.ninja/pt/dev-pt/utilizando-cores-para-escrever-no-terminal-python)
- - I used the content on this Stack Overflow question, to implement at my project to clear the terminal.[Website](https://stackoverflow.com/questions/2084508/clear-terminal-in-python)
+ - I used the content on this webpage to help implement the colors in the terminal (It is in Portuguese). [Website](https://raccoon.ninja/pt/dev-pt/utilizando-cores-para-escrever-no-terminal-python)
+ - I used the content on this Stack Overflow question, to implement at my project to clear the terminal. [Website](https://stackoverflow.com/questions/2084508/clear-terminal-in-python)
 
 ## Acknowledgements
 
