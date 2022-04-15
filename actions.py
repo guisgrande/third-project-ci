@@ -68,6 +68,17 @@ def new_deck():
     global deck_game
     deck_game = full_deck.copy()
     return deck_game
+
+def shuffle_deck(reveal_deck_game):
+    '''
+    Method used to shuffle the cards from reveal deck and use like deck_game
+    in case of no one win until the last card.
+    '''
+    global deck_game
+    deck_game = reveal_deck_game.copy()
+    random.shuffle(deck_game)
+    reveal_deck_game.clear()
+    return deck_game
  
 def start_game(used_deck, reveal_deck_game, player_hand, computer_hand, winner_hand):
     '''
@@ -260,7 +271,7 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
                         break
 
     # This if run when dont have any match
-    if len(computer_hand) > 4:
+    if len(computer_hand) >= 4:
         reveal_deck_game.append(computer_hand[0])
         del computer_hand[0]
 
@@ -330,3 +341,15 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
             winner_hand.append("WIN")
             computer_score.append("+")
             end_loop(winner_hand)
+
+def deck_check(reveal_deck_game):
+    '''
+    This method verify if the deck_game still have cards. In case of
+    the number of cards reaches zero, shuffle the reveal_deck and use
+    like a new deck_game. Keep the current cards at the hands.
+    '''
+    if len(deck_game) == 0:
+        shuffle_deck(reveal_deck_game)
+        table_card = deck_game[-1]
+        reveal_deck_game.append(table_card)
+        take_card(used_deck)
