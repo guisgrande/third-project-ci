@@ -109,89 +109,128 @@ This project consists of a single page with the layout and configuration provide
 
 ### Existing Features
 
-__Main menu__
+#### __Main menu__
 
 - When you start the program, the main menu is displayed. In which the name of the game/project appears in yellow followed by the initial options for the player to run. These are: __[P]__ to play, __[R]__ to show the rules, and __[Q]__ to close the program.
+
 
 <div align="center">
 <img src="assets/images/main-menu.PNG">
 </div>
 
 
-__Rules__
+#### __Rules__
 
 - When selecting the rules, the terminal will show a list containing gameplay instructions and the objective of the game.
+
 
 <div align="center">
 <img src="assets/images/main-rules.PNG">
 </div>
 
-__Quit__
+
+#### __Quit__
 
 - When you execute the exit option, the program will be closed. It will no longer give the player the option to execute any commands, only after restarting the page or through the run button
+
 
 <div align="center">
 <img src="assets/images/quit-game.PNG">
 </div>
 
-__Flip Coin__
+
+#### __Flip Coin__
 
 - Is executed right after the player chooses option __[P]__ to play. Before starting he must choose between heads or tails to decide if he will start or if it will be the machine. It has the options __[H]__ for heads or __[T]__ for tails.
+
 
 <div align="center">
 <img src="assets/images/coin-selection.PNG">
 </div>
 
+
 - The program tosses the coin and returns 50/50 odds. If the selected option is the result, it will return a win message to the player. The image of the result will always be shown on the terminal.
+
 
 <div align="center">
 <img src="assets/images/coin-win-heads.PNG">
 </div>
 
+
 - If the selected option is not the one chosen by the player, the result of the coin toss will be displayed on the screen. And the message that the choice was not the right one. Then the computer will start the game.
+
 
 <div align="center">
 <img src="assets/images/coin-lose-tails.PNG">
 </div>
 
-__Game__
 
-- Player
+#### __Game__
+
+The game displays on the terminal in the following order from top to bottom. 
+- First the hand hidden from the computer with the 4 cards.
+
+- The table showing the two decks (main and discard decks) with the option for each one below it along with a card counter, in the middle of the decks is the score counter and at the end on the right are revealed even more 4 cards besides the revealed deck. 
+
+- The player's hand with the 4 visible cards to decide the plays, with the selection options for each one below.
+
+- And finally the text describing the player's or computer's current move.
+
+- __Player__
+
 
 <div align="center">
 <img src="assets/images/player-discard.PNG">
 </div>
 
+
 - The player has two screens for his moves, the first is the selection for the discard, where the player must choose which of the 4 cards he wishes to discard. The discarded card will be placed in the revealed deck, where the next player can pick it up if it is useful.
 - The options for the selection are given in ordered numbers, being __[1]__, __[2]__, __[3]__ or __[4]__. By selecting the option the card will be removed from the hand and will not appear on the next screen of the terminal.
+
 
 <div align="center">
 <img src="assets/images/player-take.PNG">
 </div>
 
--
+
+- After the discard action, the player must choose which card to buy. You have two options to select from, the main deck identified as __[H]__ for hidden and the discard deck that is face up, identified as __[R]__ for revealed.
+- Each action takes the last available card at the top of each deck. The card discarded by the player in the previous action is described separately from the discard deck, until the end of the player's purchase action
+
 
 <div align="center">
 <img src="assets/images/exit-option.PNG">
 </div>
 
--
 
-- Computer
+- __Computer__
+
+- After the player's two choices, the computer will run the code and decide what action to take. It first separates the cards in the hand into potential winning and discarding options. Then it compares the cards in the hand to discard and then draw the card with the most potential to win.
+- I used the time library to add a delay to the computer's play, so that the game would have better dynamics.
+
 
 <div align="center">
 <img src="assets/images/computer-action.PNG">
 </div>
 
-- Win / Loss
+
+- __Win / Loss__
+
+- At each hand played, the function to check the winner checks both hands and returns whether the player was the winner or the loser of this game.
+
+- A message is printed on the terminal and the computer's hand is revealed, in both cases (victory or defeat). The point counter adds one point for each game. The score is reset to zero when the player goes back to the main menu and starts the game again.
+
+- A question is printed asking whether the player would like to continue playing, or whether he or she wants to return to the main menu. The options are __[Y]__ for yes, continue playing, and __[N]__ for no and return to the menu.
+
 
 <div align="center">
 <img src="assets/images/game-win.PNG">
 </div>
 
+
 <div align="center">
 <img src="assets/images/game-lose.PNG">
 </div>
+
 
 ### Features Left to Implement
 
