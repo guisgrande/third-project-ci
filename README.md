@@ -34,6 +34,7 @@ RESPONSIVE IMAGE HERE
    * [Features Left to Implement](#features-left-to-implement).
  
 - [Testing](#testing).
+   * [Funcionality](#funcionality).
    * [Navegation and Devices](#navegation-and-devices).
    * [Validator Testing](#validator-testing).
    * [Performance Testing](#performance-testing).
@@ -70,9 +71,9 @@ RESPONSIVE IMAGE HERE
 #### User stories
 
 - As a user, I want to understand the purpose of the website, so I can know if it's of interest to me.
-- As a user, I want to easily navigate the site/game, so I don't get lost trying to navigate
+- As a user, I want to easily navigate the site/game, so I don't get lost trying to navigate/play.
 - As a user, I want to be able to check my points and those of my opponent, to know my performance.
-- As a user, I want to be able to restart the game, if it is in my interest to start again for some reason.
+- As a user, I want to be able to restart/quit the game, if it is in my interest to start again for some reason.
 
 ### Scope
 
@@ -110,7 +111,24 @@ FLOWCHART IMAGE HERE
 
 ## Testing
 
+During these tests the size of the displays were adjusted, when to clean the terminal to keep the game fixed. In the end I found what I believe to be the most pleasing and intuitive look for the scope of a terminal-based game.
+
+### Funcionality
+
+Once the game was finished, I played it several times to find possible flaws or errors that could compromise the gameplay or interrupt the game. 
+All commands are responding as they should, when some wrong selection is sent to the terminal, the answers are appearing to the user.
+So far, when I finished and made the final deployment, the game is responding with no apparent errors.
+
 ### Navegation and Devices
+
+With the project finished, I performed several tests on different browsers and different computers to check the playability and possible faults. No errors were presented during these tests
+
+- __Desktop__
+  - Sony Vaio (Laptop)
+  - Dell XPS (Laptop)
+  - Asus Chromebook (Laptop)
+  - Macbook Air (Laptop)
+  - HP (CPU)
 
 - __Browsers__
   - Chrome
@@ -118,12 +136,12 @@ FLOWCHART IMAGE HERE
   - Safari
   - Edge
 
-### Validator Testing 
+### Validator Testing
 
 ### Other Tests
 
 ### User Story Testing
-   
+
 ### Fixed Bugs
 
 ### Unfixed Bugs
