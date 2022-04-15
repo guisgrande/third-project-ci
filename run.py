@@ -48,8 +48,8 @@ def game_loop(game_running):
             time.sleep(5)
             print(" ▭ ⇅ ▭")
             time.sleep(2)
-            clear()
             act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
+            clear()
             act.display_game()
             change_true()
             pass
