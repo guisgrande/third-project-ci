@@ -107,7 +107,74 @@ FLOWCHART IMAGE HERE
 
 ### Existing Features
 
+__Main menu__
+
+<div align="center">
+<img src="assets/images/main-menu.PNG">
+</div>
+
+__Rules__
+
+
+<div align="center">
+<img src="assets/images/main-rules.PNG">
+</div>
+
+__Quit__
+
+<div align="center">
+<img src="assets/images/quit-game.PNG">
+</div>
+
+__Flip Coin__
+
+<div align="center">
+<img src="assets/images/coin-selection.PNG">
+</div>
+
+<div align="center">
+<img src="assets/images/coin-win-heads.PNG">
+</div>
+
+<div align="center">
+<img src="assets/images/coin-lose-tails.PNG">
+</div>
+
+__Game__
+
+- Player
+
+<div align="center">
+<img src="assets/images/player-discard.PNG">
+</div>
+
+<div align="center">
+<img src="assets/images/player-take.PNG">
+</div>
+
+<div align="center">
+<img src="assets/images/exit-option.PNG">
+</div>
+
+- Computer
+
+<div align="center">
+<img src="assets/images/computer-action.PNG">
+</div>
+
+- Win / Loss
+
+<div align="center">
+<img src="assets/images/game-win.PNG">
+</div>
+
+<div align="center">
+<img src="assets/images/game-lose.PNG">
+</div>
+
 ### Features Left to Implement
+
+- To be implemented in the future, I am thinking about the possibility of adding a ranking that receives the player's name and the player's victory and defeat points. This ranking would be accessed from the menu to encourage players to try to beat the records.
 
 ## Testing
 
