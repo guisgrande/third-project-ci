@@ -138,6 +138,9 @@ With the project finished, I performed several tests on different browsers and d
 
 ### Validator Testing
 
+- __Pyhton__
+- I tested the code through PEP8 and no significant errors were presented.
+
 ### Other Tests
 
 ### User Story Testing
@@ -150,25 +153,53 @@ With the project finished, I performed several tests on different browsers and d
 
 ### Deployment
 
+- After finishing developing the program I deployed it on Heroku following this steps:
+
+1. Create an account if you don't have and login into Heroku website
+2. After loged in, you should click on *"New -> Create new app"* button
+3. Insert your app's __Name__ (need be unique), then you need to __Choose__ your region, at the end click at the "Create App" button
+4. Navigate into the Settings tab, and go to "Config vars" section, then go to *"Reveal Config Vars"*
+5. Enter the __PORT__ in the KEY section and __8000__ for its value, then click *"Add"*
+6. Next you need to go to *"Buildpacks"* section and click "Add buildpack"
+7. Firstly add the *Python* buildpack then *NodeJs*, need to be on that order
+8. Navigate to the *"Deploy"* tab, and select Github as the deployment method
+9. You need to look for your repository name and select the option Connect
+10. You can choose between two deployment options for your app to Heroku (Automatic or Manual).
+	- With automatic deploys enabled, your app will be updated each time a change has been pushed to the repository
+	- With manual deploys, your app will be updated only when you manually click to deploy it
+11. After this steps the deploying is finished, a link will be provided to you for accessing your app
+
 ### Fork
+
+- Forks let you make changes to a project without affecting the original repository. Follow this steps:
+1. Go to the repository page, can be accessed [here](https://github.com/guisgrande/third-project-ci).
+2. On top right, you select the Fork option and proceed.
+3. A duplicate will be created inside your repository.
 
 ### Clone
 
+- Clone let you create an identical repository to the original. Follow this steps:
+1. Go to the repository page, can be accessed [here](https://github.com/guisgrande/third-project-ci).
+2. Click on code drop down menu.
+3. Choose if you want to clone using HTTPS, SSH or GitHub CLI. Then select de copy button.
+4. Open your Git Bash in your IDE.
+5. Type git clone and then paste the URL you copied before.
+6. Press Enter to create your clone.
+
 ## Technologies and tools
 
-- Programming languages used: Python 3.
-- [Gitpod](https://www.gitpod.io/) - to create/edit the code of the project.
-- [Github](https://github.com/) - to create repository, hosting files and deployment of the website.
+- Programming languages used: Python 3.6
+- [Gitpod](https://www.gitpod.io/) - Used to create/edit the code of the project.
+- [Github](https://github.com/) - Used to create repository, hosting files and deployment of the website.
+- [Heroku](https://heroku.com/) -  Used to deploy the project
 - [Ludichart](https://www.lucidchart.com/) - Used to create the flowchart.
+- [PEP8](http://pep8online.com/) - Used to test/validate Python code.
 
 ## Credits
 
-### Content
-
-### Media
-
 ### Inspiration
  
+
 ## Acknowledgements
 
 - Code Institute for all the support and the team always ready to help.
