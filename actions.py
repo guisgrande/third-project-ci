@@ -21,6 +21,7 @@ winner_hand = []
 player_score = []
 computer_score = []
 
+
 def display_game():
     '''
     Method used to display cards and table game at terminal.
@@ -28,6 +29,7 @@ def display_game():
     display.display_computer_hand_hiden()
     display.display_table()
     display.display_player_hand()
+
 
 def display_game_alternative():
     '''
@@ -37,6 +39,7 @@ def display_game_alternative():
     display.display_table_alternative()
     display.display_player_hand()
 
+
 def display_end_game():
     '''
     Method used to display cards and table game at terminal, if some one win.
@@ -44,6 +47,7 @@ def display_end_game():
     display.display_computer_hand_reveal()
     display.display_table()
     display.display_player_hand()
+
 
 def end_loop(winner_hand):
     '''
@@ -54,12 +58,14 @@ def end_loop(winner_hand):
     else:
         return True
 
+
 def take_card(used_deck):
     '''
     Method to remove one card at time from deck_game and move to used_deck.
     '''
     remove = deck_game.pop()
     used_deck.append(remove)
+
 
 def new_deck():
     '''
@@ -68,6 +74,7 @@ def new_deck():
     global deck_game
     deck_game = full_deck.copy()
     return deck_game
+
 
 def shuffle_deck(reveal_deck_game):
     '''
@@ -79,7 +86,8 @@ def shuffle_deck(reveal_deck_game):
     random.shuffle(deck_game)
     reveal_deck_game.clear()
     return deck_game
- 
+
+
 def start_game(used_deck, reveal_deck_game, player_hand, computer_hand, winner_hand):
     '''
     Shuffle the cards, deal 4 cards to each player, and turn over the first card.
@@ -108,6 +116,7 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand, winner_h
     take_card(used_deck)
     reveal_deck_game.append(table_card)
 
+
 def reset_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand):
     '''
     Reset the game variables to start a new game.
@@ -123,12 +132,14 @@ def reset_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_han
     # Method to generate a new deck_game.
     new_deck()
 
+
 def reset_score(player_score, computer_score):
     '''
     Reset player and computer scores.
     '''
     player_score.clear()
     computer_score.clear()
+
 
 def player_discard_action(reveal_deck_game, player_hand):
     '''
@@ -161,6 +172,7 @@ def player_discard_action(reveal_deck_game, player_hand):
             print("Ops! It`s not a valid selection.")
             continue
 
+
 def player_take_action(deck_game, reveal_deck_game, player_hand):
     '''   
     Receives the player's decision of which card to take, 
@@ -192,6 +204,7 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
         if selection not in ["H", "h", "R", "r", "B", "b"]:
             print("Ops! Its not a valid selection.")
             continue
+
 
 def computer_action(computer_hand, reveal_deck_game, deck_game):
     '''
@@ -291,7 +304,8 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     if len(computer_hand) < 4:
         computer_hand.append(deck_game[-1])
         del deck_game[-1]
-    
+
+
 def win_check(player_hand, computer_hand, winner_hand, player_score, computer_score):
     '''
     Check if the cards in the hand (does not consider suits) are 3 of a kind, 
@@ -335,6 +349,7 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
             winner_hand.append("WIN")
             computer_score.append("+")
             end_loop(winner_hand)
+
 
 def deck_check(reveal_deck_game):
     '''

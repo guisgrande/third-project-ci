@@ -8,6 +8,7 @@ GREEN = "\033[0;32m"
 YELLOW = "\033[0;33m"
 RESET = "\033[0;0m"
 
+
 def intro_display():    
         '''
         Display the main menu and the options for the user.
@@ -32,6 +33,7 @@ def intro_display():
         print(f' -------== {options} ==-------')
         print('==========================================================================')
 
+
 def choose_coin():
     '''
     Display the two faces of a coin for the user to choose.
@@ -46,6 +48,7 @@ def choose_coin():
               \__________//           \__________//
                 [T]ails                  [H]eads            
 {RESET}''')
+
 
 def coin_heads():
     '''
@@ -63,6 +66,7 @@ def coin_heads():
                  HEADS
 {RESET}''')
 
+
 def coin_tails():
     '''
     Display the face Tails, if this was the result.
@@ -79,6 +83,7 @@ def coin_tails():
                  TAILS
 {RESET}''')
 
+
 def display_computer_hand_hiden():
     '''
     Display 4 hidden cards that represent the computer's cards.
@@ -89,6 +94,7 @@ def display_computer_hand_hiden():
                |#####| |#####| |#####| |#####|        
                |#####| |#####| |#####| |#####|       
                |_____| |_____| |_____| |_____|              ''')
+
 
 def suits_display(suits):
     '''
@@ -112,6 +118,7 @@ def suits_display(suits):
     else:
         print("X")
 
+
 def display_computer_hand_reveal():
     '''
     Display the cards from the computer's hand, used when someone wins.
@@ -133,6 +140,7 @@ def display_computer_hand_reveal():
                 | {cs1}   | | {cs2}   | | {cs3}   | | {cs4}   |
                 |_____| |_____| |_____| |_____|
 ''')
+
 
 def display_player_hand():
     '''
@@ -174,6 +182,7 @@ def display_player_hand():
                |_____| |_____| |_____| |_____|
                 >[1]    >[2]    >[3]    >[4]
 ================ YOUR HAND ==================================================''')
+
 
 def display_table():
     '''
@@ -243,6 +252,7 @@ def display_table():
                    |_____|   *{p_sc}   |_____|         |   {YELLOW}4º{RESET} {rc4} {rs4}  {YELLOW}5º{RESET} {rc5} {rs5}
                    <{hd}>[H]   YOU   <{rd}>[R] 
   _________________________________________________________________________''')
+
 
 def display_table_alternative():
     '''
