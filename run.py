@@ -54,6 +54,7 @@ def game_loop(game_running):
             change_true()
             pass
         act.win_check(act.player_hand, act.computer_hand, act.winner_hand, act.player_score, act.computer_score)
+        act.deck_check(act.reveal_deck_game)
         game_running = act.end_loop(act.winner_hand)
         if not game_running:
             break
@@ -68,6 +69,7 @@ def game_loop(game_running):
             break
         act.display_game()
         act.win_check(act.player_hand, act.computer_hand, act.winner_hand, act.player_score, act.computer_score)
+        act.deck_check(act.reveal_deck_game)
         game_running = act.end_loop(act.winner_hand)
         if not game_running:
             break
