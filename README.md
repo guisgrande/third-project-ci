@@ -280,7 +280,17 @@ So far, when I finished and made the final deployment, the game is responding wi
 
 ### Fixed Bugs
 
-- 
+- When executing the start_game function there was an error when passing the card information from the main deck to the revealed deck. It was directly adding the card without using a third variable, transforming the reveal_deck list into a string. To do this I added a new variable that took the value from the deck and passed it to reveal_deck through append. [Commit](https://github.com/guisgrande/third-project-ci/commit/6cdbbb11f2863e229c53b1ec0de03579ec6a35c2)
+
+- The function for the computaodor action was faulty due to the wrong variable name, I added if/else to check if the card displayed in the discard deck would be bought to win the game. [Commit](https://github.com/guisgrande/third-project-ci/commit/3f26cbba4ad9d606fd45f2b82aa13f33edc5e5cf)
+
+- When the player performs the pick a new card function, if he chooses the revealed deck, he picks the card he has just discarded. I changed the revealed deck index from [-1] to [-2] to solve the problem. [Commit](https://github.com/guisgrande/third-project-ci/commit/b54ffa7dd01ac51a16441f39486231b392fa4946)
+
+- The win check function was considering a win when there were 2 pairs in the hand, to fix the problem I used the same function (Counter) used for the computer action. It creates a dictionary where the key is the card and the value is the number of times it repeats in a list. So when it equals 3 it will be a win. [Commit](https://github.com/guisgrande/third-project-ci/commit/39f2a84c0fb798b11ad593e8185e05933632649b)
+
+- The players' points were not being counted while the variable for the points was set to integer, the solution I found was to change to a list and append the points, using the length to count the total points for each. [Commit](https://github.com/guisgrande/third-project-ci/commit/364621404b3204d88bbea3fd54aaecd441450c29)
+
+- I added two ifs at the end of the function in case of error, where it guarantees that the computer has 4 cards in its hand at the end of its turn. And I deleted one for loop that ended up running unnecessarily and added two breaks to the other for loop, which sometimes caused the computer to buy more than one card. [Commit](https://github.com/guisgrande/third-project-ci/commit/856c5e6d661f475d3f0252ffb3d5f6700f719b4a)
 
 ### Unfixed Bugs
 
