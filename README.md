@@ -7,8 +7,10 @@ The game is deployed on Heroku and is strictly terminal-based for user interacti
 - Here is the link to the final project > [Three of a Kind Game](https://three-of-a-kind-game.herokuapp.com/)
 
 <div align="center">
-RESPONSIVE IMAGE HERE
+<img src="assets/images/responsive-screens.PNG">
 </div>
+
+- This application is designed to run on desktop, not responsive for mobile and tablets.
 
 ## Contents
 
@@ -49,7 +51,6 @@ RESPONSIVE IMAGE HERE
 - [Technologies and tools](#technologies-and-tools).
 
 - [Credits](#credits). 
-   * [Content](#content).
    * [Media](#media).
    * [Inspiration](#inspiration).
  
@@ -91,7 +92,7 @@ RESPONSIVE IMAGE HERE
 
 <details><summary>Flowchart</summary>
 <div align="center">
-FLOWCHART IMAGE HERE
+<img src="assets/images/flowchart.PNG">
 </div>
 </details>
 
@@ -299,6 +300,14 @@ So far, when I finished and made the final deployment, the game is responding wi
     
 ## Deployment
 
+- To create this project I used GitHub and GitPod.
+- I used the [Code Institute Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template), clicking on the "Use this template" button. From there I created the repository on Github with my username.
+- These commands were used for version control during project:
+    * git status - to check the status of the files to be commited.
+    * git add filename - to add files before committing.
+    * git commit -m "message" - to commit changes to the local repository.
+    * git push - to push all committed changes to the GitHub repository.
+
 ### Deployment
 
 - After finishing developing the program I deployed it on Heroku following these steps:
@@ -343,8 +352,13 @@ So far, when I finished and made the final deployment, the game is responding wi
 - [Heroku](https://heroku.com/) -  Used to deploy the project
 - [Ludichart](https://www.lucidchart.com/) - Used to create the flowchart.
 - [PEP8](http://pep8online.com/) - Used to test/validate Python code.
+- [Python Tutor](https://pythontutor.com/) - Used to run tests during project development.
 
 ## Credits
+
+### Media
+
+- The image used for README.md responsive mockup was taken from [Am I Responsive](http://ami.responsivedesign.is/).
 
 ### Inspiration
  
