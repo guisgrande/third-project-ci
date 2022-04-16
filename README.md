@@ -109,7 +109,7 @@ This project consists of a single page with the layout and configuration provide
 
 #### __Main menu__
 
-	- When you start the program, the main menu is displayed. In which the name of the game/project appears in yellow followed by the initial options for the player to run. These are: __[P]__ to play, __[R]__ to show the rules, and __[Q]__ to close the program.
+- When you start the program, the main menu is displayed. In which the name of the game/project appears in yellow followed by the initial options for the player to run. These are: __[P]__ to play, __[R]__ to show the rules, and __[Q]__ to close the program.
  
 
 <div align="center">
@@ -119,7 +119,7 @@ This project consists of a single page with the layout and configuration provide
 
 #### __Rules__
 
-	- When selecting the rules, the terminal will show a list containing gameplay instructions and the objective of the game.
+- When selecting the rules, the terminal will show a list containing gameplay instructions and the objective of the game.
  
 
 <div align="center">
@@ -129,7 +129,7 @@ This project consists of a single page with the layout and configuration provide
 
 #### __Quit__
  
-	- When you execute the exit option, the program will be closed. It will no longer give the player the option to execute any commands, only after restarting the page or through the run button
+- When you execute the exit option, the program will be closed. It will no longer give the player the option to execute any commands, only after restarting the page or through the run button
  
 
 <div align="center">
@@ -139,7 +139,7 @@ This project consists of a single page with the layout and configuration provide
 
 #### __Flip Coin__
 
-	- Is executed right after the player chooses option __[P]__ to play. Before starting he must choose between heads or tails to decide if he will start or if it will be the machine. It has the options __[H]__ for heads or __[T]__ for tails.
+- Is executed right after the player chooses option __[P]__ to play. Before starting he must choose between heads or tails to decide if he will start or if it will be the machine. It has the options __[H]__ for heads or __[T]__ for tails.
 
  
 <div align="center">
@@ -147,7 +147,7 @@ This project consists of a single page with the layout and configuration provide
 </div>
 
  
-	- The program tosses the coin and returns 50/50 odds. If the selected option is the result, it will return a win message to the player. The image of the result will always be shown on the terminal.
+- The program tosses the coin and returns 50/50 odds. If the selected option is the result, it will return a win message to the player. The image of the result will always be shown on the terminal.
  
 
 <div align="center">
@@ -155,7 +155,7 @@ This project consists of a single page with the layout and configuration provide
 </div>
 
  
-	- If the selected option is not the one chosen by the player, the result of the coin toss will be displayed on the screen. And the message that the choice was not the right one. Then the computer will start the game.
+- If the selected option is not the one chosen by the player, the result of the coin toss will be displayed on the screen. And the message that the choice was not the right one. Then the computer will start the game.
 
  
 <div align="center">
@@ -182,8 +182,8 @@ The game displays on the terminal in the following order from top to bottom.
 </div>
  	
 
-	- After the discard action, the player must choose which card to buy. You have two options to select from, the main deck identified as __[H]__ for hidden and the discard deck that is face up, identified as __[R]__ for revealed.
-	- Each action takes the last available card at the top of each deck. The card discarded by the player in the previous action is described separately from the discard deck, until the end of the player's purchase action
+- After the discard action, the player must choose which card to buy. You have two options to select from, the main deck identified as __[H]__ for hidden and the discard deck that is face up, identified as __[R]__ for revealed.
+- Each action takes the last available card at the top of each deck. The card discarded by the player in the previous action is described separately from the discard deck, until the end of the player's purchase action
 
 	
 <div align="center">
@@ -191,8 +191,8 @@ The game displays on the terminal in the following order from top to bottom.
 </div>
 
 
-	- During the card purchase step the player can choose the option [B] that ends the current game and displays the question whether the player wants to continue playing or return to the menu. 
-	- The options are [Y] to continue (where the cards will be dealt again) or [N] which will return to the main menu and reset the points.
+- During the card purchase step the player can choose the option [B] that ends the current game and displays the question whether the player wants to continue playing or return to the menu. 
+- The options are [Y] to continue (where the cards will be dealt again) or [N] which will return to the main menu and reset the points.
 
 	
 <div align="center">
@@ -202,8 +202,8 @@ The game displays on the terminal in the following order from top to bottom.
 
 - __Computer__
 
-	- After the player's two choices, the computer will run the code and decide what action to take. It first separates the cards in the hand into potential winning and discarding options. Then it compares the cards in the hand to discard and then draw the card with the most potential to win.
-	- I used the time library to add a delay to the computer's play, so that the game would have better dynamics.
+- After the player's two choices, the computer will run the code and decide what action to take. It first separates the cards in the hand into potential winning and discarding options. Then it compares the cards in the hand to discard and then draw the card with the most potential to win.
+- I used the time library to add a delay to the computer's play, so that the game would have better dynamics.
 
 	
 <div align="center">
@@ -213,9 +213,9 @@ The game displays on the terminal in the following order from top to bottom.
 
 - __Win / Loss__
 
-	- At each hand played, the function to check the winner checks both hands and returns whether the player was the winner or the loser of this game.
-	- A message is printed on the terminal and the computer's hand is revealed, in both cases (victory or defeat). The point counter adds one point for each game. The score is reset to zero when the player goes back to the main menu and starts the game again.
-	- A question is printed asking whether the player would like to continue playing, or whether he or she wants to return to the main menu. The options are __[Y]__ for yes, continue playing, and __[N]__ for no and return to the menu.
+- At each hand played, the function to check the winner checks both hands and returns whether the player was the winner or the loser of this game.
+- A message is printed on the terminal and the computer's hand is revealed, in both cases (victory or defeat). The point counter adds one point for each game. The score is reset to zero when the player goes back to the main menu and starts the game again.
+- A question is printed asking whether the player would like to continue playing, or whether he or she wants to return to the main menu. The options are __[Y]__ for yes, continue playing, and __[N]__ for no and return to the menu.
 
 	
 <div align="center">
@@ -238,13 +238,13 @@ During these tests the size of the displays were adjusted, when to clean the ter
 
 ### Funcionality
 
-Once the game was finished, I played it several times to find possible flaws or errors that could compromise the gameplay or interrupt the game. 
+- Once the game was finished, I played it several times to find possible flaws or errors that could compromise the gameplay or interrupt the game. 
 All commands are responding as they should, when some wrong selection is sent to the terminal, the answers are appearing to the user.
 So far, when I finished and made the final deployment, the game is responding with no apparent errors.
 
 ### Navegation and Devices
 
-With the project finished, I performed several tests on different browsers and different computers to check the playability and possible faults. No errors were presented during these tests
+- With the project finished, I performed several tests on different browsers and different computers to check the playability and possible faults. No errors were presented during these tests
 
 - __Desktop__
   - Sony Vaio (Laptop)
@@ -266,11 +266,21 @@ With the project finished, I performed several tests on different browsers and d
 
 ### User Story Testing
 
+- User Story 01: As a user, I want to understand the purpose of the website, so I can know if it's of interest to me.
+- Outcome: When the user visit the aplication can access the rules to understand the game. __Passed__.
 
+- User Story 02: As a user, I want to easily navigate the site/game, so I don't get lost trying to navigate/play.
+- Outcome: When the user visit the aplication he can read the options for each action, and the actions are subjective. __Passed__.
+
+- User Story 03: As a user, I want to be able to check my points and those of my opponent, to know my performance.
+- Outcome: When the aplication/game are executed, it is possible to visualize the score in the midle of terminal. __Passed__.
+
+- User Story 04: As a user, I want to be able to restart/quit the game, if it is in my interest to start again for some reason.
+- Outcome: When the user execute the aplication/game he can you can go back and forth to the game as many times as you want. __Passed__.
 
 ### Fixed Bugs
 
--
+- 
 
 ### Unfixed Bugs
 
