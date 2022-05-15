@@ -4,7 +4,7 @@ import random
 import os
 import time
 
-# Main python file, have access to actions.py and display.py, used to run the game.
+# Main python file, used to run the game.
 
 # Global variables.
 game_running = True
@@ -41,7 +41,10 @@ def game_loop(game_running):
     Run the game in a loop, until either a player wins or the user selects
     the option to quit. When exiting the loop, executes the play_again method.
     '''
-    act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand, act.winner_hand)
+    act.start_game(
+        act.used_deck, act.reveal_deck_game, act.player_hand,
+        act.computer_hand, act.winner_hand
+        )
     while game_running:
         act.display_game()
         # Computer play first if user lose at coin_flip.
@@ -52,12 +55,17 @@ def game_loop(game_running):
             time.sleep(5)
             print(" ▭ ⇅ ▭")
             time.sleep(2)
-            act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
+            act.computer_action(
+                act.computer_hand, act.reveal_deck_game, act.deck_game
+                )
             clear()
             act.display_game()
             change_true()
             pass
-        act.win_check(act.player_hand, act.computer_hand, act.winner_hand, act.player_score, act.computer_score)
+        act.win_check(
+            act.player_hand, act.computer_hand, act.winner_hand,
+            act.player_score, act.computer_score
+            )
         act.deck_check(act.reveal_deck_game)
         game_running = act.end_loop(act.winner_hand)
         if not game_running:
@@ -66,13 +74,18 @@ def game_loop(game_running):
         act.player_discard_action(act.reveal_deck_game, act.player_hand)
         clear()
         act.display_game_alternative()
-        act.player_take_action(act.deck_game, act.reveal_deck_game, act.player_hand)
+        act.player_take_action(
+            act.deck_game, act.reveal_deck_game, act.player_hand
+            )
         clear()
         game_running = act.end_loop(act.winner_hand)
         if not game_running:
             break
         act.display_game()
-        act.win_check(act.player_hand, act.computer_hand, act.winner_hand, act.player_score, act.computer_score)
+        act.win_check(
+            act.player_hand, act.computer_hand, act.winner_hand,
+            act.player_score, act.computer_score
+            )
         act.deck_check(act.reveal_deck_game)
         game_running = act.end_loop(act.winner_hand)
         if not game_running:
@@ -84,7 +97,9 @@ def game_loop(game_running):
         print(" ▭ ⇅ ▭")
         time.sleep(1)
         clear()
-        act.computer_action(act.computer_hand, act.reveal_deck_game, act.deck_game)
+        act.computer_action(
+            act.computer_hand, act.reveal_deck_game, act.deck_game
+            )
 
     play_again()
 
@@ -98,7 +113,7 @@ def coin_flip():
     dis.choose_coin()
     option = None
     while True:
-        print("Select [H] for Heads or [T] for Tails. The winner start the game!")
+        print("Select [H] for Heads or [T] for Tails. The winner play first!")
         selection = input("> \n")
         if selection in ["H", "h"]:
             option = 0
@@ -209,7 +224,10 @@ def play_again():
             time.sleep(1)
             clear()
             game_running = True
-            act.reset_game(act.deck_game, act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand)
+            act.reset_game(
+                act.deck_game, act.used_deck, act.reveal_deck_game,
+                act.player_hand, act.computer_hand
+                )
             game_loop(game_running)
 
         if selection in ["N", "n"]:
