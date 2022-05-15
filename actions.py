@@ -3,18 +3,36 @@ import random
 import display
 
 # Global variables used to generate the game deck
-deck_spades = ["As", "Ks", "Qs", "Js", "Ts", "9s", "8s", "7s", "6s", "5s", "4s", "3s", "2s"]
-deck_hearts = ["Ah", "Kh", "Qh", "Jh", "Th", "9h", "8h", "7h", "6h", "5h", "4h", "3h", "2h"]
-deck_diamonds = ["Ad", "Kd", "Qd", "Jd", "Td", "9d", "8d", "7d", "6d", "5d", "4d", "3d", "2d"]
-deck_clubs = ["Ac", "Kc", "Qc", "Jc", "Tc", "9c", "8c", "7c", "6c", "5c", "4c", "3c", "2c"]
+deck_spades = [
+    "As", "Ks", "Qs", "Js", "Ts", "9s", "8s",
+    "7s", "6s", "5s", "4s", "3s", "2s"
+    ]
+deck_hearts = [
+    "Ah", "Kh", "Qh", "Jh", "Th", "9h", "8h",
+    "7h", "6h", "5h", "4h", "3h", "2h"
+    ]
+deck_diamonds = [
+    "Ad", "Kd", "Qd", "Jd", "Td", "9d", "8d",
+    "7d", "6d", "5d", "4d", "3d", "2d"
+    ]
+deck_clubs = [
+    "Ac", "Kc", "Qc", "Jc", "Tc", "9c", "8c",
+    "7c", "6c", "5c", "4c", "3c", "2c"
+    ]
 full_deck = deck_spades + deck_hearts + deck_diamonds + deck_clubs
 
-# Global lists, one to all cards out of deck_game and another list for the discarded cards that will be revealed.
+'''
+Global lists, one to all cards out of deck_game and another list
+for the discarded cards that will be revealed.
+'''
 deck_game = full_deck.copy()
 reveal_deck_game = []
 used_deck = []
 
-# List to hold player and computer current cards, winner hand to recive if had a winner and the score points.
+'''
+List to hold player and computer current cards,
+winner hand to recive if had a winner and the score points.
+'''
 player_hand = []
 computer_hand = []
 winner_hand = []
@@ -33,7 +51,8 @@ def display_game():
 
 def display_game_alternative():
     '''
-    Method used to display cards and table game at terminal, after player discard action.
+    Method used to display cards and table game at terminal,
+    after player discard action.
     '''
     display.display_computer_hand_hiden()
     display.display_table_alternative()
@@ -88,12 +107,14 @@ def shuffle_deck(reveal_deck_game):
     return deck_game
 
 
-def start_game(used_deck, reveal_deck_game, player_hand, computer_hand, winner_hand):
+def start_game(
+        used_deck, reveal_deck_game, player_hand, computer_hand, winner_hand
+        ):
     '''
-    Shuffle the cards, deal 4 cards to each player, and turn over the first card.
-    First get 8 cards from deck_game, append 4 to player_hand and 4 to computer_hand,
-    then get 1 more card to reveal_deck_game. Each time deals a card, remove from
-    deck_game and move to used_cards.
+    Shuffle the cards, deal 4 cards to each player, turn over the first card.
+    Get 8 cards from deck_game, append 4 to player_hand and to computer_hand,
+    then get 1 more card to reveal_deck_game. Each time deals a card,
+    remove from deck_game and move to used_cards.
     '''
 
     # Random used to shuffle the deck_game before start the cards distribuiton.
@@ -102,7 +123,10 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand, winner_h
     # Clear the winner_hand, to star a new game.
     winner_hand.clear()
 
-    # For loop give one card to player and one card to computer 4 times. Use take_card to remove from game deck.
+    '''
+    For loop give one card to player and one card to computer 4 times.
+    Use take_card to remove from game deck.
+    '''
     for card in range(4):
         player_card = deck_game[-1]
         player_hand.append(player_card)
@@ -117,7 +141,10 @@ def start_game(used_deck, reveal_deck_game, player_hand, computer_hand, winner_h
     reveal_deck_game.append(table_card)
 
 
-def reset_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand):
+def reset_game(
+        deck_game, used_deck, reveal_deck_game, player_hand,
+        computer_hand
+        ):
     '''
     Reset the game variables to start a new game.
     '''
@@ -143,7 +170,8 @@ def reset_score(player_score, computer_score):
 
 def player_discard_action(reveal_deck_game, player_hand):
     '''
-    Receives the player's decision of which card to discard, and moves it to the discard deck (face revealed).
+    Receives the player's decision of which card to discard,
+    and moves it to the discard deck (face revealed).
     '''
 
     # While used to run the options until get one correct selection.
@@ -197,7 +225,10 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
 
         if selection in ["B", "b"]:
             print("Confirm your decision first.")
-            reset_game(deck_game, used_deck, reveal_deck_game, player_hand, computer_hand)
+            reset_game(
+                deck_game, used_deck, reveal_deck_game, player_hand,
+                computer_hand
+                )
             winner_hand.append("WIN")
             break
 
@@ -208,7 +239,8 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
 
 def computer_action(computer_hand, reveal_deck_game, deck_game):
     '''
-    Method to computer check the cards in hand and purchase options and make a decision.
+    Method to computer check the cards in hand and
+    purchase options and make a decision.
     '''
     # computer cards
     cc1 = computer_hand[0][0]
@@ -220,11 +252,16 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     # Counter used to generate a dictionary from computer cards.
     counter_list = Counter(ch_list)
 
-    # One list to hold discard options and other to potential win, used to decide if take a card from revealed deck.
+    '''One list to hold discard options and other to potential win,
+    used to decide if take a card from revealed deck.
+    '''
     discard_option = []
     potential_win = []
 
-    # For loop and if/else used to add single cards to discard option and pairs to potential win lists.
+    '''
+    For loop and if/else used to add single cards to
+    discard option and pairs to potential win lists.
+    '''
     for card, number in counter_list.items():
         if number == 1:
             if card not in discard_option:
@@ -272,7 +309,10 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
             del computer_hand[0]
 
     # Take a new card action start.
-    # First check if have any potencial win, then check if the card at reveal deck match with any card at hand.
+    '''
+    First check if have any potencial win, then check if the card at
+    reveal deck match with any card at hand.
+    '''
     if len(potential_win) == 0:
             if reveal_deck_game[-2][0] in ch_list:
                 computer_hand.append(reveal_deck_game[-2])
@@ -280,7 +320,10 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
             else:
                 computer_hand.append(deck_game[-1])
                 del deck_game[-1]
-    # If have any potencial win, check if the same card was at reveal deck, if yes take it, if not take from hidden deck.
+    '''
+    If have any potencial win, check if the same card was at reveal deck,
+    if yes take it, if not take from hidden deck.
+    '''
     else:
         for card in potential_win:
             try:
@@ -306,7 +349,9 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
         del deck_game[-1]
 
 
-def win_check(player_hand, computer_hand, winner_hand, player_score, computer_score):
+def win_check(
+        player_hand, computer_hand, winner_hand, player_score, computer_score
+        ):
     '''
     Check if the cards in the hand (does not consider suits) are 3 of a kind,
     and return if had a winner.
@@ -318,11 +363,17 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
     c3 = player_hand[2][0]
     c4 = player_hand[3][0]
 
-    # player hand list (all cards numbers/letters) and counter list (Dictionary to group the cards).
+    '''
+    Player hand list (all cards numbers/letters) and
+    counter list (Dictionary to group the cards).
+    '''
     ph_list = [c1, c2, c3, c4]
     player_counter_list = Counter(ph_list)
 
-    # Use a for loop at counter list to check if any card had 3 of the same value.
+    '''
+    Use a for loop at counter list to check if
+    any card had 3 of the same value.
+    '''
     for card, number in player_counter_list.items():
         if number == 3:
             display_end_game()
@@ -337,11 +388,16 @@ def win_check(player_hand, computer_hand, winner_hand, player_score, computer_sc
     cc3 = computer_hand[2][0]
     cc4 = computer_hand[3][0]
 
-    # computer hand list (all cards numbers/letters) and counter list (Dictionary to group the cards).
+    '''
+    Computer hand list (all cards numbers/letters) and counter list
+    (Dictionary to group the cards).
+    '''
     ch_list = [cc1, cc2, cc3, cc4]
     computer_counter_list = Counter(ch_list)
 
-    # Use a for loop at counter list to check if any card had 3 of the same value.
+    '''
+    Use for loop at counter list to check if any card had 3 of the same value.
+    '''
     for card, number in computer_counter_list.items():
         if number == 3:
             display_end_game()
