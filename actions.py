@@ -21,18 +21,14 @@ deck_clubs = [
     ]
 full_deck = deck_spades + deck_hearts + deck_diamonds + deck_clubs
 
-'''
-Global lists, one to all cards out of deck_game and another list
-for the discarded cards that will be revealed.
-'''
+# Global lists, one to all cards out of deck_game and another list
+# for the discarded cards that will be revealed.
 deck_game = full_deck.copy()
 reveal_deck_game = []
 used_deck = []
 
-'''
-List to hold player and computer current cards,
-winner hand to recive if had a winner and the score points.
-'''
+# List to hold player and computer current cards,
+# winner hand to recive if had a winner and the score points.
 player_hand = []
 computer_hand = []
 winner_hand = []
@@ -123,10 +119,8 @@ def start_game(
     # Clear the winner_hand, to star a new game.
     winner_hand.clear()
 
-    '''
-    For loop give one card to player and one card to computer 4 times.
-    Use take_card to remove from game deck.
-    '''
+    # For loop give one card to player and one card to computer 4 times.
+    # Use take_card to remove from game deck.
     for card in range(4):
         player_card = deck_game[-1]
         player_hand.append(player_card)
@@ -252,16 +246,13 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
     # Counter used to generate a dictionary from computer cards.
     counter_list = Counter(ch_list)
 
-    '''One list to hold discard options and other to potential win,
-    used to decide if take a card from revealed deck.
-    '''
+    # One list to hold discard options and other to potential win,
+    # used to decide if take a card from revealed deck.
     discard_option = []
     potential_win = []
 
-    '''
-    For loop and if/else used to add single cards to
-    discard option and pairs to potential win lists.
-    '''
+    # For loop and if/else used to add single cards to
+    # discard option and pairs to potential win lists.
     for card, number in counter_list.items():
         if number == 1:
             if card not in discard_option:
@@ -309,10 +300,10 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
             del computer_hand[0]
 
     # Take a new card action start.
-    '''
-    First check if have any potencial win, then check if the card at
-    reveal deck match with any card at hand.
-    '''
+    # First check if have any potencial win, then check if the card at
+    # reveal deck match with any card at hand.
+    # If have any potencial win, check if the same card was at reveal deck,
+    # if yes take it, if not take from hidden deck.
     if len(potential_win) == 0:
             if reveal_deck_game[-2][0] in ch_list:
                 computer_hand.append(reveal_deck_game[-2])
@@ -320,10 +311,7 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
             else:
                 computer_hand.append(deck_game[-1])
                 del deck_game[-1]
-    '''
-    If have any potencial win, check if the same card was at reveal deck,
-    if yes take it, if not take from hidden deck.
-    '''
+
     else:
         for card in potential_win:
             try:
@@ -363,17 +351,13 @@ def win_check(
     c3 = player_hand[2][0]
     c4 = player_hand[3][0]
 
-    '''
-    Player hand list (all cards numbers/letters) and
-    counter list (Dictionary to group the cards).
-    '''
+    # Player hand list (all cards numbers/letters) and
+    # counter list (Dictionary to group the cards).
     ph_list = [c1, c2, c3, c4]
     player_counter_list = Counter(ph_list)
 
-    '''
-    Use a for loop at counter list to check if
-    any card had 3 of the same value.
-    '''
+    # Use a for loop at counter list to check if
+    # any card had 3 of the same value.
     for card, number in player_counter_list.items():
         if number == 3:
             display_end_game()
@@ -388,16 +372,13 @@ def win_check(
     cc3 = computer_hand[2][0]
     cc4 = computer_hand[3][0]
 
-    '''
-    Computer hand list (all cards numbers/letters) and counter list
-    (Dictionary to group the cards).
-    '''
+    # Computer hand list (all cards numbers/letters) and counter list
+    # (Dictionary to group the cards).
     ch_list = [cc1, cc2, cc3, cc4]
     computer_counter_list = Counter(ch_list)
 
-    '''
-    Use for loop at counter list to check if any card had 3 of the same value.
-    '''
+    # Use for loop at counter list to check if any
+    # card had 3 of the same value.
     for card, number in computer_counter_list.items():
         if number == 3:
             display_end_game()
