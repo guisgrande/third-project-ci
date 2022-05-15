@@ -38,7 +38,7 @@ def change_true():
 
 def game_loop(game_running):
     '''
-    Run the game in a loop, until either a player wins or the user selects 
+    Run the game in a loop, until either a player wins or the user selects
     the option to quit. When exiting the loop, executes the play_again method.
     '''
     act.start_game(act.used_deck, act.reveal_deck_game, act.player_hand, act.computer_hand, act.winner_hand)
@@ -91,7 +91,7 @@ def game_loop(game_running):
 
 def coin_flip():
     '''
-    Displays the options for the user to choose between the coin 
+    Displays the options for the user to choose between the coin
     flips and returns the result of who starts the game.
     '''
     clear()
@@ -152,7 +152,7 @@ def coin_flip():
 
 def main_menu():
     '''
-    Displays the name of the game, description and rules, 
+    Displays the name of the game, description and rules,
     and the option to play or close the program.
     '''
     dis.intro_display()
