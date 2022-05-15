@@ -1,15 +1,15 @@
 import actions as act
 
-# Varibles to get ANSI characters code, used to add color. 
+# Varibles to get ANSI characters code, used to add color.
 
-RED   = "\033[1;31m"  
-BLUE  = "\033[1;34m"
+RED = "\033[1;31m"
+BLUE = "\033[1;34m"
 GREEN = "\033[0;32m"
 YELLOW = "\033[0;33m"
 RESET = "\033[0;0m"
 
 
-def intro_display():    
+def intro_display():
         '''
         Display the main menu and the options for the user.
         '''
@@ -39,14 +39,14 @@ def choose_coin():
     Display the two faces of a coin for the user to choose.
     '''
     print(f'''{YELLOW}
-               __________               __________    
-              /          \\\           /  ______  \\\ 
-             /  |\_/\_/|  \\\         /  /     \\\  \\\ 
-            /   |      |   \\\       /  |       ||  \\\ 
+               __________               __________
+              /          \\\           /  ______  \\\\
+             /  |\_/\_/|  \\\         /  /     \\\\  \\\\
+            /   |      |   \\\       /  |       ||  \\\\
             \   |______|   //       \   \     //   //
              \  --------  //         \   |___||   //
               \__________//           \__________//
-                [T]ails                  [H]eads            
+                [T]ails                  [H]eads
 {RESET}''')
 
 
@@ -55,10 +55,10 @@ def coin_heads():
     Display the face Heads, if this was the result.
     '''
     print(f'''{YELLOW}
-               __________    
-              /  ______  \\\ 
-             /  /     \\\  \\\ 
-            /  |       ||  \\\ 
+               __________
+              /  ______  \\\\
+             /  /     \\\\  \\\\
+            /  |       ||  \\\\
             \   \     //   //
              \   |___||   //
               \__________//
@@ -72,13 +72,13 @@ def coin_tails():
     Display the face Tails, if this was the result.
     '''
     print(f'''{YELLOW}
-               __________             
-              /          \\\      
-             /  |\_/\_/|  \\\     
-            /   |      |   \\\     
-            \   |______|   //     
-             \  --------  //      
-              \__________// 
+               __________
+              /          \\\\
+             /  |\_/\_/|  \\\\
+            /   |      |   \\\\
+            \   |______|   //
+             \  --------  //
+              \__________//
              The result is
                  TAILS
 {RESET}''')
@@ -90,9 +90,9 @@ def display_computer_hand_hiden():
     '''
     print('''
 =============== COMPUTER HAND ===============================================
-                _____   _____   _____   _____         
-               |#####| |#####| |#####| |#####|        
-               |#####| |#####| |#####| |#####|       
+                _____   _____   _____   _____
+               |#####| |#####| |#####| |#####|
+               |#####| |#####| |#####| |#####|
                |_____| |_____| |_____| |_____|              ''')
 
 
@@ -127,7 +127,7 @@ def display_computer_hand_reveal():
     cc2 = act.computer_hand[1][0]
     cc3 = act.computer_hand[2][0]
     cc4 = act.computer_hand[3][0]
-    
+
     cs1 = suits_display(act.computer_hand[0][1])
     cs2 = suits_display(act.computer_hand[1][1])
     cs3 = suits_display(act.computer_hand[2][1])
@@ -148,7 +148,7 @@ def display_player_hand():
     '''
 
     # Try and except, used to show hand after player discard a card.
-    try:  
+    try:
         c1 = act.player_hand[0][0]
         s1 = suits_display(act.player_hand[0][1])
     except:
@@ -186,8 +186,8 @@ def display_player_hand():
 
 def display_table():
     '''
-    Display the two available decks and the corresponding option for each below. 
-    It also shows the score points of each player, the number of cards in each deck, 
+    Display the two available decks and the corresponding option for each below.
+    It also shows the score points of each player, the number of cards in each deck,
     and the last 5 cards revealed.
     '''
 
@@ -246,18 +246,18 @@ def display_table():
         rd = YELLOW + str(len(act.reveal_deck_game)) + RESET
 
     print(f'''  _________________________________________________________________________
-                    _____    CPU    _____         
+                    _____    CPU    _____
                    |#####|   *{c_sc}   | {rc}   |         | LAST REVEAL CARDS
-                   |#####|  SCORE  | {rs}   |         |   {YELLOW}2º{RESET} {rc2} {rs2}  {YELLOW}3º{RESET} {rc3} {rs3}  
+                   |#####|  SCORE  | {rs}   |         |   {YELLOW}2º{RESET} {rc2} {rs2}  {YELLOW}3º{RESET} {rc3} {rs3}
                    |_____|   *{p_sc}   |_____|         |   {YELLOW}4º{RESET} {rc4} {rs4}  {YELLOW}5º{RESET} {rc5} {rs5}
-                   <{hd}>[H]   YOU   <{rd}>[R] 
+                   <{hd}>[H]   YOU   <{rd}>[R]
   _________________________________________________________________________''')
 
 
 def display_table_alternative():
     '''
-    Display an alternative table, to show the take option of 
-    the revealed deck, the hand of the player with one card less 
+    Display an alternative table, to show the take option of
+    the revealed deck, the hand of the player with one card less
     and the card that will then be added to the revealed deck.
     '''
 
@@ -321,9 +321,9 @@ def display_table_alternative():
         rd = YELLOW + str(len(act.reveal_deck_game)) + RESET
 
     print(f'''  _________________________________________________________________________
-                    _____    CPU    _____         
+                    _____    CPU    _____
                    |#####|   *{c_sc}   | {rc}   |         | LAST REVEAL CARDS
-                   |#####|  SCORE  | {rs}   |         |   {YELLOW}2º{RESET} {rc2} {rs2}  {YELLOW}3º{RESET} {rc3} {rs3}  
+                   |#####|  SCORE  | {rs}   |         |   {YELLOW}2º{RESET} {rc2} {rs2}  {YELLOW}3º{RESET} {rc3} {rs3}
                    |_____|   *{p_sc}   |_____|         |   {YELLOW}4º{RESET} {rc4} {rs4}  {YELLOW}5º{RESET} {rc5} {rs5}
                    <{hd}>[H]   YOU   <{rd}>[R]         # WAITING - {wc} {ws}
   _________________________________________________________________________''')
