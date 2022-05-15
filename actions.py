@@ -174,8 +174,8 @@ def player_discard_action(reveal_deck_game, player_hand):
 
 
 def player_take_action(deck_game, reveal_deck_game, player_hand):
-    '''   
-    Receives the player's decision of which card to take, 
+    '''
+    Receives the player's decision of which card to take,
     moves the card to players hand and removes from the chosen deck
     '''
     # While used to run the options until get one correct selection.
@@ -184,7 +184,7 @@ def player_take_action(deck_game, reveal_deck_game, player_hand):
         print("- - - - - - - [H]idden - [R]eveal - - - - - - -")
         print("- - - - - [B] Restart or Back to menu! - - - - -")
         selection = input("> \n")
-        
+
         if selection in ["H", "h"]:
             player_hand.append(deck_game[-1])
             take_card(used_deck)
@@ -219,7 +219,7 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
 
     # Counter used to generate a dictionary from computer cards.
     counter_list = Counter(ch_list)
-    
+
     # One list to hold discard options and other to potential win, used to decide if take a card from revealed deck.
     discard_option = []
     potential_win = []
@@ -277,7 +277,7 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
             if reveal_deck_game[-2][0] in ch_list:
                 computer_hand.append(reveal_deck_game[-2])
                 del reveal_deck_game[-2]
-            else:    
+            else:
                 computer_hand.append(deck_game[-1])
                 del deck_game[-1]
     # If have any potencial win, check if the same card was at reveal deck, if yes take it, if not take from hidden deck.
@@ -308,10 +308,10 @@ def computer_action(computer_hand, reveal_deck_game, deck_game):
 
 def win_check(player_hand, computer_hand, winner_hand, player_score, computer_score):
     '''
-    Check if the cards in the hand (does not consider suits) are 3 of a kind, 
+    Check if the cards in the hand (does not consider suits) are 3 of a kind,
     and return if had a winner.
     '''
-    
+
     # player cards
     c1 = player_hand[0][0]
     c2 = player_hand[1][0]
