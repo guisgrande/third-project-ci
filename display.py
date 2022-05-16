@@ -20,21 +20,33 @@ def intro_display():
     opt = f"{YW}CHOOSE: [P] for PLAY | [R] for RULES | [Q] for QUIT{RT}"
     d_line = '===================================='
     dl = '==========='
+    l1 = f'====={YW}______{RT}===={YW}______{RT}====={YW}______{RT}'
+    l2 = f'==={YW}|  __  |{RT}=={YW}|   ___|{RT}==={YW}|  __  |{RT}'
+    l3 = f'==={YW}| |{RT}=={YW}| |{RT}=={YW}|  |__{RT}====={YW}| |__| |{RT}'
+    l4 = f'==={YW}| |{RT}=={YW}| |{RT}=={YW}|   __|{RT}===={YW}|  __  |{RT}'
+    l5 = f'==={YW}| |__| |{RT}=={YW}|  |{RT}======={YW}| |{RT}=={YW}| |{RT}'
+    l6 = f'==={YW}|______|{RT}=={YW}|__|{RT}======={YW}|_|{RT}=={YW}|_|{RT}'
+    l7 = f'==={YW}__{RT}===={YW}___{RT}======{YW}_{RT}===={YW}_____{RT}'
+    l8 = f'=={YW}|  |{RT}=={YW}|  _ \{RT}==={YW}| |{RT}=={YW}|  _  \{RT}'
+    l9 = f'=={YW}| |{RT}={YW}\ \{RT}=={YW}| |{RT}=={YW}| | \  \{RT}'
+    l10 = f'=={YW}| |{RT}=={YW}\ \{RT}={YW}| |{RT}=={YW}| |  |  |{RT}'
+    l11 = f'=={YW}| |{RT}==={YW}\ \| |{RT}=={YW}| |_/  /{RT}'
+    l12 = f'=={YW}|_|{RT}===={YW}\___|{RT}=={YW}|_____/{RT}'
     print(f'''
 {d_line}{d_line}
-    {dl}={YW}______{RT}====={YW}______{RT}===={YW}______{RT}====={YW}______{RT}{dl}===
-    {dl}{YW}|___   |{RT}==={YW}|  __  |{RT}=={YW}|   ___|{RT}==={YW}|  __  |{RT}{dl}==
-    {dl}={YW}___|  |{RT}==={YW}| |{RT}=={YW}| |{RT}=={YW}|  |__{RT}====={YW}| |__| |{RT}{dl}==
-    {dl}{YW}|___   |{RT}==={YW}| |{RT}=={YW}| |{RT}=={YW}|   __|{RT}===={YW}|  __  |{RT}{dl}==
-    {dl}={YW}___|  |{RT}==={YW}| |__| |{RT}=={YW}|  |{RT}======={YW}| |{RT}=={YW}| |{RT}{dl}==
-    {dl}{YW}|______|{RT}==={YW}|______|{RT}=={YW}|__|{RT}======={YW}|_|{RT}=={YW}|_|{RT}{dl}==
+    {dl}={YW}______{RT}{l1}{dl}===
+    {dl}{YW}|___   |{RT}{l2}{dl}==
+    {dl}={YW}___|  |{RT}{l3}{dl}==
+    {dl}{YW}|___   |{RT}{l4}{dl}==
+    {dl}={YW}___|  |{RT}{l5}{dl}==
+    {dl}{YW}|______|{RT}{l6}{dl}==
 {d_line}{d_line}
-    {dl}={YW}__{RT}===={YW}___{RT}==={YW}__{RT}===={YW}___{RT}======{YW}_{RT}===={YW}_____{RT}{dl}====
-    {dl}{YW}|  |{RT}=={YW}/  /{RT}=={YW}|  |{RT}=={YW}|  _ \{RT}==={YW}| |{RT}=={YW}|  _  \{RT}{dl}===
-    {dl}{YW}|  |{RT}={YW}/  /{RT}==={YW}|  |{RT}=={YW}| |{RT}={YW}\ \{RT}=={YW}| |{RT}=={YW}| | \  \{RT}{dl}==
-    {dl}{YW}|      <{RT}===={YW}|  |{RT}=={YW}| |{RT}=={YW}\ \{RT}={YW}| |{RT}=={YW}| |  |  |{RT}{dl}=
-    {dl}{YW}|  |{RT}={YW}\  \{RT}==={YW}|  |{RT}=={YW}| |{RT}==={YW}\ \| |{RT}=={YW}| |_/  /{RT}{dl}==
-    {dl}{YW}|__|{RT}=={YW}\__\{RT}=={YW}|__|{RT}=={YW}|_|{RT}===={YW}\___|{RT}=={YW}|_____/{RT}{dl}===
+    {dl}={YW}__{RT}===={YW}___{RT}{l7}{dl}====
+    {dl}{YW}|  |{RT}=={YW}/  /{RT}{l8}{dl}===
+    {dl}{YW}|  |{RT}={YW}/  /{RT}==={YW}|  |{RT}{l9}{dl}==
+    {dl}{YW}|      <{RT}===={YW}|  |{RT}{l10}{dl}=
+    {dl}{YW}|  |{RT}={YW}\  \{RT}==={YW}|  |{RT}{l11}{dl}==
+    {dl}{YW}|__|{RT}=={YW}\__\{RT}=={YW}|__|{RT}{l12}{dl}===
 {d_line}{d_line}''')
     print(f' ------== {opt} ==------')
     print(f'{d_line}{d_line}')
@@ -95,7 +107,7 @@ def display_computer_hand_hiden():
     Display 4 hidden cards that represent the computer's cards.
     '''
     print('''
-=============== COMPUTER HAND ===============================================
+============== COMPUTER HAND ============================================
                 _____   _____   _____   _____
                |#####| |#####| |#####| |#####|
                |#####| |#####| |#####| |#####|
@@ -141,7 +153,7 @@ def display_computer_hand_reveal():
     cs4 = suits_display(act.computer_hand[3][1])
 
     print(f'''
-============== COMPUTER HAND =============================================
+============== COMPUTER HAND ============================================
                  _____   _____   _____   _____
                 | {cc1}   | | {cc2}   | | {cc3}   | | {cc4}   |
                 | {cs1}   | | {cs2}   | | {cs3}   | | {cs4}   |
@@ -189,7 +201,7 @@ def display_player_hand():
                | {s1}   | | {s2}   | | {s3}   | | {s4}   |
                |_____| |_____| |_____| |_____|
                 >[1]    >[2]    >[3]    >[4]
-=============== YOUR HAND ================================================''')
+============== YOUR HAND ================================================''')
 
 
 def display_table():
