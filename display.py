@@ -5,40 +5,46 @@ import actions as act
 RED = "\033[1;31m"
 BLUE = "\033[1;34m"
 GREEN = "\033[0;32m"
-YELLOW = "\033[0;33m"
-RESET = "\033[0;0m"
+# YELLOW
+YW = "\033[0;33m"
+# RESET
+RT = "\033[0;0m"
+
+line = '______________________________________________________________________'
 
 
 def intro_display():
-        '''
-        Display the main menu and the options for the user.
-        '''
-        options = f"{YELLOW}CHOOSE: [P] for PLAY | [R] for RULES | [Q] for QUIT{RESET}"
-        print(f'''
-==========================================================================
-     ============{YELLOW}______{RESET}====={YELLOW}______{RESET}===={YELLOW}______{RESET}====={YELLOW}______{RESET}==============
-     ==========={YELLOW}|___   |{RESET}==={YELLOW}|  __  |{RESET}=={YELLOW}|   ___|{RESET}==={YELLOW}|  __  |{RESET}=============
-     ============{YELLOW}___|  |{RESET}==={YELLOW}| |{RESET}=={YELLOW}| |{RESET}=={YELLOW}|  |__{RESET}====={YELLOW}| |__| |{RESET}=============
-     ==========={YELLOW}|___   |{RESET}==={YELLOW}| |{RESET}=={YELLOW}| |{RESET}=={YELLOW}|   __|{RESET}===={YELLOW}|  __  |{RESET}=============
-     ============{YELLOW}___|  |{RESET}==={YELLOW}| |__| |{RESET}=={YELLOW}|  |{RESET}======={YELLOW}| |{RESET}=={YELLOW}| |{RESET}=============
-     ==========={YELLOW}|______|{RESET}==={YELLOW}|______|{RESET}=={YELLOW}|__|{RESET}======={YELLOW}|_|{RESET}=={YELLOW}|_|{RESET}=============
-==========================================================================
-     ============{YELLOW}__{RESET}===={YELLOW}___{RESET}==={YELLOW}__{RESET}===={YELLOW}___{RESET}======{YELLOW}_{RESET}===={YELLOW}_____{RESET}===============
-     ==========={YELLOW}|  |{RESET}=={YELLOW}/  /{RESET}=={YELLOW}|  |{RESET}=={YELLOW}|  _ \{RESET}==={YELLOW}| |{RESET}=={YELLOW}|  _  \{RESET}==============
-     ==========={YELLOW}|  |{RESET}={YELLOW}/  /{RESET}==={YELLOW}|  |{RESET}=={YELLOW}| |{RESET}={YELLOW}\ \{RESET}=={YELLOW}| |{RESET}=={YELLOW}| | \  \{RESET}=============
-     ==========={YELLOW}|      <{RESET}===={YELLOW}|  |{RESET}=={YELLOW}| |{RESET}=={YELLOW}\ \{RESET}={YELLOW}| |{RESET}=={YELLOW}| |  |  |{RESET}============
-     ==========={YELLOW}|  |{RESET}={YELLOW}\  \{RESET}==={YELLOW}|  |{RESET}=={YELLOW}| |{RESET}==={YELLOW}\ \| |{RESET}=={YELLOW}| |_/  /{RESET}=============
-     ==========={YELLOW}|__|{RESET}=={YELLOW}\__\{RESET}=={YELLOW}|__|{RESET}=={YELLOW}|_|{RESET}===={YELLOW}\___|{RESET}=={YELLOW}|_____/{RESET}==============
-==========================================================================''')
-        print(f' -------== {options} ==-------')
-        print('==========================================================================')
+    '''
+    Display the main menu and the options for the user.
+    '''
+    opt = f"{YW}CHOOSE: [P] for PLAY | [R] for RULES | [Q] for QUIT{RT}"
+    d_line = '===================================='
+    dl = '==========='
+    print(f'''
+{d_line}{d_line}
+    {dl}={YW}______{RT}====={YW}______{RT}===={YW}______{RT}====={YW}______{RT}{dl}===
+    {dl}{YW}|___   |{RT}==={YW}|  __  |{RT}=={YW}|   ___|{RT}==={YW}|  __  |{RT}{dl}==
+    {dl}={YW}___|  |{RT}==={YW}| |{RT}=={YW}| |{RT}=={YW}|  |__{RT}====={YW}| |__| |{RT}{dl}==
+    {dl}{YW}|___   |{RT}==={YW}| |{RT}=={YW}| |{RT}=={YW}|   __|{RT}===={YW}|  __  |{RT}{dl}==
+    {dl}={YW}___|  |{RT}==={YW}| |__| |{RT}=={YW}|  |{RT}======={YW}| |{RT}=={YW}| |{RT}{dl}==
+    {dl}{YW}|______|{RT}==={YW}|______|{RT}=={YW}|__|{RT}======={YW}|_|{RT}=={YW}|_|{RT}{dl}==
+{d_line}{d_line}
+    {dl}={YW}__{RT}===={YW}___{RT}==={YW}__{RT}===={YW}___{RT}======{YW}_{RT}===={YW}_____{RT}{dl}====
+    {dl}{YW}|  |{RT}=={YW}/  /{RT}=={YW}|  |{RT}=={YW}|  _ \{RT}==={YW}| |{RT}=={YW}|  _  \{RT}{dl}===
+    {dl}{YW}|  |{RT}={YW}/  /{RT}==={YW}|  |{RT}=={YW}| |{RT}={YW}\ \{RT}=={YW}| |{RT}=={YW}| | \  \{RT}{dl}==
+    {dl}{YW}|      <{RT}===={YW}|  |{RT}=={YW}| |{RT}=={YW}\ \{RT}={YW}| |{RT}=={YW}| |  |  |{RT}{dl}=
+    {dl}{YW}|  |{RT}={YW}\  \{RT}==={YW}|  |{RT}=={YW}| |{RT}==={YW}\ \| |{RT}=={YW}| |_/  /{RT}{dl}==
+    {dl}{YW}|__|{RT}=={YW}\__\{RT}=={YW}|__|{RT}=={YW}|_|{RT}===={YW}\___|{RT}=={YW}|_____/{RT}{dl}===
+{d_line}{d_line}''')
+    print(f' ------== {opt} ==------')
+    print(f'{d_line}{d_line}')
 
 
 def choose_coin():
     '''
     Display the two faces of a coin for the user to choose.
     '''
-    print(f'''{YELLOW}
+    print(f'''{YW}
                __________               __________
               /          \\\           /  ______  \\\\
              /  |\_/\_/|  \\\         /  /     \\\\  \\\\
@@ -47,14 +53,14 @@ def choose_coin():
              \  --------  //         \   |___||   //
               \__________//           \__________//
                 [T]ails                  [H]eads
-{RESET}''')
+{RT}''')
 
 
 def coin_heads():
     '''
     Display the face Heads, if this was the result.
     '''
-    print(f'''{YELLOW}
+    print(f'''{YW}
                __________
               /  ______  \\\\
              /  /     \\\\  \\\\
@@ -64,14 +70,14 @@ def coin_heads():
               \__________//
              The result is
                  HEADS
-{RESET}''')
+{RT}''')
 
 
 def coin_tails():
     '''
     Display the face Tails, if this was the result.
     '''
-    print(f'''{YELLOW}
+    print(f'''{YW}
                __________
               /          \\\\
              /  |\_/\_/|  \\\\
@@ -81,7 +87,7 @@ def coin_tails():
               \__________//
              The result is
                  TAILS
-{RESET}''')
+{RT}''')
 
 
 def display_computer_hand_hiden():
@@ -98,14 +104,15 @@ def display_computer_hand_hiden():
 
 def suits_display(suits):
     '''
-    Get the character from the suit of the card and returns the corresponding symbol.
+    Get the character from the suit of the card and returns
+    the corresponding symbol.
     '''
 
     # Symbols plus color
-    clubs = BLUE + "♣" + RESET
-    hearts = RED + "♥" + RESET
-    spades = BLUE + "♠" + RESET
-    diamonds = RED + "♦" + RESET
+    clubs = BLUE + "♣" + RT
+    hearts = RED + "♥" + RT
+    spades = BLUE + "♠" + RT
+    diamonds = RED + "♦" + RT
 
     if suits == "c":
         return clubs
@@ -134,7 +141,7 @@ def display_computer_hand_reveal():
     cs4 = suits_display(act.computer_hand[3][1])
 
     print(f'''
-=============== COMPUTER HAND ===============================================
+============== COMPUTER HAND =============================================
                  _____   _____   _____   _____
                 | {cc1}   | | {cc2}   | | {cc3}   | | {cc4}   |
                 | {cs1}   | | {cs2}   | | {cs3}   | | {cs4}   |
@@ -144,7 +151,8 @@ def display_computer_hand_reveal():
 
 def display_player_hand():
     '''
-    Displays the cards in the player's hand, and shows the discard option under each card.
+    Displays the cards in the player's hand, and shows
+    the discard option under each card.
     '''
 
     # Try and except, used to show hand after player discard a card.
@@ -153,48 +161,49 @@ def display_player_hand():
         s1 = suits_display(act.player_hand[0][1])
     except:
         c1 = "X"
-        s1 = f"{YELLOW}#{RESET}"
+        s1 = f"{YW}#{RT}"
 
     try:
         c2 = act.player_hand[1][0]
         s2 = suits_display(act.player_hand[1][1])
     except:
         c2 = "X"
-        s2 = f"{YELLOW}#{RESET}"
+        s2 = f"{YW}#{RT}"
 
     try:
         c3 = act.player_hand[2][0]
         s3 = suits_display(act.player_hand[2][1])
     except:
         c3 = "X"
-        s3 = f"{YELLOW}#{RESET}"
+        s3 = f"{YW}#{RT}"
 
     try:
         c4 = act.player_hand[3][0]
         s4 = suits_display(act.player_hand[3][1])
     except:
         c4 = "X"
-        s4 = f"{YELLOW}#{RESET}"
+        s4 = f"{YW}#{RT}"
 
     print(f'''                _____   _____   _____   _____
                | {c1}   | | {c2}   | | {c3}   | | {c4}   |
                | {s1}   | | {s2}   | | {s3}   | | {s4}   |
                |_____| |_____| |_____| |_____|
                 >[1]    >[2]    >[3]    >[4]
-================ YOUR HAND ==================================================''')
+=============== YOUR HAND ================================================''')
 
 
 def display_table():
     '''
-    Display the two available decks and the corresponding option for each below.
-    It also shows the score points of each player, the number of cards in each deck,
-    and the last 5 cards revealed.
+    Display the two available decks and the corresponding option for each.
+    It also shows the score points of each player, the number of cards
+    in each deck, and the last 5 cards revealed.
     '''
 
     rc = act.reveal_deck_game[-1][0]
     rs = suits_display(act.reveal_deck_game[-1][1])
 
-    # Try / except used to show alternative information when don't have any card at respective position at reveal deck.
+    # Try / except used to show alternative information when don't have any
+    # card at respective position at reveal deck.
     try:
         rc2 = act.reveal_deck_game[-2][0]
         rs2 = suits_display(act.reveal_deck_game[-2][1])
@@ -225,33 +234,36 @@ def display_table():
 
     # Short variable to player and computer score
     if len(act.player_score) >= 10:
-        p_sc = GREEN + str(len(act.player_score)) + RESET
+        p_sc = GREEN + str(len(act.player_score)) + RT
     else:
-        p_sc = GREEN + "0" + str(len(act.player_score)) + RESET
+        p_sc = GREEN + "0" + str(len(act.player_score)) + RT
 
     if len(act.computer_score) >= 10:
-        c_sc = RED + str(len(act.computer_score)) + RESET
+        c_sc = RED + str(len(act.computer_score)) + RT
     else:
-        c_sc = RED + "0" + str(len(act.computer_score)) + RESET
+        c_sc = RED + "0" + str(len(act.computer_score)) + RT
 
     # Short variabel to hidden deck and reveal deck
     if len(act.deck_game) < 10:
-        hd = YELLOW + "0" + str(len(act.deck_game)) + RESET
+        hd = YW + "0" + str(len(act.deck_game)) + RT
     else:
-        hd = YELLOW + str(len(act.deck_game)) + RESET
+        hd = YW + str(len(act.deck_game)) + RT
 
     if len(act.reveal_deck_game) < 10:
-        rd = YELLOW + "0" + str(len(act.reveal_deck_game)) + RESET
+        rd = YW + "0" + str(len(act.reveal_deck_game)) + RT
     else:
-        rd = YELLOW + str(len(act.reveal_deck_game)) + RESET
+        rd = YW + str(len(act.reveal_deck_game)) + RT
 
-    print(f'''  _________________________________________________________________________
+    table1 = f'{YW}2º{RT} {rc2} {rs2}  {YW}3º{RT} {rc3} {rs3}'
+    table2 = f'{YW}4º{RT} {rc4} {rs4}  {YW}5º{RT} {rc5} {rs5}'
+
+    print(f'''  {line}
                     _____    CPU    _____
                    |#####|   *{c_sc}   | {rc}   |         | LAST REVEAL CARDS
-                   |#####|  SCORE  | {rs}   |         |   {YELLOW}2º{RESET} {rc2} {rs2}  {YELLOW}3º{RESET} {rc3} {rs3}
-                   |_____|   *{p_sc}   |_____|         |   {YELLOW}4º{RESET} {rc4} {rs4}  {YELLOW}5º{RESET} {rc5} {rs5}
+                   |#####|  SCORE  | {rs}   |         |   {table1}
+                   |_____|   *{p_sc}   |_____|         |   {table2}
                    <{hd}>[H]   YOU   <{rd}>[R]
-  _________________________________________________________________________''')
+  {line}''')
 
 
 def display_table_alternative():
@@ -269,7 +281,8 @@ def display_table_alternative():
     wc = act.reveal_deck_game[-1][0]
     ws = suits_display(act.reveal_deck_game[-1][1])
 
-    # Try / except used to show alternative information when don't have any card at respective position at reveal deck.
+    # Try / except used to show alternative information when don't
+    # have any card at respective position at reveal deck.
     try:
         rc2 = act.reveal_deck_game[-3][0]
         rs2 = suits_display(act.reveal_deck_game[-3][1])
@@ -300,30 +313,33 @@ def display_table_alternative():
 
     # Short variable to player and computer score
     if len(act.player_score) >= 10:
-        p_sc = GREEN + str(len(act.player_score)) + RESET
+        p_sc = GREEN + str(len(act.player_score)) + RT
     else:
-        p_sc = GREEN + "0" + str(len(act.player_score)) + RESET
+        p_sc = GREEN + "0" + str(len(act.player_score)) + RT
 
     if len(act.computer_score) >= 10:
-        c_sc = RED + str(len(act.computer_score)) + RESET
+        c_sc = RED + str(len(act.computer_score)) + RT
     else:
-        c_sc = RED + "0" + str(len(act.computer_score)) + RESET
+        c_sc = RED + "0" + str(len(act.computer_score)) + RT
 
     # Short variabel to hidden deck and reveal deck
     if len(act.deck_game) < 10:
-        hd = YELLOW + "0" + str(len(act.deck_game)) + RESET
+        hd = YW + "0" + str(len(act.deck_game)) + RT
     else:
-        hd = YELLOW + str(len(act.deck_game)) + RESET
+        hd = YW + str(len(act.deck_game)) + RT
 
     if len(act.reveal_deck_game) < 10:
-        rd = YELLOW + "0" + str(len(act.reveal_deck_game)) + RESET
+        rd = YW + "0" + str(len(act.reveal_deck_game)) + RT
     else:
-        rd = YELLOW + str(len(act.reveal_deck_game)) + RESET
+        rd = YW + str(len(act.reveal_deck_game)) + RT
 
-    print(f'''  _________________________________________________________________________
+    table1 = f'{YW}2º{RT} {rc2} {rs2}  {YW}3º{RT} {rc3} {rs3}'
+    table2 = f'{YW}4º{RT} {rc4} {rs4}  {YW}5º{RT} {rc5} {rs5}'
+
+    print(f'''  {line}
                     _____    CPU    _____
                    |#####|   *{c_sc}   | {rc}   |         | LAST REVEAL CARDS
-                   |#####|  SCORE  | {rs}   |         |   {YELLOW}2º{RESET} {rc2} {rs2}  {YELLOW}3º{RESET} {rc3} {rs3}
-                   |_____|   *{p_sc}   |_____|         |   {YELLOW}4º{RESET} {rc4} {rs4}  {YELLOW}5º{RESET} {rc5} {rs5}
+                   |#####|  SCORE  | {rs}   |         |   {table1}
+                   |_____|   *{p_sc}   |_____|         |   {table2}
                    <{hd}>[H]   YOU   <{rd}>[R]         # WAITING - {wc} {ws}
-  _________________________________________________________________________''')
+  {line}''')
